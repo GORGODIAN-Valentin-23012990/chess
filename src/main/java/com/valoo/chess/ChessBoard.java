@@ -33,14 +33,14 @@ public class ChessBoard {
 
     private void placePieces() {
         Piece[][] pieces = {
-                {new Piece("noir", "tour"), new Piece("noir", "cavalier"), new Piece("noir", "fou"), new Piece("noir", "reine"), new Piece("noir", "roi"), new Piece("noir", "fou"), new Piece("noir", "cavalier"), new Piece("noir", "tour")},
-                {new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion"), new Piece("noir", "pion")},
+                {new Tour("blanc", "tour", 0, 0, 0), new Cavalier("blanc", "cavalier", 0, 1, 0), new Fou("blanc", "fou", 0, 2, 0), new Reine("blanc", "reine", 0, 3, 0), new Roi("blanc", "roi", 0, 4, 0), new Fou("blanc", "fou", 0, 5, 0), new Cavalier("blanc", "cavalier", 0, 6, 0), new Tour("blanc", "tour", 0, 7, 0)},
+                {new Pion("blanc", "pion", 0, 0, 1), new Pion("blanc", "pion", 0, 1, 1), new Pion("blanc", "pion", 0, 2, 1), new Pion("blanc", "pion", 0, 3, 1), new Pion("blanc", "pion", 0, 4, 1), new Pion("blanc", "pion", 0, 5, 1), new Pion("blanc", "pion", 0, 6, 1), new Pion("blanc", "pion", 0, 7, 1)},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
-                {new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion"), new Piece("blanc", "pion")},
-                {new Piece("blanc", "tour"), new Piece("blanc", "cavalier"), new Piece("blanc", "fou"), new Piece("blanc", "reine"), new Piece("blanc", "roi"), new Piece("blanc", "fou"), new Piece("blanc", "cavalier"), new Piece("blanc", "tour")}
+                {new Pion("noir", "pion", 1, 0, 6), new Pion("noir", "pion", 1, 1, 6), new Pion("noir", "pion", 1, 2, 6), new Pion("noir", "pion", 1, 3, 6), new Pion("noir", "pion", 1, 4, 6), new Pion("noir", "pion", 1, 5, 6), new Pion("noir", "pion", 1, 6, 6), new Pion("noir", "pion", 1, 7, 6)},
+                {new Tour("noir", "tour", 1, 0, 7), new Cavalier("noir", "cavalier", 1, 1, 7), new Fou("noir", "fou", 1, 2, 7), new Reine("noir", "reine", 1, 3, 7), new Roi("noir", "roi", 1, 4, 7), new Fou("noir", "fou", 1, 5, 7), new Cavalier("noir", "cavalier", 1, 6, 7), new Tour("noir", "tour", 1, 7, 7)}
         };
 
         for (int i = 0; i < 8; i++) {
@@ -49,14 +49,27 @@ public class ChessBoard {
                 StackPane square = (StackPane) row.getChildren().get(j);
                 Piece piece = pieces[i][j];
                 if (piece != null) {
-                    ImageView pieceView = new ImageView(piece.getImage());
+                    ImageView pieceView = new ImageView(piece.getImagePiece());
                     pieceView.setFitWidth(90);
                     pieceView.setFitHeight(90);
                     square.getChildren().add(pieceView);
                 }
             }
         }
+
     }
+
+    // methode getPiece qui renvoie la piece aux coordonnées x et y fournies en paramètre
+    public Piece getPiece(int x, int y) {
+        HBox row = (HBox) board.getChildren().get(y);
+        StackPane square = (StackPane) row.getChildren().get(x);
+        if (square.getChildren().size() == 0) {
+            return null;
+        }
+        ImageView pieceView = (ImageView) square.getChildren().get(0);
+        return (Piece) pieceView.getUserData();
+    }
+
 
     public VBox getBoard() {
         return board;
