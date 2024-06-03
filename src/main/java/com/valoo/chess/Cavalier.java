@@ -10,64 +10,39 @@ public class Cavalier extends Piece {
     public int[][] validMoves (ChessBoard board) {
         int[][] moves = new int[8][2];
         int i = 0;
-        if (getX() + 2 < 8 && getY() + 1 < 8) {
-            if (board.getPiece(getX() + 2, getY() + 1) == null || !estMemeCouleur(board.getPiece(getX() + 2, getY() + 1))) {
-                moves[i][0] = getX() + 2;
-                moves[i][1] = getY() + 1;
+
+        // Les déplacements possibles pour un cavalier
+        int[][] possibleMoves = {
+                {getX() + 2, getY() + 1},
+                {getX() + 2, getY() - 1},
+                {getX() - 2, getY() + 1},
+                {getX() - 2, getY() - 1},
+                {getX() + 1, getY() + 2},
+                {getX() + 1, getY() - 2},
+                {getX() - 1, getY() + 2},
+                {getX() - 1, getY() - 2}
+        };
+
+        // Vérifier chaque mouvement possible
+        for (int[] move : possibleMoves) {
+            int x = move[0];
+            int y = move[1];
+
+            // Vérifier si le mouvement est valide et que la case est vide ou contient une pièce adverse
+            if (x >= 0 && x < 8 && y >= 0 && y < 8 && (board.getPiece(x, y) == null || !estMemeCouleur(board.getPiece(x, y)))) {
+                moves[i][0] = x;
+                moves[i][1] = y;
                 i++;
             }
         }
-        if (getX() + 2 < 8 && getY() - 1 >= 0) {
-            if (board.getPiece(getX() + 2, getY() - 1) == null || !estMemeCouleur(board.getPiece(getX() + 2, getY() - 1))) {
-                moves[i][0] = getX() + 2;
-                moves[i][1] = getY() - 1;
-                i++;
-            }
-        }
-        if (getX() - 2 >= 0 && getY() + 1 < 8) {
-            if (board.getPiece(getX() - 2, getY() + 1) == null || !estMemeCouleur(board.getPiece(getX() - 2, getY() + 1))) {
-                moves[i][0] = getX() - 2;
-                moves[i][1] = getY() + 1;
-                i++;
-            }
-        }
-        if (getX() - 2 >= 0 && getY() - 1 >= 0) {
-            if (board.getPiece(getX() - 2, getY() - 1) == null || !estMemeCouleur(board.getPiece(getX() - 2, getY() - 1))) {
-                moves[i][0] = getX() - 2;
-                moves[i][1] = getY() - 1;
-                i++;
-            }
-        }
-        if (getX() + 1 < 8 && getY() + 2 < 8) {
-            if (board.getPiece(getX() + 1, getY() + 2) == null || !estMemeCouleur(board.getPiece(getX() + 1, getY() + 2))) {
-                moves[i][0] = getX() + 1;
-                moves[i][1] = getY() + 2;
-                i++;
-            }
-        }
-        if (getX() + 1 < 8 && getY() - 2 >= 0) {
-            if (board.getPiece(getX() + 1, getY() - 2) == null || !estMemeCouleur(board.getPiece(getX() + 1, getY() - 2))) {
-                moves[i][0] = getX() + 1;
-                moves[i][1] = getY() - 2;
-                i++;
-            }
-        }
-        if (getX() - 1 >= 0 && getY() + 2 < 8) {
-            if (board.getPiece(getX() - 1, getY() + 2) == null || !estMemeCouleur(board.getPiece(getX() - 1, getY() + 2))) {
-                moves[i][0] = getX() - 1;
-                moves[i][1] = getY() + 2;
-                i++;
-            }
-        }
-        if (getX() - 1 >= 0 && getY() - 2 >= 0) {
-            if (board.getPiece(getX() - 1, getY() - 2) == null || !estMemeCouleur(board.getPiece(getX() - 1, getY() - 2))) {
-                moves[i][0] = getX() - 1;
-                moves[i][1] = getY() - 2;
-                i++;
-            }
-        }
-        return moves;
+
+        // Réduire la taille du tableau pour n'inclure que les mouvements réellement trouvés
+        int[][] validMoves = new int[i][2];
+        System.arraycopy(moves, 0, validMoves, 0, i);
+
+        return validMoves;
     }
+
 
     public String getImage() {
         if (getCouleur() == 0) {

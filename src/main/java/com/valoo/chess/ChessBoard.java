@@ -1,5 +1,6 @@
 package com.valoo.chess;
 
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -53,22 +54,41 @@ public class ChessBoard {
                     pieceView.setFitWidth(90);
                     pieceView.setFitHeight(90);
                     square.getChildren().add(pieceView);
+
+                    if (piece instanceof Cavalier) {
+                        Cavalier cavalier = (Cavalier) piece;
+                        int[][] moves = cavalier.validMoves(this);
+                        // Afficher les mouvements valides du cavalier
+                        for (int k = 0; k < moves.length; k++) {
+                            System.out.println("[" + moves[k][0] + ", " + moves[k][1] + "]");
+                        }
+                    }
                 }
             }
         }
-
     }
 
     // methode getPiece qui renvoie la piece aux coordonnées x et y fournies en paramètre
     public Piece getPiece(int x, int y) {
         HBox row = (HBox) board.getChildren().get(y);
         StackPane square = (StackPane) row.getChildren().get(x);
-        if (square.getChildren().size() == 0) {
+
+        // Vérifier si la case est vide
+        if (square.getChildren().isEmpty()) {
             return null;
         }
-        ImageView pieceView = (ImageView) square.getChildren().get(0);
+
+        // Vérifier si la pièce est représentée par un ImageView
+        Node pieceNode = square.getChildren().get(0);
+        if (!(pieceNode instanceof ImageView)) {
+            return null;
+        }
+
+        // Récupérer la pièce à partir des données utilisateur de l'ImageView
+        ImageView pieceView = (ImageView) pieceNode;
         return (Piece) pieceView.getUserData();
     }
+
 
 
     public VBox getBoard() {
