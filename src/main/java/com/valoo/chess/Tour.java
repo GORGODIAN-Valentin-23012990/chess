@@ -9,66 +9,43 @@ public class Tour extends Piece {
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
-        int[][] moves = new int[14][2];
+        int[][] moves = new int[64][2]; // Le fou peut théoriquement avoir jusqu'à 64 mouvements possibles
         int i = 0;
-        for (int x = getX() + 1; x < 8; x++) {
-            if (board.getPiece(x, getY()) == null) {
-                moves[i][0] = x;
-                moves[i][1] = getY();
-                i++;
+
+        int[] directions = {1, -1}; // Pour se déplacer dans les directions diagonales
+
+        // Vérifier les mouvements diagonaux
+        for (int dirX : directions) {
+            for (int dirY : directions) {
+                int x = getX();
+                int y = getY();
+                while (true) {
+                    x += dirX;
+                    y += dirY;
+                    if (x < 0 || x >= 8 || y < 0 || y >= 8) break; // Sortir de l'échiquier
+                    if (board.getPiece(x, y) == null) {
+                        moves[i][0] = x;
+                        moves[i][1] = y;
+                        i++;
+                    } else {
+                        if (!estMemeCouleur(board.getPiece(x, y))) {
+                            moves[i][0] = x;
+                            moves[i][1] = y;
+                            i++;
+                        }
+                        break; // Bloqué par une pièce, qu'elle soit de la même couleur ou adverse
+                    }
+                }
             }
-            else if (!estMemeCouleur(board.getPiece(x, getY()))) {
-                moves[i][0] = x;
-                moves[i][1] = getY();
-                i++;
-                break;
-            }
-            else break;
         }
-        for (int x = getX() - 1; x >= 0; x--) {
-            if (board.getPiece(x, getY()) == null) {
-                moves[i][0] = x;
-                moves[i][1] = getY();
-                i++;
-            }
-            else if (!estMemeCouleur(board.getPiece(x, getY()))) {
-                moves[i][0] = x;
-                moves[i][1] = getY();
-                i++;
-                break;
-            }
-            else break;
-        }
-        for (int y = getY() + 1; y < 8; y++) {
-            if (board.getPiece(getX(), y) == null) {
-                moves[i][0] = getX();
-                moves[i][1] = y;
-                i++;
-            }
-            else if (!estMemeCouleur(board.getPiece(getX(), y))) {
-                moves[i][0] = getX();
-                moves[i][1] = y;
-                i++;
-                break;
-            }
-            else break;
-        }
-        for (int y = getY() - 1; y >= 0; y--) {
-            if (board.getPiece(getX(), y) == null) {
-                moves[i][0] = getX();
-                moves[i][1] = y;
-                i++;
-            }
-            else if (!estMemeCouleur(board.getPiece(getX(), y))) {
-                moves[i][0] = getX();
-                moves[i][1] = y;
-                i++;
-                break;
-            }
-            else break;
-        }
-        return moves;
+
+        // Réduire la taille du tableau pour n'inclure que les mouvements réellement trouvés
+        int[][] validMoves = new int[i][2];
+        System.arraycopy(moves, 0, validMoves, 0, i);
+
+        return validMoves;
     }
+
 
 
     public String getImage() {

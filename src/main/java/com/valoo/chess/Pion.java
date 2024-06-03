@@ -5,75 +5,81 @@ public class Pion extends Piece {
     public Pion(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
     }
-
-
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
-        int[][] moves = new int[2][2];
+        int[][] moves = new int[4][2]; // Un pion peut se déplacer sur un maximum de 4 cases (avancée de deux cases initiale + captures diagonales)
         int i = 0;
+
+        int x = getX();
+        int y = getY();
+
+        // Déplacement vers l'avant pour un pion blanc
         if (getCouleur() == 0) {
-            if (getY() == 1) {
-                if (board.getPiece(getX(), 2) == null && board.getPiece(getX(), 3) == null) {
-                    moves[i][0] = getX();
-                    moves[i][1] = 3;
+            // Déplacement d'une case vers l'avant
+            if (y < 7 && board.getPiece(x, y + 1) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y + 1;
+                i++;
+
+                // Déplacement initial de deux cases
+                if (y == 1 && board.getPiece(x, y + 2) == null) {
+                    moves[i][0] = x;
+                    moves[i][1] = y + 2;
                     i++;
                 }
             }
-            if (getY() < 7) {
-                if (board.getPiece(getX(), getY() + 1) == null) {
-                    moves[i][0] = getX();
-                    moves[i][1] = getY() + 1;
+
+            // Capture diagonale droite
+            if (x < 7 && y < 7 && board.getPiece(x + 1, y + 1) != null && !estMemeCouleur(board.getPiece(x + 1, y + 1))) {
+                moves[i][0] = x + 1;
+                moves[i][1] = y + 1;
+                i++;
+            }
+
+            // Capture diagonale gauche
+            if (x > 0 && y < 7 && board.getPiece(x - 1, y + 1) != null && !estMemeCouleur(board.getPiece(x - 1, y + 1))) {
+                moves[i][0] = x - 1;
+                moves[i][1] = y + 1;
+                i++;
+            }
+        } else {
+            // Déplacement d'une case vers l'avant pour un pion noir
+            if (y > 0 && board.getPiece(x, y - 1) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y - 1;
+                i++;
+
+                // Déplacement initial de deux cases
+                if (y == 6 && board.getPiece(x, y - 2) == null) {
+                    moves[i][0] = x;
+                    moves[i][1] = y - 2;
                     i++;
                 }
             }
-            if (getX() > 0 && getY() < 7) {
-                if (board.getPiece(getX() - 1, getY() + 1) != null && !estMemeCouleur(board.getPiece(getX() - 1, getY() + 1))) {
-                    moves[i][0] = getX() - 1;
-                    moves[i][1] = getY() + 1;
-                    i++;
-                }
+
+            // Capture diagonale droite
+            if (x < 7 && y > 0 && board.getPiece(x + 1, y - 1) != null && !estMemeCouleur(board.getPiece(x + 1, y - 1))) {
+                moves[i][0] = x + 1;
+                moves[i][1] = y - 1;
+                i++;
             }
-            if (getX() < 7 && getY() < 7) {
-                if (board.getPiece(getX() + 1, getY() + 1) != null && !estMemeCouleur(board.getPiece(getX() + 1, getY() + 1))) {
-                    moves[i][0] = getX() + 1;
-                    moves[i][1] = getY() + 1;
-                    i++;
-                }
-            }
-        }
-        else {
-            if (getY() == 6) {
-                if (board.getPiece(getX(), 5) == null && board.getPiece(getX(), 4) == null) {
-                    moves[i][0] = getX();
-                    moves[i][1] = 4;
-                    i++;
-                }
-            }
-            if (getY() > 0) {
-                if (board.getPiece(getX(), getY() - 1) == null) {
-                    moves[i][0] = getX();
-                    moves[i][1] = getY() - 1;
-                    i++;
-                }
-            }
-            if (getX() > 0 && getY() > 0) {
-                if (board.getPiece(getX() - 1, getY() - 1) != null && !estMemeCouleur(board.getPiece(getX() - 1, getY() - 1))) {
-                    moves[i][0] = getX() - 1;
-                    moves[i][1] = getY() - 1;
-                    i++;
-                }
-            }
-            if (getX() < 7 && getY() > 0) {
-                if (board.getPiece(getX() + 1, getY() - 1) != null && !estMemeCouleur(board.getPiece(getX() + 1, getY() - 1))) {
-                    moves[i][0] = getX() + 1;
-                    moves[i][1] = getY() - 1;
-                    i++;
-                }
+
+            // Capture diagonale gauche
+            if (x > 0 && y > 0 && board.getPiece(x - 1, y - 1) != null && !estMemeCouleur(board.getPiece(x - 1, y - 1))) {
+                moves[i][0] = x - 1;
+                moves[i][1] = y - 1;
+                i++;
             }
         }
-        return moves;
+
+        // Réduire la taille du tableau pour n'inclure que les mouvements réellement trouvés
+        int[][] validMoves = new int[i][2];
+        System.arraycopy(moves, 0, validMoves, 0, i);
+
+        return validMoves;
     }
+
 
     public String getImage() {
         if (getCouleur() == 0) {
