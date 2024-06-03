@@ -53,6 +53,7 @@ public class ChessBoard {
                     ImageView pieceView = new ImageView(piece.getImagePiece());
                     pieceView.setFitWidth(90);
                     pieceView.setFitHeight(90);
+                    pieceView.setUserData(piece);
                     square.getChildren().add(pieceView);
                     }
             }

@@ -14,10 +14,10 @@ public class Chess extends Application {
 
         // check les moves possibles du cavalier
 
-        Cavalier cavalier = new Cavalier("blanc", "cavalier", 0, 1, 0);
-        int[][] moves = cavalier.validMoves(chessBoard);
+        Reine reine = new Reine("blanc", "reine", 0, 3, 0);
+        int[][] moves = reine.validMoves(chessBoard);
         for (int[] move : moves) {
-            System.out.println("[" + move[0] + ", " + move[1] + "]");
+            System.out.println(move[0] + " " + move[1]);
         }
 
         Scene scene = new Scene(root);

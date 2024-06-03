@@ -8,6 +8,8 @@ public class Piece {
     private int x;
     private int y;
 
+    private String type;
+
     public Piece(String color, String type) {
         String imagePath = String.format("/%s_%s.png", type, color);
         image = new Image(getClass().getResource(imagePath).toString());
@@ -17,6 +19,7 @@ public class Piece {
         this.couleur = couleur;
         this.x = x;
         this.y = y;
+        this.type = type;
         String imagePath = String.format("/%s_%s.png", type, color);
         image = new Image(getClass().getResource(imagePath).toString());
     }
@@ -40,6 +43,10 @@ public class Piece {
 
     public int getY() {
         return y;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setX(int x) {
