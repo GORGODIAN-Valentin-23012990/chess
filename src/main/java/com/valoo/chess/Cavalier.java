@@ -28,11 +28,16 @@ public class Cavalier extends Piece {
             int x = move[0];
             int y = move[1];
 
-            // Vérifier si le mouvement est valide et que la case est vide ou contient une pièce adverse
-            if (x >= 0 && x < 8 && y >= 0 && y < 8 && (board.getPiece(x, y) == null || !estMemeCouleur(board.getPiece(x, y)))) {
-                moves[i][0] = x;
-                moves[i][1] = y;
-                i++;
+            // Vérifier si le mouvement est valide
+            if (x >= 0 && x < 8 && y >= 0 && y < 8) {
+                Piece destinationPiece = board.getPiece(x, y);
+
+                // Vérifier si la case est vide ou contient une pièce adverse
+                if (destinationPiece == null || !estMemeCouleur(destinationPiece)) {
+                    moves[i][0] = x;
+                    moves[i][1] = y;
+                    i++;
+                }
             }
         }
 
@@ -42,6 +47,7 @@ public class Cavalier extends Piece {
 
         return validMoves;
     }
+
 
 
     public String getImage() {

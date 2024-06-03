@@ -54,16 +54,7 @@ public class ChessBoard {
                     pieceView.setFitWidth(90);
                     pieceView.setFitHeight(90);
                     square.getChildren().add(pieceView);
-
-                    if (piece instanceof Cavalier) {
-                        Cavalier cavalier = (Cavalier) piece;
-                        int[][] moves = cavalier.validMoves(this);
-                        // Afficher les mouvements valides du cavalier
-                        for (int k = 0; k < moves.length; k++) {
-                            System.out.println("[" + moves[k][0] + ", " + moves[k][1] + "]");
-                        }
                     }
-                }
             }
         }
     }
@@ -74,7 +65,7 @@ public class ChessBoard {
         StackPane square = (StackPane) row.getChildren().get(x);
 
         // Vérifier si la case est vide
-        if (square.getChildren().isEmpty()) {
+        if (square.getChildren().size() == 0) {
             return null;
         }
 

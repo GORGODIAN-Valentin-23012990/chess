@@ -25,11 +25,13 @@ public class Piece {
         return image;
     }
 
-    public boolean estMemeCouleur(Piece other) {
-        return this.couleur == other.getCouleur();
-    }
+
     public int getCouleur() {
         return couleur;
+    }
+
+    public boolean estMemeCouleur(Piece piece) {
+        return this.getCouleur() == piece.getCouleur();
     }
 
     public int getX() {
