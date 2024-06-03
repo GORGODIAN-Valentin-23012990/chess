@@ -5,9 +5,10 @@ public class Pion extends Piece {
     public Pion(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
     }
+
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
-    public int[][] validMoves (ChessBoard board) {
+    public int[][] validMoves(ChessBoard board) {
         int[][] moves = new int[4][2]; // Un pion peut se déplacer sur un maximum de 4 cases (avancée de deux cases initiale + captures diagonales)
         int i = 0;
 
@@ -23,21 +24,21 @@ public class Pion extends Piece {
                 i++;
 
                 // Déplacement initial de deux cases
-                if (y == 1 && board.getPiece(x, y + 2) == null) {
+                if (y == 1 && board.getPiece(x, y + 2) == null && board.getPiece(x, y + 1) == null) {
                     moves[i][0] = x;
                     moves[i][1] = y + 2;
                     i++;
                 }
             }
 
-            // Capture diagonale droite
+            // Capture diagonale droite pour un pion blanc
             if (x < 7 && y < 7 && board.getPiece(x + 1, y + 1) != null && !estMemeCouleur(board.getPiece(x + 1, y + 1))) {
                 moves[i][0] = x + 1;
                 moves[i][1] = y + 1;
                 i++;
             }
 
-            // Capture diagonale gauche
+            // Capture diagonale gauche pour un pion blanc
             if (x > 0 && y < 7 && board.getPiece(x - 1, y + 1) != null && !estMemeCouleur(board.getPiece(x - 1, y + 1))) {
                 moves[i][0] = x - 1;
                 moves[i][1] = y + 1;
@@ -51,21 +52,21 @@ public class Pion extends Piece {
                 i++;
 
                 // Déplacement initial de deux cases
-                if (y == 6 && board.getPiece(x, y - 2) == null) {
+                if (y == 6 && board.getPiece(x, y - 2) == null && board.getPiece(x, y - 1) == null) {
                     moves[i][0] = x;
                     moves[i][1] = y - 2;
                     i++;
                 }
             }
 
-            // Capture diagonale droite
+            // Capture diagonale droite pour un pion noir
             if (x < 7 && y > 0 && board.getPiece(x + 1, y - 1) != null && !estMemeCouleur(board.getPiece(x + 1, y - 1))) {
                 moves[i][0] = x + 1;
                 moves[i][1] = y - 1;
                 i++;
             }
 
-            // Capture diagonale gauche
+            // Capture diagonale gauche pour un pion noir
             if (x > 0 && y > 0 && board.getPiece(x - 1, y - 1) != null && !estMemeCouleur(board.getPiece(x - 1, y - 1))) {
                 moves[i][0] = x - 1;
                 moves[i][1] = y - 1;
@@ -80,12 +81,10 @@ public class Pion extends Piece {
         return validMoves;
     }
 
-
     public String getImage() {
         if (getCouleur() == 0) {
             return "/pion_noir.png";
-        }
-        else {
+        } else {
             return "/pion_blanc.png";
         }
     }
@@ -93,5 +92,4 @@ public class Pion extends Piece {
     public String toString() {
         return "Pion[x=" + getX() + ",y=" + getY() + "]";
     }
-
 }
