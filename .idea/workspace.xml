@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2865d8c9-05ef-4eb8-9aec-cb5bd4ffce6a" name="Changes" comment="" />
+    <list default="true" id="2865d8c9-05ef-4eb8-9aec-cb5bd4ffce6a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717506526602</updated>
       <workItem from="1717506527650" duration="249000" />
-      <workItem from="1717506789504" duration="4016000" />
+      <workItem from="1717506789504" duration="6719000" />
     </task>
     <task id="LOCAL-00001" summary="sortie dans un fichier coups.txt">
       <created>1717510576376</created>
@@ -91,7 +95,21 @@
       <option name="project" value="LOCAL" />
       <updated>1717510576377</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Avancements">
+      <created>1717510906703</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717510906703</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Avancements">
+      <created>1717511097151</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717511097151</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="sortie dans un fichier coups.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="sortie dans un fichier coups.txt" />
+    <MESSAGE value="Avancements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Avancements" />
   </component>
 </project>

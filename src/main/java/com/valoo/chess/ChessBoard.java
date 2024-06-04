@@ -137,8 +137,8 @@ public class ChessBoard {
                 if (move[0] == targetX && move[1] == targetY) {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
-                        coups.append(targetPiece)
-                                .append("(").append(currentX).append(",").append(currentY).append(" -> ")
+                        coups.append("(piece mangée :").append(targetPiece)
+                                .append(") (").append(currentX).append(",").append(currentY).append(" -> ")
                                 .append(targetX).append(",").append(targetY).append("); ");
 
                         if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
@@ -149,7 +149,7 @@ public class ChessBoard {
                             matPiece[tourY][targetX == 6 ? 5 : 3] = tour;
                             tour.setX(targetX == 6 ? 5 : 3);
                             tour.setY(tourY);
-                            coups.append("Tour(").append(tourX).append(",").append(tourY).append(" -> ")
+                            coups.append(tour).append("Tour(").append(tourX).append(",").append(tourY).append(" -> ")
                                     .append(targetX == 6 ? 5 : 3).append(",").append(tourY).append("); ");
                         }
 
