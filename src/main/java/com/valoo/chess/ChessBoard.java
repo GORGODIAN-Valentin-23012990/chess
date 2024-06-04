@@ -36,7 +36,7 @@ public class ChessBoard {
         Piece[][] pieces = {
                 {new Tour("blanc", "tour", 0, 0, 0), new Cavalier("blanc", "cavalier", 0, 1, 0), new Fou("blanc", "fou", 0, 2, 0), new Reine("blanc", "reine", 0, 3, 0), new Roi("blanc", "roi", 0, 4, 0), new Fou("blanc", "fou", 0, 5, 0), new Cavalier("blanc", "cavalier", 0, 6, 0), new Tour("blanc", "tour", 0, 7, 0)},
                 {new Pion("blanc", "pion", 0, 0, 1), new Pion("blanc", "pion", 0, 1, 1), new Pion("blanc", "pion", 0, 2, 1), new Pion("blanc", "pion", 0, 3, 1), new Pion("blanc", "pion", 0, 4, 1), new Pion("blanc", "pion", 0, 5, 1), new Pion("blanc", "pion", 0, 6, 1), new Pion("blanc", "pion", 0, 7, 1)},
-                {null,null,  new Pion("noir", "pion", 1, 2,2), null, null, null, null, null},
+                {null,null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -53,7 +53,21 @@ public class ChessBoard {
                     ImageView pieceView = new ImageView(piece.getImagePiece());
                     pieceView.setFitWidth(90);
                     pieceView.setFitHeight(90);
+                    pieceView.setUserData(piece);
                     square.getChildren().add(pieceView);
+
+                    square.setOnMouseClicked(event -> {
+                        Piece clickedPiece = (Piece) pieceView.getUserData();
+                        int[][] validMoves = clickedPiece.validMoves(this);
+
+                        for (int[] move : validMoves) {
+                            HBox targetRow = (HBox) board.getChildren().get(move[1]);
+                            StackPane targetSquare = (StackPane) targetRow.getChildren().get(move[0]);
+                            targetSquare.setStyle("-fx-background-color: #ADD8E6"); // Light blue color
+                        }
+
+                    });
+
                     }
             }
         }
@@ -74,7 +88,6 @@ public class ChessBoard {
         if (!(pieceNode instanceof ImageView)) {
             return null;
         }
-
         // Récupérer la pièce à partir des données utilisateur de l'ImageView
         ImageView pieceView = (ImageView) pieceNode;
         return (Piece) pieceView.getUserData();

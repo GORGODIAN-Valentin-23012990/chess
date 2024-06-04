@@ -37,7 +37,7 @@ public class Pion extends Piece {
                 moves[i][1] = y + 1;
                 i++;
             }
-
+            System.out.println(board.getPiece(x + 1, y + 1));
             // Capture diagonale gauche pour un pion blanc
             if (x > 0 && y < 7 && board.getPiece(x - 1, y + 1) != null && !estMemeCouleur(board.getPiece(x - 1, y + 1))) {
                 moves[i][0] = x - 1;

@@ -12,14 +12,6 @@ public class Chess extends Application {
 
         root.setCenter(chessBoard.getBoard());
 
-        // check les moves possibles du cavalier
-
-        Reine reine = new Reine("blanc", "reine", 0, 3, 0);
-        int[][] moves = reine.validMoves(chessBoard);
-        for (int[] move : moves) {
-            System.out.println(move[0] + " " + move[1]);
-        }
-
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");
         primaryStage.setWidth(800);
