@@ -14,7 +14,7 @@ public class Chess extends Application {
 
         // check les moves possibles du cavalier
 
-        Pion pion = new Pion("blanc", "pion", 0, 1, 1);
+        Pion pion = new Pion("noir", "pion", 1, 2, 2);
         int[][] moves = pion.validMoves(chessBoard);
         for (int[] move : moves) {
             System.out.println(move[0] + " " + move[1]);
