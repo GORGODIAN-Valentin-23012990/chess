@@ -1,5 +1,8 @@
 package com.valoo.chess;
 
+import javafx.beans.binding.Binding;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -12,19 +15,17 @@ public class ChessBoard {
     private Piece selectedPiece;
     private int tour;
     private StringBuilder coups = new StringBuilder();
-    private boolean isBotActivated;
+    private int couleurBot;
+    private Bot bot;
 
-    public ChessBoard() {
+    public ChessBoard(int couleurBot) {
         board = new VBox();
         tour = 0;
-        isBotActivated = true;
-        createBoard();
-        placePieces();
-    }
-
-    public void reset(int tour) {
-        this.tour = tour;
-        matPiece = new Piece[8][8];
+        if(couleurBot == 0 || couleurBot == 1) {
+            this.couleurBot = couleurBot;
+            bot = new Bot(true);
+            this.activerBot();
+        }
         createBoard();
         placePieces();
     }
@@ -58,7 +59,8 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-                tour++;
+                if(tour == 0) tour = 1;
+                else tour = 0;
                 return;
             }
         }
@@ -70,8 +72,8 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-
-                tour++;
+                if(tour == 0) tour = 1;
+                else tour = 0;
             } else {
                 selectedPiece = null;
                 colorBoard();
@@ -119,7 +121,7 @@ public class ChessBoard {
     public void selectPiece(int x, int y) {
         Piece piece = getPiece(x, y);
 
-        if (piece != null && piece.getCouleur() == tour % 2) {
+        if (piece != null && piece.getCouleur() == tour) {
             selectedPiece = piece;
             highlightValidMoves(piece);
         }
@@ -180,7 +182,6 @@ public class ChessBoard {
                         piece.setX(targetX);
                         piece.setY(targetY);
 
-
                         return true;
                     }
                 }
@@ -208,25 +209,20 @@ public class ChessBoard {
         return board;
     }
 
-    // On crée une fonction activateBot pour jouer un coup aleatoire des lors que c'est le coup des noirs
-    public void activateBot(boolean isBotActivated) {
-        this.isBotActivated = isBotActivated;
+    // On crée une méthode qui créé un binding pour que le bot joue dès que c'est à son tour
+    public void activerBot() {
+        System.out.println("Bot activé");
+        IntegerProperty tourProperty = new javafx.beans.property.SimpleIntegerProperty(tour);
+        Binding<Boolean> binding = Bindings.createBooleanBinding(() -> {
+            return tourProperty.get() == couleurBot;
+        }, tourProperty);
+        binding.addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                bot.play(this, couleurBot);
+                if(tour == 0) tour = 1;
+                else tour = 0;
+            }
+        });
     }
 
-    public void coupAleatoire(int couleur) {
-        while (tour % 2 == couleur) {
-            int x = (int) (Math.random() * 8);
-            int y = (int) (Math.random() * 8);
-            if (getPiece(x, y) != null && getPiece(x, y).getCouleur() == couleur) {
-                selectPiece(x, y);
-                int targetX = (int) (Math.random() * 8);
-                int targetY = (int) (Math.random() * 8);
-                if (movePiece(x, y, targetX, targetY)) {
-                    updateBoard();
-                    colorBoard();
-                    tour++;
-                }
-            }
-        }
-    }
 }

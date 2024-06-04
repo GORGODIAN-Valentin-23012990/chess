@@ -29,10 +29,9 @@ public class Chess extends Application {
 
 
         // Create the chess board and add it to the VBox
-        ChessBoard chessBoard = new ChessBoard();
+        ChessBoard chessBoard = new ChessBoard(1);
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
 
-        chessBoard.activateBot(true);
         System.out.println("true");
 
         root.setLeft(helloView);

@@ -41,8 +41,6 @@ public class MainController {
 
     @FXML
     private void handleJouerButtonAction() {
-        // Réinitialiser le jeu
-        chessBoard.reset(0);
         System.out.println("Jeu réinitialisé !");
 
     }
