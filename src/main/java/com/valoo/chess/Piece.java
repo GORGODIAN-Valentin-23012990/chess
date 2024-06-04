@@ -2,7 +2,7 @@ package com.valoo.chess;
 
 import javafx.scene.image.Image;
 
-public class Piece {
+public abstract class Piece {
     private Image image;
     private int couleur;
     private int x;
@@ -27,6 +27,8 @@ public class Piece {
     public Image getImagePiece() {
         return image;
     }
+
+    public abstract int[][] validMoves(ChessBoard board);
 
 
     public int getCouleur() {

@@ -81,6 +81,53 @@ public class ChessBoard {
         return (Piece) pieceView.getUserData();
     }
 
+    //selectPiece
+    // Méthode pour sélectionner une pièce au premier clic
+    public void selectPiece(int x, int y) {
+        Piece piece = getPiece(x, y);
+        if (piece != null) {
+            System.out.println("Piece selected: " + piece);
+            // Stockez les coordonnées de la pièce sélectionnée ou effectuez d'autres actions si nécessaire
+        } else {
+            System.out.println("No piece at position [" + x + ", " + y + "]");
+        }
+    }
+
+
+
+    public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
+        Piece piece = getPiece(currentX, currentY);
+        if (piece != null) {
+            int[][] validMoves = piece.validMoves(this); // Obtenez les mouvements valides de la pièce
+            for (int[] move : validMoves) {
+                if (move[0] == targetX && move[1] == targetY) {
+                    // Déplacez la pièce et mettez à jour l'image
+                    HBox currentRow = (HBox) board.getChildren().get(currentY);
+                    StackPane currentSquare = (StackPane) currentRow.getChildren().get(currentX);
+                    currentSquare.getChildren().clear(); // Supprimez l'image de la case actuelle
+
+                    HBox targetRow = (HBox) board.getChildren().get(targetY);
+                    StackPane targetSquare = (StackPane) targetRow.getChildren().get(targetX);
+                    ImageView pieceView = new ImageView(piece.getImagePiece());
+                    pieceView.setFitWidth(90);
+                    pieceView.setFitHeight(90);
+                    pieceView.setUserData(piece);
+                    targetSquare.getChildren().add(pieceView); // Déplacez l'image vers la case cible
+
+                    // Mettez à jour les coordonnées de la pièce
+                    piece.setX(targetX);
+                    piece.setY(targetY);
+
+                    System.out.println("Piece moved from [" + currentX + ", " + currentY + "] to [" + targetX + ", " + targetY + "]");
+                    return false;
+                }
+            }
+            System.out.println("Invalid move for piece at [" + currentX + ", " + currentY + "]");
+        } else {
+            System.out.println("No piece at position [" + currentX + ", " + currentY + "]");
+        }
+        return false;
+    }
 
 
     public VBox getBoard() {
