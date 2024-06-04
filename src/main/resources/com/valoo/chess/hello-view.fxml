@@ -16,6 +16,11 @@
     </stylesheets>
     <VBox style="-fx-background-color: #2b2b2b;" prefWidth="600">
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
+            <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@/icone.jpg"/>
+                </image>
+            </ImageView>
             <Label id="J1Label" text="Adversaire" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime1" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
@@ -26,20 +31,25 @@
         </VBox>
 
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
-            <Label id="J2Label" text="Guest2638505585 (400)" textFill="white" style="-fx-font-size: 18px;"/>
+            <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@/icone2.png"/>
+                </image>
+            </ImageView>
+            <Label id="J2Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime2" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
     </VBox>
 
-    <VBox spacing="20" style="-fx-background-color: #3c3f41;" prefWidth="432" prefHeight="900">
+    <VBox spacing="20" style="-fx-background-color: #21201D;" prefWidth="432" prefHeight="900">
         <HBox alignment="TOP_CENTER">
             <Button fx:id="nvPartieBtn" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
             <Button fx:id="partiesBtn" text="Parties"  prefWidth="150" prefHeight="40"/>
-            <Button fx:id="tournoisBtn" text="Tournois"  prefWidth="150" prefHeight="40"/>
+            <Button fx:id="joueursBtn" text="Joueurs"  prefWidth="150" prefHeight="40"/>
         </HBox>
         <VBox alignment="CENTER" spacing="20">
-            <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 16px;" prefWidth="350" prefHeight="60" >
+            <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="5 minutes" />
@@ -50,9 +60,7 @@
             </ComboBox>
             <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350"/>
 
-            <VBox.margin>
-                <Insets top="20"/>
-            </VBox.margin>
+            <VBox prefHeight="100" />
 
             <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
                 <graphic>

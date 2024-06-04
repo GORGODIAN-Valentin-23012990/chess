@@ -2,13 +2,6 @@
     -fx-background-color: #3c3f41; /* Gray background */
 }
 
-.label {
-    -fx-text-fill: #4CAF50; /* Green text */
-    -fx-font-size: 18px;
-    -fx-background-radius: 15;
-
-    -fx-border-radius: 15;
-}
 
 
 .combo-box .arrow-button {
@@ -45,20 +38,20 @@
 
 
 #nvPartieBtn {
-    -fx-background-color: #3C3F41;
+    -fx-background-color: #21201D;
     -fx-text-fill: white;
     -fx-font-size: 10px;
 }
 
 #partiesBtn {
-    -fx-background-color: #21201D;
+    -fx-background-color: black;
     -fx-text-fill: #90908E;
     -fx-font-size: 10px;
 }
 
 
-#tournoisBtn {
-    -fx-background-color: #21201D;
+#joueursBtn {
+    -fx-background-color: black;
     -fx-text-fill: #90908E;
     -fx-font-size: 10px;
 
