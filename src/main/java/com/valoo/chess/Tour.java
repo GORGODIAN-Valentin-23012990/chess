@@ -2,8 +2,19 @@ package com.valoo.chess;
 
 public class Tour extends Piece {
 
+    private int nbCoups;
+
     public Tour (String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
+        nbCoups = 0;
+    }
+
+    public int getNbCoups() {
+        return nbCoups;
+    }
+
+    public void jouerTour() {
+        nbCoups++;
     }
 
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles

@@ -1,21 +1,45 @@
+
 package com.valoo.chess;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Chess extends Application {
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
-        ChessBoard chessBoard = new ChessBoard();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
+        Parent helloView = null;
 
-        root.setCenter(chessBoard.getBoard());
+        try {
+            helloView = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        VBox chessBoardContainer = (VBox) loader.getNamespace().get("chessBoardContainer");
+        // Create the chess board and add it to the VBox
+        ChessBoard chessBoard = new ChessBoard();
+        chessBoardContainer.getChildren().add(chessBoard.getBoard());
+
+        root.setLeft(helloView);
+        // check les moves possibles du cavalier
+
+        Reine reine = new Reine("blanc", "reine", 0, 3, 0);
+        int[][] moves = reine.validMoves(chessBoard);
+        for (int[] move : moves) {
+            System.out.println(move[0] + " " + move[1]);
+        }
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");
-        primaryStage.setWidth(800);
-        primaryStage.setHeight(800);
+        primaryStage.setWidth(1175);
+        primaryStage.setHeight(1500);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();

@@ -47,7 +47,7 @@ public abstract class Piece {
         return y;
     }
 
-    public String getType() {
+    public String getCouleurString() {
         return type;
     }
 

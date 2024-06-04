@@ -10,9 +10,11 @@ public class ChessBoard {
     private VBox board;
     private Piece[][] matPiece;
     private Piece selectedPiece;
+    private int tour;
 
     public ChessBoard() {
         board = new VBox();
+        tour = 0;
         createBoard();
         placePieces();
     }
@@ -38,13 +40,33 @@ public class ChessBoard {
     }
 
     private void handleSquareClick(int x, int y) {
+        Piece clickedPiece = getPiece(x, y);
+
+        // Vérifier si le clic est sur une pièce de l'adversaire
+        if (clickedPiece != null && clickedPiece.getCouleur() != tour % 2) {
+            // Permettre de capturer la pièce
+            if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
+                selectedPiece = null;
+                updateBoard();
+                colorBoard();
+                tour++;  // Changer de tour après un mouvement valide
+                return;
+            }
+        }
+
         if (selectedPiece == null) {
             selectPiece(x, y);
         } else {
-            movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y);
-            selectedPiece = null;
-            updateBoard();
-            colorBoard();
+            if (movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
+                selectedPiece = null;
+                updateBoard();
+                colorBoard();
+                tour++;  // Changer de tour après un mouvement valide
+            } else {
+                // Mouvement invalide, réinitialiser la sélection
+                selectedPiece = null;
+                colorBoard();
+            }
         }
     }
 
@@ -53,7 +75,7 @@ public class ChessBoard {
                 {new Tour("blanc", "tour", 0, 0, 0), new Cavalier("blanc", "cavalier", 0, 1, 0), new Fou("blanc", "fou", 0, 2, 0), new Reine("blanc", "reine", 0, 3, 0), new Roi("blanc", "roi", 0, 4, 0), new Fou("blanc", "fou", 0, 5, 0), new Cavalier("blanc", "cavalier", 0, 6, 0), new Tour("blanc", "tour", 0, 7, 0)},
                 {new Pion("blanc", "pion", 0, 0, 1), new Pion("blanc", "pion", 0, 1, 1), new Pion("blanc", "pion", 0, 2, 1), new Pion("blanc", "pion", 0, 3, 1), new Pion("blanc", "pion", 0, 4, 1), new Pion("blanc", "pion", 0, 5, 1), new Pion("blanc", "pion", 0, 6, 1), new Pion("blanc", "pion", 0, 7, 1)},
                 {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, new Reine("noir", "reine", 1, 5, 3), null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {new Pion("noir", "pion", 1, 0, 6), new Pion("noir", "pion", 1, 1, 6), new Pion("noir", "pion", 1, 2, 6), new Pion("noir", "pion", 1, 3, 6), new Pion("noir", "pion", 1, 4, 6), new Pion("noir", "pion", 1, 5, 6), new Pion("noir", "pion", 1, 6, 6), new Pion("noir", "pion", 1, 7, 6)},
@@ -87,7 +109,7 @@ public class ChessBoard {
 
     public void selectPiece(int x, int y) {
         Piece piece = getPiece(x, y);
-        if (piece != null) {
+        if (piece != null && piece.getCouleur() == tour % 2) {
             selectedPiece = piece;
             highlightValidMoves(piece);
         }
@@ -109,16 +131,35 @@ public class ChessBoard {
             int[][] validMoves = piece.validMoves(this);
             for (int[] move : validMoves) {
                 if (move[0] == targetX && move[1] == targetY) {
-                    matPiece[targetY][targetX] = piece;
-                    matPiece[currentY][currentX] = null;
-                    piece.setX(targetX);
-                    piece.setY(targetY);
-                    return true;
+                    Piece targetPiece = getPiece(targetX, targetY);
+                    if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
+                        // On vérifie si le roi roque ; si c'est le cas la tour doit bouger aussi
+                        if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
+                            int tourX = targetX == 6 ? 7 : 0;
+                            int tourY = piece.getCouleur() == 0 ? 0 : 7;
+                            Piece tour = getPiece(tourX, tourY);
+                            matPiece[tourY][tourX] = null;
+                            matPiece[tourY][targetX == 6 ? 5 : 3] = tour;
+                            tour.setX(targetX == 6 ? 5 : 3);
+                            tour.setY(tourY);
+                        }
+
+                        if(piece instanceof Pion && targetY == 0 || targetY == 7) {
+                            piece = new Reine(piece.getCouleurString(), "reine", piece.getCouleur(), targetX, targetY);
+                        }
+
+                        if(targetPiece instanceof Roi) {
+                            System.out.println("Partie terminée");
+                        }
+
+                        matPiece[targetY][targetX] = piece;
+                        matPiece[currentY][currentX] = null;
+                        piece.setX(targetX);
+                        piece.setY(targetY);
+                        return true;
+                    }
                 }
             }
-            System.out.println("Invalid move for piece at [" + currentX + ", " + currentY + "]");
-        } else {
-            System.out.println("No piece at position [" + currentX + ", " + currentY + "]");
         }
         return false;
     }
