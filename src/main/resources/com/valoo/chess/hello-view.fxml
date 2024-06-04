@@ -58,7 +58,7 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350"/>
+            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
 
             <VBox prefHeight="100" />
 

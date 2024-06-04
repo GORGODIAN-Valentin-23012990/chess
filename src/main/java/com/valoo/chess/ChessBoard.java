@@ -14,9 +14,13 @@ public class ChessBoard {
 
     public ChessBoard() {
         board = new VBox();
-        tour = 0;
+        tour = 2;
         createBoard();
         placePieces();
+    }
+
+    public void setTour(int tour) {
+        this.tour = tour;
     }
 
     private void createBoard() {
@@ -44,13 +48,17 @@ public class ChessBoard {
         Piece clickedPiece = getPiece(x, y);
 
         // Vérifier si le clic est sur une pièce de l'adversaire
-        if (clickedPiece != null && clickedPiece.getCouleur() != tour % 2) {
+        if (clickedPiece != null && clickedPiece.getCouleur() != tour) {
             // Permettre de capturer la pièce
             if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-                tour++;  // Changer de tour après un mouvement valide
+                if(tour == 1) {
+                    tour = 0;
+                } else if (tour == 0) {
+                    tour = 1;
+                }
                 return;
             }
         }
@@ -62,7 +70,12 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-                tour++;  // Changer de tour après un mouvement valide
+
+                if(tour == 1) {
+                    tour = 0;
+                } else if (tour == 0) {
+                    tour = 1;
+                }
             } else {
                 // Mouvement invalide, réinitialiser la sélection
                 selectedPiece = null;
@@ -110,7 +123,7 @@ public class ChessBoard {
 
     public void selectPiece(int x, int y) {
         Piece piece = getPiece(x, y);
-        if (piece != null && piece.getCouleur() == tour % 2) {
+        if (piece != null && piece.getCouleur() == tour) {
             selectedPiece = piece;
             highlightValidMoves(piece);
         }
@@ -147,6 +160,7 @@ public class ChessBoard {
 
                         if(targetPiece instanceof Roi) {
                             System.out.println("Partie terminée");
+                            tour = 2;
                         }
 
                         matPiece[targetY][targetX] = piece;
