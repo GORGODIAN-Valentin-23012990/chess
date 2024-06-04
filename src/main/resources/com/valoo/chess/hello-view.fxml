@@ -9,6 +9,7 @@
 <?import java.net.URL?>
 
 <?import javafx.scene.shape.Box?>
+<?import javafx.geometry.Insets?>
 <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.valoo.chess.MainController" style="-fx-background-color: #3c3f41;">
     <stylesheets>
         <URL value="@styles.css" />
@@ -48,6 +49,10 @@
                 </items>
             </ComboBox>
             <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350"/>
+
+            <VBox.margin>
+                <Insets top="20"/>
+            </VBox.margin>
 
             <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
                 <graphic>

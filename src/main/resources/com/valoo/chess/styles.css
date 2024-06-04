@@ -10,15 +10,16 @@
     -fx-border-radius: 15;
 }
 
+
 .combo-box .arrow-button {
     -fx-background-color: #2b2b2b;
-    -fx-text-fill: #2b2b2b;
+    -fx-text-fill: white;
 }
-
 
 .combo-box .list-cell {
     -fx-background-color: #2b2b2b; /* Green background for dropdown list */
-    -fx-text-fill: #4CAF50 ; /* Gray text for dropdown list */
+    -fx-text-fill: white ; /* Gray text for dropdown list */
+    -fx-text-alignment: center;
 }
 
 .combo-box .cell:hover {
