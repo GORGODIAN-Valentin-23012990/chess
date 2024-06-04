@@ -13,6 +13,8 @@ import java.io.IOException;
 
 public class Chess extends Application {
 
+    private ChessBoard chessBoard;
+
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
@@ -24,18 +26,16 @@ public class Chess extends Application {
             e.printStackTrace();
         }
         VBox chessBoardContainer = (VBox) loader.getNamespace().get("chessBoardContainer");
+
+
         // Create the chess board and add it to the VBox
         ChessBoard chessBoard = new ChessBoard();
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
 
-        root.setLeft(helloView);
-        // check les moves possibles du cavalier
+        chessBoard.activateBot(true);
+        System.out.println("true");
 
-        Reine reine = new Reine("blanc", "reine", 0, 3, 0);
-        int[][] moves = reine.validMoves(chessBoard);
-        for (int[] move : moves) {
-            System.out.println(move[0] + " " + move[1]);
-        }
+        root.setLeft(helloView);
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");
@@ -45,10 +45,11 @@ public class Chess extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
-        System.out.println(System.getProperty("user.dir"));
     }
 
-
+    public void setChessBoard(ChessBoard chessBoard) {
+        this.chessBoard = chessBoard;
+    }
 
     public static void main(String[] args) {
         launch(args);

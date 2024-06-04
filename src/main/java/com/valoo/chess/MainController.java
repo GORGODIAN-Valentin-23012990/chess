@@ -25,7 +25,6 @@ public class MainController {
 
     public void initialize() {
         timer = new Timer(10); // Replace 10 with your desired initial time
-        chessBoard = new ChessBoard(); // Assurez-vous que cette instance est correctement initialisée
 
         StringBinding timeBlancBinding = Bindings.createStringBinding(() ->
                 String.valueOf(timer.timeBlancProperty().get()), timer.timeBlancProperty());
@@ -42,6 +41,9 @@ public class MainController {
 
     @FXML
     private void handleJouerButtonAction() {
-        chessBoard.setTour(0);
+        // Réinitialiser le jeu
+        chessBoard.reset(0);
+        System.out.println("Jeu réinitialisé !");
+
     }
 }

@@ -12,10 +12,19 @@ public class ChessBoard {
     private Piece selectedPiece;
     private int tour;
     private StringBuilder coups = new StringBuilder();
+    private boolean isBotActivated;
 
     public ChessBoard() {
         board = new VBox();
         tour = 0;
+        isBotActivated = true;
+        createBoard();
+        placePieces();
+    }
+
+    public void reset(int tour) {
+        this.tour = tour;
+        matPiece = new Piece[8][8];
         createBoard();
         placePieces();
     }
@@ -44,7 +53,7 @@ public class ChessBoard {
     private void handleSquareClick(int x, int y) {
         Piece clickedPiece = getPiece(x, y);
 
-        if (clickedPiece != null && clickedPiece.getCouleur() != tour % 2) {
+        if (clickedPiece != null && clickedPiece.getCouleur() == tour % 2) {
             if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
                 selectedPiece = null;
                 updateBoard();
@@ -61,6 +70,7 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
+
                 tour++;
             } else {
                 selectedPiece = null;
@@ -108,6 +118,7 @@ public class ChessBoard {
 
     public void selectPiece(int x, int y) {
         Piece piece = getPiece(x, y);
+
         if (piece != null && piece.getCouleur() == tour % 2) {
             selectedPiece = piece;
             highlightValidMoves(piece);
@@ -168,11 +179,14 @@ public class ChessBoard {
 
                         piece.setX(targetX);
                         piece.setY(targetY);
+
+
                         return true;
                     }
                 }
             }
         }
+
         return false;
     }
 
@@ -192,5 +206,27 @@ public class ChessBoard {
 
     public VBox getBoard() {
         return board;
+    }
+
+    // On crée une fonction activateBot pour jouer un coup aleatoire des lors que c'est le coup des noirs
+    public void activateBot(boolean isBotActivated) {
+        this.isBotActivated = isBotActivated;
+    }
+
+    public void coupAleatoire(int couleur) {
+        while (tour % 2 == couleur) {
+            int x = (int) (Math.random() * 8);
+            int y = (int) (Math.random() * 8);
+            if (getPiece(x, y) != null && getPiece(x, y).getCouleur() == couleur) {
+                selectPiece(x, y);
+                int targetX = (int) (Math.random() * 8);
+                int targetY = (int) (Math.random() * 8);
+                if (movePiece(x, y, targetX, targetY)) {
+                    updateBoard();
+                    colorBoard();
+                    tour++;
+                }
+            }
+        }
     }
 }
