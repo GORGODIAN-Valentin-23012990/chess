@@ -24,6 +24,8 @@ public abstract class Piece {
         image = new Image(getClass().getResource(imagePath).toString());
     }
 
+
+
     public Image getImagePiece() {
         return image;
     }

@@ -11,6 +11,7 @@ public class ChessBoard {
     private Piece[][] matPiece;
     private Piece selectedPiece;
     private int tour;
+    private StringBuilder coups = new StringBuilder();
 
     public ChessBoard() {
         board = new VBox();
@@ -43,14 +44,12 @@ public class ChessBoard {
     private void handleSquareClick(int x, int y) {
         Piece clickedPiece = getPiece(x, y);
 
-        // Vérifier si le clic est sur une pièce de l'adversaire
         if (clickedPiece != null && clickedPiece.getCouleur() != tour % 2) {
-            // Permettre de capturer la pièce
             if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-                tour++;  // Changer de tour après un mouvement valide
+                tour++;
                 return;
             }
         }
@@ -62,9 +61,8 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
-                tour++;  // Changer de tour après un mouvement valide
+                tour++;
             } else {
-                // Mouvement invalide, réinitialiser la sélection
                 selectedPiece = null;
                 colorBoard();
             }
@@ -126,6 +124,11 @@ public class ChessBoard {
         }
     }
 
+    public void finDePartie() {
+        FichierCoup fichierCoup = new FichierCoup("coups.txt");
+        fichierCoup.enregistrerCoup(coups.toString());
+    }
+
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
@@ -134,7 +137,10 @@ public class ChessBoard {
                 if (move[0] == targetX && move[1] == targetY) {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
-                        // On vérifie si le roi roque ; si c'est le cas la tour doit bouger aussi
+                        coups.append(targetPiece)
+                                .append("(").append(currentX).append(",").append(currentY).append(" -> ")
+                                .append(targetX).append(",").append(targetY).append("); ");
+
                         if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
                             int tourX = targetX == 6 ? 7 : 0;
                             int tourY = piece.getCouleur() == 0 ? 0 : 7;
@@ -143,18 +149,21 @@ public class ChessBoard {
                             matPiece[tourY][targetX == 6 ? 5 : 3] = tour;
                             tour.setX(targetX == 6 ? 5 : 3);
                             tour.setY(tourY);
+                            coups.append("Tour(").append(tourX).append(",").append(tourY).append(" -> ")
+                                    .append(targetX == 6 ? 5 : 3).append(",").append(tourY).append("); ");
                         }
 
-                        if(targetPiece instanceof Roi) {
+                        if (targetPiece instanceof Roi) {
                             System.out.println("Partie terminée");
+                            finDePartie();
                         }
 
                         matPiece[targetY][targetX] = piece;
                         matPiece[currentY][currentX] = null;
 
-                        // Gestion de la promotion des pions
                         if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {
                             matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? "blanc" : "noir", "reine", piece.getCouleur(), targetX, targetY);
+                            coups.append("Promotion -> Reine; ");
                         }
 
                         piece.setX(targetX);

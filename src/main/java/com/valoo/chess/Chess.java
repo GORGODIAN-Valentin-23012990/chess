@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Chess extends Application {
+
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
@@ -44,7 +45,10 @@ public class Chess extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+        System.out.println(System.getProperty("user.dir"));
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
