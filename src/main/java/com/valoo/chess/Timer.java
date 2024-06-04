@@ -1,14 +1,25 @@
 package com.valoo.chess;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Timer {
-    int timeBlanc;
-    int timeNoir;
-    int timeMax;
+    private IntegerProperty timeBlanc;
+    private IntegerProperty timeNoir;
+    private int timeMax;
 
     public Timer(int timeMax){
         this.timeMax = timeMax;
-        this.timeBlanc = timeMax;
-        this.timeNoir = timeMax;
+        this.timeBlanc = new SimpleIntegerProperty(timeMax);
+        this.timeNoir = new SimpleIntegerProperty(timeMax);
+    }
+
+    public IntegerProperty timeBlancProperty() {
+        return timeBlanc;
+    }
+
+    public IntegerProperty timeNoirProperty() {
+        return timeNoir;
     }
 
     public void setTimeMax(int i){
@@ -17,9 +28,9 @@ public class Timer {
 
     public void tpsDecr(int couleur) {
         if (couleur == 1) {
-            while (timeBlanc > 0) {
-                timeBlanc--;
-                System.out.println("Temps restant : " + timeBlanc + " secondes");
+            while (timeBlanc.get() > 0) {
+                timeBlanc.set(timeBlanc.get() - 1);
+                System.out.println("Temps restant : " + timeBlanc.get() + " secondes");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -27,9 +38,9 @@ public class Timer {
                 }
             }
         } else if (couleur == 2) {
-            while (timeNoir > 0) {
-                timeNoir--;
-                System.out.println("Temps restant : " + timeNoir + " secondes");
+            while (timeNoir.get() > 0) {
+                timeNoir.set(timeNoir.get() - 1);
+                System.out.println("Temps restant : " + timeNoir.get() + " secondes");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
