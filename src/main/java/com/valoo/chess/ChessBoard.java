@@ -3,6 +3,7 @@ package com.valoo.chess;
 import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -24,10 +25,18 @@ public class ChessBoard {
         if(couleurBot == 0 || couleurBot == 1) {
             this.couleurBot = couleurBot;
             bot = new Bot(true);
-            this.activerBot();
         }
         createBoard();
         placePieces();
+        tour = 2;
+    }
+
+    public void setCouleurBot(int couleurBot) {
+        this.couleurBot = couleurBot;
+    }
+
+    public void setTour(int tour) {
+        this.tour = tour;
     }
 
     private void createBoard() {
@@ -54,7 +63,7 @@ public class ChessBoard {
     private void handleSquareClick(int x, int y) {
         Piece clickedPiece = getPiece(x, y);
 
-        if (clickedPiece != null && clickedPiece.getCouleur() == tour % 2) {
+        if (clickedPiece != null && clickedPiece.getCouleur() == tour) {
             if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
                 selectedPiece = null;
                 updateBoard();
@@ -74,6 +83,17 @@ public class ChessBoard {
                 colorBoard();
                 if(tour == 0) tour = 1;
                 else tour = 0;
+
+                if(couleurBot == 1) {
+                    bot.play(this, 1);
+                    if(tour == 1) tour = 0;
+                    else tour = 1;
+                } else if (couleurBot == 0){
+                    bot.play(this, 0);
+                    if(tour == 0) tour = 1;
+                    else tour = 0;
+                }
+
             } else {
                 selectedPiece = null;
                 colorBoard();
@@ -96,7 +116,7 @@ public class ChessBoard {
         updateBoard();
     }
 
-    private void updateBoard() {
+    public void updateBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = (HBox) board.getChildren().get(i);
             for (int j = 0; j < 8; j++) {
@@ -138,6 +158,7 @@ public class ChessBoard {
     }
 
     public void finDePartie() {
+        tour = 2;
         FichierCoup fichierCoup = new FichierCoup("coups.txt");
         fichierCoup.enregistrerCoup(coups.toString());
     }
@@ -209,20 +230,6 @@ public class ChessBoard {
         return board;
     }
 
-    // On crée une méthode qui créé un binding pour que le bot joue dès que c'est à son tour
-    public void activerBot() {
-        System.out.println("Bot activé");
-        IntegerProperty tourProperty = new javafx.beans.property.SimpleIntegerProperty(tour);
-        Binding<Boolean> binding = Bindings.createBooleanBinding(() -> {
-            return tourProperty.get() == couleurBot;
-        }, tourProperty);
-        binding.addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                bot.play(this, couleurBot);
-                if(tour == 0) tour = 1;
-                else tour = 0;
-            }
-        });
-    }
+
 
 }
