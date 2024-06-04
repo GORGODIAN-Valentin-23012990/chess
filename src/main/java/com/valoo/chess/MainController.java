@@ -42,6 +42,6 @@ public class MainController {
 
     @FXML
     private void handleJouerButtonAction() {
-        chessBoard.setTour(0);
+
     }
 }
