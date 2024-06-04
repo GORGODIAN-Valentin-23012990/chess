@@ -144,16 +144,18 @@ public class ChessBoard {
                             tour.setY(tourY);
                         }
 
-                        if(piece instanceof Pion && targetY == 0 || targetY == 7) {
-                            piece = new Reine(piece.getCouleurString(), "reine", piece.getCouleur(), targetX, targetY);
-                        }
-
                         if(targetPiece instanceof Roi) {
                             System.out.println("Partie terminée");
                         }
 
                         matPiece[targetY][targetX] = piece;
                         matPiece[currentY][currentX] = null;
+
+                        // Gestion de la promotion des pions
+                        if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {
+                            matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? "blanc" : "noir", "reine", piece.getCouleur(), targetX, targetY);
+                        }
+
                         piece.setX(targetX);
                         piece.setY(targetY);
                         return true;

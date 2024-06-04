@@ -10,32 +10,12 @@
     -fx-border-radius: 15;
 }
 
-.button {
-    -fx-background-color: #4CAF50; /* Green background */
-    -fx-text-fill: #3c3f41; /* Gray text */
-    -fx-font-size: 16px;
-    -fx-padding: 10 20;
-    -fx-border-color: #6c6e70;
-    -fx-border-width: 2;
-    -fx-background-radius: 15;
-    -fx-border-radius: 15;
-}
 
-.combo-box {
-    -fx-background-color: #4CAF50; /* Green background */
-    -fx-text-fill: #3c3f41; /* Gray text */
-    -fx-font-size: 16px;
-    -fx-padding: 10 20;
-    -fx-border-color: #6c6e70;
-    -fx-border-width: 2;
-    -fx-background-radius: 15;
 
-    -fx-border-radius: 15;
-}
 
 .combo-box .list-cell {
-    -fx-background-color: #4CAF50; /* Green background for dropdown list */
-    -fx-text-fill: #3c3f41; /* Gray text for dropdown list */
+    -fx-background-color: #3c3f41; /* Green background for dropdown list */
+    -fx-text-fill: #4CAF50 ; /* Gray text for dropdown list */
 }
 
 .combo-box .cell:hover {
@@ -57,4 +37,43 @@
     -fx-padding: 5;
     -fx-background-radius: 2;
     -fx-border-radius: 2;
+}
+
+
+#nvPartieBtn {
+    -fx-background-color: #3C3F41;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+}
+
+#partiesBtn {
+    -fx-background-color: #21201D;
+    -fx-text-fill: #90908E;
+    -fx-font-size: 10px;
+}
+
+
+#tournoisBtn {
+    -fx-background-color: #21201D;
+    -fx-text-fill: #90908E;
+    -fx-font-size: 10px;
+
+}
+
+#btnJouer {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#btnTournoi {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
 }

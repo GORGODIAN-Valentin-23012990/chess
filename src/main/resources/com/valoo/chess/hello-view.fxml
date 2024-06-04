@@ -4,48 +4,51 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
-
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import java.net.URL?>
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.valoo.chess.MainController" >
-<stylesheets>
+
+<?import javafx.scene.shape.Box?>
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.valoo.chess.MainController" style="-fx-background-color: #3c3f41;">
+    <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
-    <HBox>
-    <VBox>
-    <!-- Top section: Adversaire label and timer -->
-        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
-            <Label id="J1Label" text="J1" textFill="white" style="-fx-font-size: 18px;"/>
-            <Pane HBox.hgrow="ALWAYS"/> <!-- This Pane will take up all available space -->
+    <VBox style="-fx-background-color: #2b2b2b;" prefWidth="600">
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
+            <Label id="J1Label" text="Adversaire" textFill="white" style="-fx-font-size: 18px;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime1" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
-    <VBox fx:id="chessBoardContainer" xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER" style="-fx-background-color: #3c3f41; -fx-padding: 20;">
-        <!-- Rest of your FXML code -->
 
-    </VBox>
-        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
-            <Label id="J2Label" text="J2" textFill="white" style="-fx-font-size: 18px;"/>
-            <Pane HBox.hgrow="ALWAYS"/> <!-- This Pane will take up all available space -->
+        <VBox fx:id="chessBoardContainer" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+            <!-- On met le plateau d'échec ici -->
+        </VBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
+            <Label id="J2Label" text="Guest2638505585 (400)" textFill="white" style="-fx-font-size: 18px;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime2" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
     </VBox>
-    <!-- Middle section: Buttons for new game, play, and tournaments -->
-    <VBox spacing="20" alignment="CENTER" style="-fx-background-color: #2d2f31; -fx-padding: 20; -fx-border-color: #4b4d4f; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5;">
-        <ComboBox fx:id="myComboBox" promptText="Durée de la partie">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="5 minutes" />
-                    <String fx:value="10 minutes" />
-                    <String fx:value="15 minutes" />
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Button text="Nouvelle partie" style="-fx-background-color: #4b4d4f; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20; -fx-border-color: #6c6e70; -fx-border-width: 2;"/>
-        <VBox spacing="10" alignment="CENTER" style="-fx-padding: 10;">
-            <Button text="Jouer" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20;"/>
+
+    <VBox spacing="20" style="-fx-background-color: #3c3f41;" prefWidth="432" prefHeight="900">
+        <HBox alignment="TOP_CENTER">
+            <Button fx:id="nvPartieBtn" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
+            <Button fx:id="partiesBtn" text="Parties"  prefWidth="150" prefHeight="40"/>
+            <Button fx:id="tournoisBtn" text="Tournois"  prefWidth="150" prefHeight="40"/>
+        </HBox>
+        <VBox alignment="CENTER" spacing="20">
+            <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 16px;" >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="5 minutes" />
+                        <String fx:value="10 minutes" />
+                        <String fx:value="15 minutes" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350"/>
+            <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350"/>
         </VBox>
-        <Button text="Tournois" style="-fx-background-color: #FFA500; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 20;"/>
     </VBox>
-    </HBox>
-</VBox>
+</HBox>
