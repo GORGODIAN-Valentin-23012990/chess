@@ -37,7 +37,7 @@ public class ChessBoard {
                 {new Tour("blanc", "tour", 0, 0, 0), new Cavalier("blanc", "cavalier", 0, 1, 0), new Fou("blanc", "fou", 0, 2, 0), new Reine("blanc", "reine", 0, 3, 0), new Roi("blanc", "roi", 0, 4, 0), new Fou("blanc", "fou", 0, 5, 0), new Cavalier("blanc", "cavalier", 0, 6, 0), new Tour("blanc", "tour", 0, 7, 0)},
                 {new Pion("blanc", "pion", 0, 0, 1), new Pion("blanc", "pion", 0, 1, 1), new Pion("blanc", "pion", 0, 2, 1), new Pion("blanc", "pion", 0, 3, 1), new Pion("blanc", "pion", 0, 4, 1), new Pion("blanc", "pion", 0, 5, 1), new Pion("blanc", "pion", 0, 6, 1), new Pion("blanc", "pion", 0, 7, 1)},
                 {null,null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
+                {null, null,null, null, null,  new Reine("noir", "reine", 1, 5, 3), null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {new Pion("noir", "pion", 1, 0, 6), new Pion("noir", "pion", 1, 1, 6), new Pion("noir", "pion", 1, 2, 6), new Pion("noir", "pion", 1, 3, 6), new Pion("noir", "pion", 1, 4, 6), new Pion("noir", "pion", 1, 5, 6), new Pion("noir", "pion", 1, 6, 6), new Pion("noir", "pion", 1, 7, 6)},
@@ -57,15 +57,28 @@ public class ChessBoard {
                     square.getChildren().add(pieceView);
 
                     square.setOnMouseClicked(event -> {
+
+                        colorBoard();
+
                         Piece clickedPiece = (Piece) pieceView.getUserData();
                         int[][] validMoves = clickedPiece.validMoves(this);
 
                         for (int[] move : validMoves) {
                             HBox targetRow = (HBox) board.getChildren().get(move[1]);
                             StackPane targetSquare = (StackPane) targetRow.getChildren().get(move[0]);
-                            targetSquare.setStyle("-fx-background-color: #ADD8E6"); // Light blue color
+                            targetSquare.setStyle("-fx-background-color: #E2C64B");
                         }
 
+                        for(int k = 0 ; k < validMoves.length ; k++) {
+                            int[] move = validMoves[k];
+                            int x = move[0];
+                            int y = move[1];
+                            StackPane targetSquare = (StackPane) ((HBox) board.getChildren().get(y)).getChildren().get(x);
+                            targetSquare.setOnMouseClicked(event1 -> {
+                                movePiece(clickedPiece.getX(), clickedPiece.getY(), x, y);
+                                colorBoard();
+                            });
+                        }
                     });
 
                     }
@@ -141,6 +154,19 @@ public class ChessBoard {
         return false;
     }
 
+    private void colorBoard() {
+        for (int i = 0; i < 8; i++) {
+            HBox row = (HBox) board.getChildren().get(i);
+            for (int j = 0; j < 8; j++) {
+                StackPane square = (StackPane) row.getChildren().get(j);
+                if ((i + j) % 2 == 0) {
+                    square.setStyle("-fx-background-color: #7D945D");
+                } else {
+                    square.setStyle("-fx-background-color: #EEEED5");
+                }
+            }
+        }
+    }
 
     public VBox getBoard() {
         return board;

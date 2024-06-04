@@ -9,49 +9,48 @@ public class Reine extends Piece {
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
-        int[][] moves = new int[64][2]; // La tour peut théoriquement avoir jusqu'à 64 mouvements possibles
+        int[][] moves = new int[27][2]; // La reine peut théoriquement avoir jusqu'à 27 mouvements possibles
         int i = 0;
 
-        int[] directions = {1, -1}; // Pour se déplacer dans les directions positive et négative
+        // Directions de déplacement pour une reine
+        int[][] directions = {
+                {1, 0},   // Bas
+                {-1, 0},  // Haut
+                {0, 1},   // Droite
+                {0, -1},  // Gauche
+                {1, 1},   // Bas-Droite
+                {-1, 1},  // Haut-Droite
+                {1, -1},  // Bas-Gauche
+                {-1, -1}  // Haut-Gauche
+        };
 
-        // Vérifier les mouvements horizontaux (à gauche et à droite)
-        for (int dir : directions) {
+        // Vérifier chaque direction de déplacement
+        for (int[] dir : directions) {
             int x = getX();
-            while (true) {
-                x += dir;
-                if (x < 0 || x >= 8) break; // Sortir de l'échiquier
-                if (board.getPiece(x, getY()) == null) {
-                    moves[i][0] = x;
-                    moves[i][1] = getY();
-                    i++;
-                } else {
-                    if (!estMemeCouleur(board.getPiece(x, getY()))) {
-                        moves[i][0] = x;
-                        moves[i][1] = getY();
-                        i++;
-                    }
-                    break; // Bloqué par une pièce, qu'elle soit de la même couleur ou adverse
-                }
-            }
-        }
-
-        // Vérifier les mouvements verticaux (vers le haut et vers le bas)
-        for (int dir : directions) {
             int y = getY();
+
+            // Continuer à se déplacer dans la direction jusqu'à ce que l'on sorte de l'échiquier ou que l'on rencontre une pièce
             while (true) {
-                y += dir;
-                if (y < 0 || y >= 8) break; // Sortir de l'échiquier
-                if (board.getPiece(getX(), y) == null) {
-                    moves[i][0] = getX();
+                x += dir[0];
+                y += dir[1];
+
+                // Vérifier si le mouvement est en dehors de l'échiquier
+                if (x < 0 || x >= 8 || y < 0 || y >= 8) {
+                    break;
+                }
+
+                // Vérifier si la case est vide ou contient une pièce adverse
+                if (board.getPiece(x, y) == null) {
+                    moves[i][0] = x;
                     moves[i][1] = y;
                     i++;
                 } else {
-                    if (!estMemeCouleur(board.getPiece(getX(), y))) {
-                        moves[i][0] = getX();
+                    if (!estMemeCouleur(board.getPiece(x, y))) {
+                        moves[i][0] = x;
                         moves[i][1] = y;
                         i++;
                     }
-                    break; // Bloqué par une pièce, qu'elle soit de la même couleur ou adverse
+                    break; // Bloqué par une pièce
                 }
             }
         }
