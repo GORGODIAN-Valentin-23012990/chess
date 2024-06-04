@@ -24,7 +24,8 @@ public class ChessBoard {
             HBox row = new HBox();
             for (int j = 0; j < 8; j++) {
                 StackPane square = new StackPane();
-                square.setPrefSize(100, 100);
+                square.setMinHeight(90);
+                square.setMinWidth(90);
                 if ((i + j) % 2 == 0) {
                     square.setStyle("-fx-background-color: #7D945D");
                 } else {
