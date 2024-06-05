@@ -30,6 +30,9 @@ public class   Chess extends Application {
         System.out.println("true");
 
         root.setLeft(helloView);
+//
+//        FichierCoup fichierCoups = new FichierCoup("coups.txt");
+//        fichierCoups.lireCoup(0);
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");

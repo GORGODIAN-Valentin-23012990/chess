@@ -29,7 +29,7 @@ public class Pion extends Piece {
         int y = getY();
 
         // Déplacement vers l'avant pour un pion blanc
-        if (getCouleur() == 0) {
+        if (getCouleur() == 1) {
             // Déplacement d'une case vers l'avant
             if (y < 7 && board.getPiece(x, y + 1) == null) {
                 moves[i][0] = x;

@@ -41,27 +41,35 @@
             <Label fx:id="labelTime2" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
     </VBox>
-
     <VBox spacing="20" style="-fx-background-color: #21201D;" prefWidth="432" prefHeight="900">
         <HBox alignment="TOP_CENTER">
-            <Button fx:id="nvPartieBtn" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
-            <Button fx:id="partiesBtn" text="Parties"  prefWidth="150" prefHeight="40"/>
-            <Button fx:id="btnJoueurs" text="Joueurs"  prefWidth="150" prefHeight="40"/>
+            <Button fx:id="NVPartie" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
+            <Button fx:id="Partie" text="Parties"  prefWidth="150" prefHeight="40"/>
+            <Button fx:id="Joueurs" text="Joueurs"  prefWidth="150" prefHeight="40"/>
         </HBox>
-        <VBox alignment="CENTER" spacing="20">
-            <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="30 secondes" />
-                        <String fx:value="1 minute" />
-                        <String fx:value="3 minutes" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
+        <StackPane>
+            <VBox fx:id="menuJoueur" alignment="CENTER" spacing="20">
+                <TextField fx:id="prenomField" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomField" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValider" text="Valider" prefHeight="60" prefWidth="350" />
+            </VBox>
+            <VBox fx:id="menuPartie" alignment="CENTER" spacing="20">
+                <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+            </VBox>
+            <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
+                <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="30 secondes" />
+                            <String fx:value="1 minute" />
+                            <String fx:value="3 minutes" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
 
 
-            <VBox prefHeight="100" />
+            <VBox prefHeight="80" />
 
             <Button fx:id="btnJouerBot" text="Jouer contre l'ordinateur" prefHeight="60" prefWidth="350" onAction="#handleBotButtonAction"/>
             <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
@@ -78,5 +86,6 @@
             <!--Image du joueur 1-->
             <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
         </VBox>
+        </StackPane>
     </VBox>
 </HBox>
