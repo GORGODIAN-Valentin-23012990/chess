@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Pion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Pion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
     </list>
@@ -60,6 +63,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Chess" />
@@ -77,6 +91,7 @@
       <workItem from="1717506100031" duration="1023000" />
       <workItem from="1717568837107" duration="2644000" />
       <workItem from="1717572069880" duration="595000" />
+      <workItem from="1717587377872" duration="2893000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
@@ -113,21 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717576058980</updated>
     </task>
-    <task id="LOCAL-00006" summary="Système de message de fin de partie">
-      <created>1717577947075</created>
+    <task id="LOCAL-00006" summary="css">
+      <created>1717579405017</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1717577947075</updated>
+      <updated>1717579405017</updated>
     </task>
-    <task id="LOCAL-00007" summary="Système de message de fin de partie">
-      <created>1717579311811</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1717579311811</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +146,7 @@
     <MESSAGE value="d" />
     <MESSAGE value="trop cool mec" />
     <MESSAGE value="Bot marche" />
-    <MESSAGE value="Système de message de fin de partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Système de message de fin de partie" />
+    <MESSAGE value="css" />
+    <option name="LAST_COMMIT_MESSAGE" value="css" />
   </component>
 </project>

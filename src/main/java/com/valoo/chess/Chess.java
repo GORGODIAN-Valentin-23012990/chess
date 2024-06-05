@@ -31,6 +31,9 @@ public class   Chess extends Application {
 
         root.setLeft(helloView);
 
+        FichierCoup fichierCoups = new FichierCoup("coups.txt");
+        fichierCoups.lireCoup(0);
+
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");
         // On règle la taille de la fenêtre pour qu'elle prenne automatiquement toute la largeur de l'écran
