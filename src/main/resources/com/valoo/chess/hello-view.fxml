@@ -46,7 +46,7 @@
         <HBox alignment="TOP_CENTER">
             <Button fx:id="nvPartieBtn" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
             <Button fx:id="partiesBtn" text="Parties"  prefWidth="150" prefHeight="40"/>
-            <Button fx:id="joueursBtn" text="Joueurs"  prefWidth="150" prefHeight="40"/>
+            <Button fx:id="btnJoueurs" text="Joueurs"  prefWidth="150" prefHeight="40"/>
         </HBox>
         <VBox alignment="CENTER" spacing="20">
             <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
@@ -59,9 +59,11 @@
                 </items>
             </ComboBox>
             <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
-            <Button fx:id="btnJouerBot" text="Jouer contre l'ordinateur" prefHeight="60" prefWidth="350" onAction="#handleBotButtonAction"/>
+
+
             <VBox prefHeight="100" />
 
+            <Button fx:id="btnJouerBot" text="Jouer contre l'ordinateur" prefHeight="60" prefWidth="350" onAction="#handleBotButtonAction"/>
             <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
                 <graphic>
                     <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">

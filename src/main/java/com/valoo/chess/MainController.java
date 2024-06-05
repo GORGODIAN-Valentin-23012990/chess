@@ -29,7 +29,7 @@ public class MainController {
     private Timer timer1;
     private Timer timer2;
     private ChessBoard chessBoard;
-    private int activePlayer; // 1 pour le joueur 1, 2 pour le joueur 2
+    private int activePlayer; // 1 for player 1, 2 for player 2
 
     private Timeline timeline;
     private int seconds;
@@ -43,9 +43,8 @@ public class MainController {
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        // Ajouter le gestionnaire d'événements pour le bouton "Jouer"
-        btnJouer.setOnAction(event -> handleJouerButtonAction());
 
+        btnJouer.setOnAction(event -> handleJouerButtonAction());
     }
 
     private void gameCode(int bot) {
@@ -53,12 +52,19 @@ public class MainController {
         seconds = 0;
 
         if (selectedTime != null) {
-            if (selectedTime.equals("30 secondes")) {
-                seconds = 30;
-            } else if (selectedTime.equals("1 minute")) {
-                seconds = 60;
-            } else if (selectedTime.equals("3 minutes")) {
-                seconds = 180;
+            switch (selectedTime) {
+                case "30 secondes":
+                    seconds = 30;
+                    break;
+                case "1 minute":
+                    seconds = 60;
+                    break;
+                case "3 minutes":
+                    seconds = 180;
+                    break;
+                default:
+                    seconds = 30;
+                    break;
             }
         } else {
             seconds = 30;
@@ -66,24 +72,23 @@ public class MainController {
 
         timer1 = new Timer(seconds);
         timer2 = new Timer(seconds);
-        activePlayer = 2; // Le joueur 1 commence
+        activePlayer = 2; // Player 1 starts
 
-        StringBinding timeBinding1 = Bindings.createStringBinding(() -> {
-            return String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);
-        }, timer1.timeBlancProperty());
+        StringBinding timeBinding1 = Bindings.createStringBinding(() ->
+                        String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
+                timer1.timeBlancProperty()
+        );
         labelTime1.textProperty().bind(timeBinding1);
 
-        StringBinding timeBinding2 = Bindings.createStringBinding(() -> {
-            return String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);
-        }, timer2.timeBlancProperty());
+        StringBinding timeBinding2 = Bindings.createStringBinding(() ->
+                        String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60),
+                timer2.timeBlancProperty()
+        );
         labelTime2.textProperty().bind(timeBinding2);
-
-
 
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        // Quand le timer 1 arrive à zero, on le reintialise et on fait jouer le bot pour ce coup
         timer1.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == 0) {
                 timer2.reset(seconds);
@@ -96,7 +101,6 @@ public class MainController {
             }
         });
 
-        // Quand le timer 2 arrive à zero, on le reintialise et on fait jouer le bot pour ce coup
         timer2.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.intValue() == 0) {
                 timer1.reset(seconds);
@@ -135,7 +139,6 @@ public class MainController {
 
     public void switchActivePlayer() {
         activePlayer = activePlayer == 1 ? 2 : 1;
-        // remettre les timers au temps initial
         timer1.reset(seconds);
         timer2.reset(seconds);
     }
@@ -148,4 +151,5 @@ public class MainController {
         }
         freezeTimers();
     }
+
 }
