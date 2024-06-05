@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717575716607</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bot marche">
+      <created>1717576058980</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717576058980</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +120,7 @@
     <MESSAGE value="Fin de la partie quand le roi meurt" />
     <MESSAGE value="d" />
     <MESSAGE value="trop cool mec" />
-    <option name="LAST_COMMIT_MESSAGE" value="trop cool mec" />
+    <MESSAGE value="Bot marche" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bot marche" />
   </component>
 </project>

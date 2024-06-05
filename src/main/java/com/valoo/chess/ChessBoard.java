@@ -4,11 +4,15 @@ import javafx.beans.binding.Binding;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class ChessBoard {
     private VBox board;
@@ -20,6 +24,8 @@ public class ChessBoard {
     private Bot bot;
 
     private MainController mainController;
+    private Label messageLabel;
+
 
     public ChessBoard(int couleurBot, MainController mainController) {
         this.mainController = mainController;
@@ -33,6 +39,17 @@ public class ChessBoard {
         }
         createBoard();
         placePieces();
+        messageLabel = new Label();
+        messageLabel.setTextFill(Color.RED);
+        messageLabel.setFont(new Font("Arial", 30));
+        messageLabel.setAlignment(Pos.CENTER);
+        messageLabel.setVisible(false);
+        board.getChildren().add(messageLabel);
+    }
+
+    public void showMessage(String message) {
+        messageLabel.setText(message);
+        messageLabel.setVisible(true);
     }
 
     public void setCouleurBot(int couleurBot) {
@@ -162,7 +179,12 @@ public class ChessBoard {
         }
     }
 
-    public void finDePartie() {
+    public void finDePartie(int color) {
+        if (color == 0) {
+            showMessage("Les blancs ont gagné !");
+        } else {
+            showMessage("Les noirs ont gagné !");
+        }
         tour = 2;
         FichierCoup fichierCoup = new FichierCoup("coups.txt");
         fichierCoup.enregistrerCoup(coups.toString());
@@ -193,8 +215,7 @@ public class ChessBoard {
                         }
 
                         if (targetPiece instanceof Roi) {
-                            System.out.println("Partie terminée");
-                            finDePartie();
+                            finDePartie(targetPiece.getCouleur() == 1 ? 0 : 1);
                         }
 
                         matPiece[targetY][targetX] = piece;
