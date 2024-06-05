@@ -18,7 +18,7 @@ public class   Chess extends Application {
     public void start(Stage primaryStage) {
 
         BorderPane root = new BorderPane();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/main-view.fxml"));
         Parent helloView = null;
 
         try {

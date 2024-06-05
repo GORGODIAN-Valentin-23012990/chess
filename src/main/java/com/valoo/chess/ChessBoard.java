@@ -43,6 +43,18 @@ public class ChessBoard {
         placePieces();
     }
 
+    public void resetBoard(){
+        tour = 0;
+        if(couleurBot == 0 || couleurBot == 1) {
+            this.couleurBot = couleurBot;
+            bot = new Bot(true);
+        } else if (couleurBot == 2) {
+            bot = new Bot(false);
+        }
+        createBoard();
+        placePieces();
+    }
+
     /**
      * @param couleurBot couleur du bot
      */
@@ -213,7 +225,6 @@ public class ChessBoard {
     }
 
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
-        FichierCoup fichierCoup = new FichierCoup();
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
             int[][] validMoves = piece.validMoves(this);
@@ -273,8 +284,14 @@ public class ChessBoard {
 
     // Fonction qui prend en paramètre le nom d'un fichier, et qui joue tous les coups du fichier
     public void jouerPartie(String fileName) {
-        FichierCoup fichierCoup = new FichierCoup();
-        fichierCoup.jouerPartie(this);
+        fichierCoup.jouerPartie(this, fileName);
+    }
+
+    public void annulerCoup(String filename) {
+        fichierCoup.annulerCoup(this, filename);
+    }
+
+    public void coupSuivant(String filename) {
     }
 
     public VBox getBoard() {

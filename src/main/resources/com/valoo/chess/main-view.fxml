@@ -55,7 +55,10 @@
             </VBox>
             <VBox fx:id="menuPartie" alignment="CENTER" spacing="20">
                 <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnCreer" text="Créer" prefHeight="60" prefWidth="350"   onAction="#handleChargerPartie"/>
+                <Button fx:id="btnCreer" text="Charger partie" prefHeight="60" prefWidth="350"   onAction="#handleChargerPartie"/>
+                <Button fx:id="btnPrec" text="Précédent" prefHeight="60" prefWidth="350" onAction="#handlePrec"/>
+                <Button fx:id="btnSuiv" text="Suivant" prefHeight="60" prefWidth="350" onAction="#handleSuiv"/>
+
             </VBox>
             <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
                 <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >

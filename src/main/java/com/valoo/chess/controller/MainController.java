@@ -209,7 +209,18 @@ public class MainController {
 
     @FXML
     public void handleChargerPartie() {
-        chessBoard.jouerPartie("coups.txt");
+        chessBoard.jouerPartie("parties/Partie35.txt");
+        chessBoard.updateBoard();
+    }
+
+    @FXML
+    public void handlePrec(){
+        chessBoard.annulerCoup("parties/Partie35.txt");
+    }
+
+    @FXML
+    public void handleSuiv() {
+        chessBoard.coupSuivant("parties/Partie35.txt");
         chessBoard.updateBoard();
     }
 
