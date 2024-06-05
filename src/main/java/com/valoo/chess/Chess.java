@@ -16,6 +16,7 @@ public class   Chess extends Application {
     private ChessBoard chessBoard;
 
     public void start(Stage primaryStage) {
+
         BorderPane root = new BorderPane();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
         Parent helloView = null;

@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "/amuhome/b23010591/Documents/java/javafx/chess",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
