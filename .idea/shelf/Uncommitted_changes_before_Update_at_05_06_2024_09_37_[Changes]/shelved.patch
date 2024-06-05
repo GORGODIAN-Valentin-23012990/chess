@@ -1,0 +1,129 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"2b2c82c4-a929-44e8-af22-9f503a323879\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/valoo/chess/parties-view.fxml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/valoo/chess/tournoi-view.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"FxmlFile\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2hPqXQpTGT8WWcu8Bj2QBPW3CPU\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"last_opened_file_path\": \"/amuhome/b23010591/Documents/java/javafx/chess\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"Chess\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.valoo.chess.Chess\" />\n      <module name=\"chess\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.valoo.chess.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Chess\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"2b2c82c4-a929-44e8-af22-9f503a323879\" name=\"Changes\" comment=\"\" />\n      <created>1717506098367</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1717506098367</updated>\n      <workItem from=\"1717506100031\" duration=\"1023000\" />\n      <workItem from=\"1717568837107\" duration=\"2644000\" />\n      <workItem from=\"1717572069880\" duration=\"595000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Fin de la partie quand le roi meurt\">\n      <created>1717572284978</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1717572284978</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Fin de la partie quand le roi meurt\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Fin de la partie quand le roi meurt\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6ef358c63866002c7cc8b95c674e248247b92e09)
++++ b/.idea/workspace.xml	(date 1717573021843)
+@@ -5,10 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/parties-view.fxml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/tournoi-view.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -74,7 +73,7 @@
+       <updated>1717506098367</updated>
+       <workItem from="1717506100031" duration="1023000" />
+       <workItem from="1717568837107" duration="2644000" />
+-      <workItem from="1717572069880" duration="595000" />
++      <workItem from="1717572069880" duration="952000" />
+     </task>
+     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
+       <created>1717572284978</created>
+@@ -83,7 +82,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717572284978</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="ajout de nouveaux fichiers fxml">
++      <created>1717572696928</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1717572696928</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -91,6 +97,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Fin de la partie quand le roi meurt" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Fin de la partie quand le roi meurt" />
++    <MESSAGE value="ajout de nouveaux fichiers fxml" />
++    <option name="LAST_COMMIT_MESSAGE" value="ajout de nouveaux fichiers fxml" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/com/valoo/chess/hello-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.image.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.collections.FXCollections?>\n<?import java.lang.String?>\n<?import java.net.URL?>\n\n<?import javafx.scene.shape.Box?>\n<?import javafx.geometry.Insets?>\n<HBox xmlns:fx=\"http://javafx.com/fxml\" fx:controller=\"com.valoo.chess.MainController\" style=\"-fx-background-color: #3c3f41;\">\n    <stylesheets>\n        <URL value=\"@styles.css\" />\n    </stylesheets>\n    <VBox style=\"-fx-background-color: #2b2b2b;\" prefWidth=\"600\">\n        <HBox spacing=\"10\" alignment=\"CENTER_LEFT\" style=\"-fx-padding: 10; -fx-background-color: #393939;\">\n            <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                <image>\n                    <Image url=\"@/icone.jpg\"/>\n                </image>\n            </ImageView>\n            <Label id=\"J1Label\" text=\"Adversaire\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n            <Pane HBox.hgrow=\"ALWAYS\"/>\n            <Label fx:id=\"labelTime1\" text=\"10:00\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n        </HBox>\n\n        <VBox fx:id=\"chessBoardContainer\" spacing=\"10\" alignment=\"CENTER\" style=\"-fx-padding: 20;\">\n            <!-- On met le plateau d'échec ici -->\n        </VBox>\n\n        <HBox spacing=\"10\" alignment=\"CENTER_LEFT\" style=\"-fx-padding: 10; -fx-background-color: #393939;\">\n            <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                <image>\n                    <Image url=\"@/icone2.png\"/>\n                </image>\n            </ImageView>\n            <Label id=\"J2Label\" text=\"Joueur 1\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n            <Pane HBox.hgrow=\"ALWAYS\"/>\n            <Label fx:id=\"labelTime2\" text=\"10:00\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n        </HBox>\n    </VBox>\n\n    <VBox spacing=\"20\" style=\"-fx-background-color: #21201D;\" prefWidth=\"432\" prefHeight=\"900\">\n        <HBox alignment=\"TOP_CENTER\">\n            <Button fx:id=\"nvPartieBtn\" text=\"Nouvelle partie\" prefWidth=\"150\" prefHeight=\"40\"/>\n            <Button fx:id=\"partiesBtn\" text=\"Parties\"  prefWidth=\"150\" prefHeight=\"40\"/>\n            <Button fx:id=\"joueursBtn\" text=\"Joueurs\"  prefWidth=\"150\" prefHeight=\"40\"/>\n        </HBox>\n        <VBox alignment=\"CENTER\" spacing=\"20\">\n            <ComboBox fx:id=\"myComboBox\" promptText=\"3 minutes\" style=\"-fx-font-size: 20px;\" prefWidth=\"350\" prefHeight=\"60\" >\n                <items>\n                    <FXCollections fx:factory=\"observableArrayList\">\n                        <String fx:value=\"30 secondes\" />\n                        <String fx:value=\"1 minute\" />\n                        <String fx:value=\"3 minutes\" />\n                    </FXCollections>\n                </items>\n            </ComboBox>\n            <Button fx:id=\"btnJouer\" text=\"Jouer\" prefHeight=\"60\" prefWidth=\"350\" onAction=\"#handleJouerButtonAction\"/>\n\n            <VBox prefHeight=\"100\" />\n\n            <Button fx:id=\"btnTournoi\" text=\"Tournois\" prefHeight=\"60\" prefWidth=\"350\">\n                <graphic>\n                    <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                        <image>\n                            <Image url=\"@/medaille.png\"/>\n                        </image>\n                    </ImageView>\n                </graphic>\n            </Button>\n\n        </VBox>\n    </VBox>\n</HBox>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/valoo/chess/hello-view.fxml b/src/main/resources/com/valoo/chess/hello-view.fxml
+--- a/src/main/resources/com/valoo/chess/hello-view.fxml	(revision 6ef358c63866002c7cc8b95c674e248247b92e09)
++++ b/src/main/resources/com/valoo/chess/hello-view.fxml	(date 1717572906050)
+@@ -14,7 +14,7 @@
+     <stylesheets>
+         <URL value="@styles.css" />
+     </stylesheets>
+-    <VBox style="-fx-background-color: #2b2b2b;" prefWidth="600">
++    <VBox style="-fx-background-color: #2b2b2b;" prefWidth="780" >
+         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
+             <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
+                 <image>
+Index: coups.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>null(3,1 -> 3,3); null(5,6 -> 5,4); null(4,1 -> 4,2); null(4,7 -> 5,6); null(3,0 -> 7,4); null(3,7 -> 4,7); null(3,3 -> 3,4); null(2,6 -> 2,5); Pion[x=2,y=5](3,4 -> 2,5); Pion[x=2,y=5](1,6 -> 2,5); null(2,1 -> 2,3); null(6,7 -> 5,5); null(5,0 -> 3,2); null(3,6 -> 3,4); Pion[x=3,y=4](2,3 -> 3,4); Pion[x=3,y=4](2,5 -> 3,4); Roi[x=5,y=6](7,4 -> 5,6); \nnull(4,1 -> 4,3); null(1,6 -> 1,4); null(3,0 -> 7,4); null(1,7 -> 0,5); Pion[x=5,y=6](7,4 -> 5,6); null(2,7 -> 1,6); Roi[x=4,y=7](5,6 -> 4,7); \nnull(4,1 -> 4,2); null(5,6 -> 5,4); null(3,0 -> 7,4); null(1,6 -> 1,4); Roi[x=4,y=7](7,4 -> 4,7); \n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/coups.txt b/coups.txt
+--- a/coups.txt	(revision 6ef358c63866002c7cc8b95c674e248247b92e09)
++++ b/coups.txt	(date 1717572964937)
+@@ -1,3 +1,5 @@
+ null(3,1 -> 3,3); null(5,6 -> 5,4); null(4,1 -> 4,2); null(4,7 -> 5,6); null(3,0 -> 7,4); null(3,7 -> 4,7); null(3,3 -> 3,4); null(2,6 -> 2,5); Pion[x=2,y=5](3,4 -> 2,5); Pion[x=2,y=5](1,6 -> 2,5); null(2,1 -> 2,3); null(6,7 -> 5,5); null(5,0 -> 3,2); null(3,6 -> 3,4); Pion[x=3,y=4](2,3 -> 3,4); Pion[x=3,y=4](2,5 -> 3,4); Roi[x=5,y=6](7,4 -> 5,6); 
+ null(4,1 -> 4,3); null(1,6 -> 1,4); null(3,0 -> 7,4); null(1,7 -> 0,5); Pion[x=5,y=6](7,4 -> 5,6); null(2,7 -> 1,6); Roi[x=4,y=7](5,6 -> 4,7); 
+ null(4,1 -> 4,2); null(5,6 -> 5,4); null(3,0 -> 7,4); null(1,6 -> 1,4); Roi[x=4,y=7](7,4 -> 4,7); 
++null(4,1 -> 4,3); null(1,6 -> 1,4); null(3,0 -> 7,4); null(2,6 -> 2,4); Pion[x=5,y=6](7,4 -> 5,6); null(3,6 -> 3,5); Roi[x=4,y=7](5,6 -> 4,7); 
++null(4,1 -> 4,2); null(0,6 -> 0,5); null(3,0 -> 7,4); null(6,7 -> 7,5); Pion[x=5,y=6](7,4 -> 5,6); null(1,7 -> 2,5); null(5,6 -> 2,3); null(7,7 -> 6,7); Cavalier[x=2,y=5](2,3 -> 2,5); null(0,5 -> 0,4); Pion[x=3,y=6](2,5 -> 3,6); Reine[x=3,y=6](2,7 -> 3,6); null(1,1 -> 1,2); null(1,6 -> 1,5); null(2,0 -> 0,2); null(3,6 -> 6,3); Pion[x=4,y=6](0,2 -> 4,6); Fou[x=4,y=6](5,7 -> 4,6); null(5,0 -> 0,5); null(4,7 -> 3,6); null(0,5 -> 2,7); null(3,6 -> 4,5); Roi[x=4,y=5](2,7 -> 4,5); 
+Index: src/main/java/com/valoo/chess/MainController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.valoo.chess;\n\nimport javafx.animation.KeyFrame;\nimport javafx.animation.Timeline;\nimport javafx.beans.binding.Bindings;\nimport javafx.beans.binding.StringBinding;\nimport javafx.fxml.FXML;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.ComboBox;\nimport javafx.scene.control.Label;\nimport javafx.scene.layout.VBox;\nimport javafx.util.Duration;\n\npublic class MainController {\n    @FXML\n    private ComboBox<String> myComboBox;\n    @FXML\n    private Label labelTime1;\n    @FXML\n    private VBox chessBoardContainer;\n    @FXML\n    private Label labelTime2;\n    @FXML\n    private Button btnJouer;\n\n    private Timer timer1;\n    private Timer timer2;\n    private ChessBoard chessBoard;\n    private int activePlayer; // 1 pour le joueur 1, 2 pour le joueur 2\n\n    public void initialize() {\n        // Ajouter le gestionnaire d'événements pour le bouton \"Jouer\"\n        btnJouer.setOnAction(event -> handleJouerButtonAction());\n        timer1 = new Timer(600);\n        timer2 = new Timer(600);\n        activePlayer = 1; // Le joueur 1 commence\n\n        StringBinding timeBinding1 = Bindings.createStringBinding(() -> {\n            return String.format(\"%02d:%02d\", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);\n        }, timer1.timeBlancProperty());\n        labelTime1.textProperty().bind(timeBinding1);\n\n        StringBinding timeBinding2 = Bindings.createStringBinding(() -> {\n            return String.format(\"%02d:%02d\", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);\n        }, timer2.timeBlancProperty());\n        labelTime2.textProperty().bind(timeBinding2);\n\n        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {\n            if (activePlayer == 1) {\n                timer1.tpsDecr(1);\n            } else {\n                timer2.tpsDecr(1);\n            }\n        }));\n        timeline.setCycleCount(Timeline.INDEFINITE);\n        timeline.play();\n    }\n\n    @FXML\n    private void handleJouerButtonAction() {\n        chessBoard = new ChessBoard(1, this);\n        chessBoardContainer.getChildren().add(chessBoard.getBoard());\n        System.out.println(\"Jeu réinitialisé !\");\n        switchActivePlayer();\n    }\n\n    public void switchActivePlayer() {\n        activePlayer = activePlayer == 1 ? 2 : 1;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/valoo/chess/MainController.java b/src/main/java/com/valoo/chess/MainController.java
+--- a/src/main/java/com/valoo/chess/MainController.java	(revision 6ef358c63866002c7cc8b95c674e248247b92e09)
++++ b/src/main/java/com/valoo/chess/MainController.java	(date 1717572664073)
+@@ -5,12 +5,18 @@
+ import javafx.beans.binding.Bindings;
+ import javafx.beans.binding.StringBinding;
+ import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
+ import javafx.scene.control.Button;
+ import javafx.scene.control.ComboBox;
+ import javafx.scene.control.Label;
+ import javafx.scene.layout.VBox;
++import javafx.stage.Stage;
+ import javafx.util.Duration;
+ 
++import java.io.IOException;
++
+ public class MainController {
+     @FXML
+     private ComboBox<String> myComboBox;
+@@ -67,4 +73,5 @@
+     public void switchActivePlayer() {
+         activePlayer = activePlayer == 1 ? 2 : 1;
+     }
++
+ }
+\ No newline at end of file

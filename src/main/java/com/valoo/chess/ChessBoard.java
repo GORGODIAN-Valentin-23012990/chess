@@ -235,6 +235,11 @@ public class ChessBoard {
         return board;
     }
 
+    public Bot getBot() {
+        return bot;
+    }
+
+
 
 
 }

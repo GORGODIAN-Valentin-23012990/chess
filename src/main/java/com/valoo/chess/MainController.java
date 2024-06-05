@@ -29,6 +29,7 @@ public class MainController {
     private int activePlayer; // 1 pour le joueur 1, 2 pour le joueur 2
 
     private Timeline timeline;
+    private int seconds;
 
     public void initialize() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -48,7 +49,7 @@ public class MainController {
     private void handleJouerButtonAction() {
 
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
-        int seconds = 0;
+        seconds = 0;
 
         if (selectedTime != null) {
             if (selectedTime.equals("30 secondes")) {
@@ -58,6 +59,8 @@ public class MainController {
             } else if (selectedTime.equals("3 minutes")) {
                 seconds = 180;
             }
+        } else {
+            seconds = 30;
         }
 
         timer1 = new Timer(seconds);
@@ -74,8 +77,36 @@ public class MainController {
         }, timer2.timeBlancProperty());
         labelTime2.textProperty().bind(timeBinding2);
 
+
+
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        // Quand le timer 1 arrive à zero, on le reintialise et on fait jouer le bot pour ce coup
+        timer1.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == 0) {
+                timer2.reset(seconds);
+                if (activePlayer == 1) {
+                    activePlayer = 2;
+                    if (chessBoard != null) {
+                        chessBoard.getBot().play(chessBoard, 0);
+                    }
+                }
+            }
+        });
+
+        // Quand le timer 2 arrive à zero, on le reintialise et on fait jouer le bot pour ce coup
+        timer2.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == 0) {
+                timer1.reset(seconds);
+                if (activePlayer == 2) {
+                    activePlayer = 1;
+                    if (chessBoard != null) {
+                        chessBoard.getBot().play(chessBoard, 1);
+                    }
+                }
+            }
+        });
 
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());

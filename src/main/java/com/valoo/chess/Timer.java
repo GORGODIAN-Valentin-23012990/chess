@@ -21,4 +21,8 @@ public class Timer {
     public void tpsDecr(int decrement) {
         timeBlanc.set(timeBlanc.get() - decrement);
     }
+
+    public void reset(int seconds) {
+        timeBlanc.set(seconds);
+    }
 }
