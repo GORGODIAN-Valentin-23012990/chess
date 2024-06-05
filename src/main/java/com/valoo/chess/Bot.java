@@ -22,7 +22,6 @@ public class Bot {
                     int moveIndex = (int) (Math.random() * moves.length);
                     int[] move = moves[moveIndex];
                     board.movePiece(x, y, move[0], move[1]);
-                    board.updateBoard();
                     break;
                 }
             }

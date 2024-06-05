@@ -69,23 +69,23 @@
                 <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
 
 
-                <VBox prefHeight="100" />
+            <VBox prefHeight="80" />
 
-                <Button fx:id="btnJouerBot" text="Jouer contre l'ordinateur" prefHeight="60" prefWidth="350" onAction="#handleBotButtonAction"/>
-                <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
-                    <graphic>
-                        <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@/medaille.png"/>
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
+            <Button fx:id="btnJouerBot" text="Jouer contre l'ordinateur" prefHeight="60" prefWidth="350" onAction="#handleBotButtonAction"/>
+            <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/medaille.png"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
 
-            </VBox>
+            <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
+            <!--Image du joueur 1-->
+            <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
+        </VBox>
         </StackPane>
-        <!--Image du joueur 1-->
-        <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
     </VBox>
 </HBox>
