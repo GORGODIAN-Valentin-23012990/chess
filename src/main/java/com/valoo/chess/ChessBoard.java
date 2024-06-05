@@ -27,6 +27,11 @@ public class ChessBoard {
     private MainController mainController;
 
 
+    /**
+     * @param couleurBot couleur du bot
+     * @param mainController controleur principal
+     * Crée un plateau de jeu d'échec
+     */
     public ChessBoard(int couleurBot, MainController mainController) {
         this.mainController = mainController;
         board = new VBox();
@@ -41,14 +46,23 @@ public class ChessBoard {
         placePieces();
     }
 
+    /**
+     * @param couleurBot couleur du bot
+     */
     public void setCouleurBot(int couleurBot) {
         this.couleurBot = couleurBot;
     }
 
+    /**
+     * @param tour tour
+     */
     public void setTour(int tour) {
         this.tour = tour;
     }
 
+    /**
+     * Crée le plateau de jeu
+     */
     private void createBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = new HBox();
@@ -71,6 +85,11 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * @param x position x
+     * @param y position y
+     * Gère le clic sur une case du plateau
+     */
     private void handleSquareClick(int x, int y) {
         Piece clickedPiece = getPiece(x, y);
 
@@ -113,6 +132,9 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * Place les pièces sur le plateau dans le bon ordre et les affiche
+     */
     private void placePieces() {
         matPiece = new Piece[][]{
                 {new Tour("blanc", "tour", 0, 0, 0), new Cavalier("blanc", "cavalier", 0, 1, 0), new Fou("blanc", "fou", 0, 2, 0), new Reine("blanc", "reine", 0, 3, 0), new Roi("blanc", "roi", 0, 4, 0), new Fou("blanc", "fou", 0, 5, 0), new Cavalier("blanc", "cavalier", 0, 6, 0), new Tour("blanc", "tour", 0, 7, 0)},
@@ -128,6 +150,10 @@ public class ChessBoard {
         updateBoard();
     }
 
+    /**
+     * Met à jour l'affichage du plateau
+     * Affiche les pièces aux bonnes positions
+     */
     public void updateBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = (HBox) board.getChildren().get(i);
@@ -146,10 +172,19 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * @param x position x
+     * @param y position y
+     * @return pièce à la position x, y
+     */
     public Piece getPiece(int x, int y) {
         return matPiece[y][x];
     }
 
+    /**
+     * @param x position x
+     * @param y position y
+     */
     public void selectPiece(int x, int y) {
         Piece piece = getPiece(x, y);
 

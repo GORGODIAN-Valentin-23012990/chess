@@ -2,10 +2,21 @@ package com.valoo.chess;
 
 public class Fou extends Piece {
 
+    /**
+     * @param color couleur du fou
+     * @param type type du fou
+     * @param couleur couleur du fou
+     * @param x position x
+     * @param y position y
+     */
     public Fou(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
     }
 
+    /**
+     * @param board plateau de jeu
+     * @return tableau de coordonnées de toutes les positions possibles
+     */
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
@@ -47,6 +58,9 @@ public class Fou extends Piece {
     }
 
 
+    /**
+     * @return chemin d'acces de l'image du fou
+     */
     public String getImage() {
         if (getCouleur() == 0) {
             return "/fou_noir.png";

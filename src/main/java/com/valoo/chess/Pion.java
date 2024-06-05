@@ -2,12 +2,25 @@ package com.valoo.chess;
 
 public class Pion extends Piece {
 
+    /**
+     * @param color couleur du pion
+     * @param type type du pion
+     * @param couleur couleur du pion
+     * @param x position x
+     * @param y position y
+     */
     public Pion(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
     }
 
+
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
+
+    /**
+     * @param board plateau de jeu
+     * @return tableau de coordonnées de toutes les positions possibles
+     */
     public int[][] validMoves(ChessBoard board) {
         int[][] moves = new int[4][2]; // Un pion peut se déplacer sur un maximum de 4 cases (avancée de deux cases initiale + captures diagonales)
         int i = 0;

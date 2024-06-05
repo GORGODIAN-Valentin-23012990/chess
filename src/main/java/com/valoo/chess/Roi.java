@@ -4,19 +4,36 @@ public class Roi extends Piece {
 
     private int nbCoups;
 
+    /**
+     * @param color couleur du roi
+     * @param type type du roi
+     * @param couleur couleur du roi
+     * @param x  position x
+     * @param y  position y
+     */
     public Roi(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
         nbCoups = 0;
     }
 
+    /**
+     * @return nombre de coups du roi
+     */
     public int getNbCoups() {
         return nbCoups;
     }
 
+    /**
+     * Incrémente le nombre de coups joués par le roi
+     */
     public void jouerRoi() {
         nbCoups++;
     }
 
+    /**
+     * @param board plateau de jeu
+     * @return tableau de coordonnées de toutes les positions possibles
+     */
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
@@ -70,6 +87,9 @@ public class Roi extends Piece {
     }
 
 
+    /**
+     * @return image du roi
+     */
     public String getImage() {
         if (getCouleur() == 0) {
             return "/roi_noir.png";

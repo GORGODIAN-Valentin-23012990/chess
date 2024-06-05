@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+    <list default="true" id="6b5cbdbe-91df-4785-a7a0-86f0d7c06d19" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Cavalier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Cavalier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Fou.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Fou.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Pion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Pion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Reine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Reine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Roi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Roi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Tour.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,14 +25,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="ProjectId" id="2hPqXQpTGT8WWcu8Bj2QBPW3CPU" />
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/valoo/chess/Reine.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="2hMwkfuNQUwdmrLUQsrbp4sWctZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,18 +46,29 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/amuhome/b23010591/Documents/java/javafx/chess&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/amuhome/l23004062/Documents/dev orienté objet/fizzbuzz&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.valoo.chess" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Tournoi">
     <configuration name="Chess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.valoo.chess.Chess" />
       <module name="chess" />
@@ -60,85 +82,117 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tournoi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.Tournoi" />
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PieceTest.testRoiCanMoveToValidPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.PieceTest" />
+      <option name="METHOD_NAME" value="testRoiCanMoveToValidPosition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.PionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PionTest.validMoves" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.PionTest" />
+      <option name="METHOD_NAME" value="validMoves" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Tournoi" />
         <item itemvalue="Application.Chess" />
+        <item itemvalue="JUnit.PionTest" />
+        <item itemvalue="JUnit.PionTest.validMoves" />
+        <item itemvalue="JUnit.PieceTest.testRoiCanMoveToValidPosition" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="" />
-      <created>1717506098367</created>
+      <changelist id="6b5cbdbe-91df-4785-a7a0-86f0d7c06d19" name="Changes" comment="" />
+      <created>1717417399281</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1717506098367</updated>
-      <workItem from="1717506100031" duration="1023000" />
-      <workItem from="1717568837107" duration="2644000" />
-      <workItem from="1717572069880" duration="595000" />
+      <updated>1717417399281</updated>
+      <workItem from="1717417400872" duration="4298000" />
+      <workItem from="1717489473767" duration="123000" />
+      <workItem from="1717492514373" duration="3539000" />
+      <workItem from="1717509683892" duration="4132000" />
+      <workItem from="1717568393516" duration="5970000" />
+      <workItem from="1717574781638" duration="7691000" />
+      <workItem from="1717587500480" duration="4801000" />
     </task>
-    <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
-      <created>1717572284978</created>
+    <task id="LOCAL-00001" summary="ajout du tournoi">
+      <created>1717571272388</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1717572284978</updated>
+      <updated>1717571272388</updated>
     </task>
-    <task id="LOCAL-00002" summary="Fin de la partie quand le roi meurt">
-      <created>1717572842278</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1717572842278</updated>
-    </task>
-    <task id="LOCAL-00003" summary="d">
-      <created>1717573011951</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1717573011951</updated>
-    </task>
-    <task id="LOCAL-00004" summary="trop cool mec">
-      <created>1717575716607</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1717575716607</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Bot marche">
-      <created>1717576058980</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1717576058980</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Système de message de fin de partie">
-      <created>1717577947075</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1717577947075</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Système de message de fin de partie">
-      <created>1717579311811</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1717579311811</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fin de la partie quand le roi meurt" />
-    <MESSAGE value="d" />
-    <MESSAGE value="trop cool mec" />
-    <MESSAGE value="Bot marche" />
-    <MESSAGE value="Système de message de fin de partie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Système de message de fin de partie" />
+    <MESSAGE value="ajout du tournoi" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout du tournoi" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
