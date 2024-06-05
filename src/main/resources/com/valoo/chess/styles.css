@@ -39,20 +39,20 @@
 }
 
 
-#nvPartieBtn {
+#NVPartie {
     -fx-background-color: #21201D;
     -fx-text-fill: white;
     -fx-font-size: 10px;
 }
 
-#partiesBtn {
+#Partie {
     -fx-background-color: black;
     -fx-text-fill: #90908E;
     -fx-font-size: 10px;
 }
 
 
-#btnJoueurs {
+#Joueurs {
     -fx-background-color: black;
     -fx-text-fill: #90908E;
     -fx-font-size: 10px;

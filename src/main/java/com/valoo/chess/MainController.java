@@ -61,7 +61,6 @@ public class MainController {
 
     public void initialize() {
         menuJoueur.setVisible(false);
-        menuPrincipal.setVisible(false);
         menuPartie.setVisible(false);
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
