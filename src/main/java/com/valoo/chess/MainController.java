@@ -5,12 +5,17 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
 
 public class MainController {
     @FXML
@@ -26,10 +31,26 @@ public class MainController {
 
     @FXML
     private Label endgameMessage;
-
+    @FXML
+    private VBox menuJoueur;
+    @FXML
+    VBox menuPartie;
+    @FXML
+    VBox menuPrincipal;
     @FXML
     private ImageView iconBottomRight;
 
+    @FXML
+    Button NVPartie;
+    @FXML
+    Button Partie;
+    @FXML
+    Button Joueurs;
+
+    ArrayList<Node> Menu = new ArrayList<Node>();
+    ArrayList<Node> Menu2 = new ArrayList<Node>();
+    ArrayList<Node> Menu3 = new ArrayList<Node>();
+    ArrayList<Node> MainMenu = new ArrayList<Node>();
     private Timer timer1;
     private Timer timer2;
     private ChessBoard chessBoard;
@@ -39,6 +60,9 @@ public class MainController {
     private int seconds;
 
     public void initialize() {
+        menuJoueur.setVisible(false);
+        menuPrincipal.setVisible(false);
+        menuPartie.setVisible(false);
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
                 timer1.tpsDecr(1);
@@ -48,8 +72,20 @@ public class MainController {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
 
+
+        Partie.setOnAction(event -> showVBox(menuPartie));
+        Joueurs.setOnAction(event -> showVBox(menuJoueur));
+        NVPartie.setOnAction(event -> showVBox(menuPrincipal));
         btnJouer.setOnAction(event -> handleJouerButtonAction());
     }
+    private void showVBox(VBox vbox) {
+        menuJoueur.setVisible(false);
+        menuPrincipal.setVisible(false);
+        menuPartie.setVisible(false);
+        vbox.setVisible(true);
+    }
+
+
 
     private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
