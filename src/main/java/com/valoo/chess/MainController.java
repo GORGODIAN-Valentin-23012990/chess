@@ -23,6 +23,9 @@ public class MainController {
     @FXML
     private Button btnJouer;
 
+    @FXML
+    private Label endgameMessage;
+
     private Timer timer1;
     private Timer timer2;
     private ChessBoard chessBoard;
@@ -115,9 +118,14 @@ public class MainController {
         switchActivePlayer();
     }
 
+    public void freezeTimers() {
+        timeline.stop();
+    }
+
     @FXML
     private void handleJouerButtonAction() {
         gameCode(2);
+        endgameMessage.setText("Partie en cours...");
     }
 
     @FXML
@@ -130,5 +138,14 @@ public class MainController {
         // remettre les timers au temps initial
         timer1.reset(seconds);
         timer2.reset(seconds);
+    }
+
+    public void showMessageEnding(int color) {
+        if (color == 0) {
+            endgameMessage.setText("Le joueur 1 a gagné !");
+        } else {
+            endgameMessage.setText("Le joueur 2 a gagné !");
+        }
+        freezeTimers();
     }
 }

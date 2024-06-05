@@ -24,7 +24,6 @@ public class ChessBoard {
     private Bot bot;
 
     private MainController mainController;
-    private Label messageLabel;
 
 
     public ChessBoard(int couleurBot, MainController mainController) {
@@ -39,17 +38,6 @@ public class ChessBoard {
         }
         createBoard();
         placePieces();
-        messageLabel = new Label();
-        messageLabel.setTextFill(Color.RED);
-        messageLabel.setFont(new Font("Arial", 30));
-        messageLabel.setAlignment(Pos.CENTER);
-        messageLabel.setVisible(false);
-        board.getChildren().add(messageLabel);
-    }
-
-    public void showMessage(String message) {
-        messageLabel.setText(message);
-        messageLabel.setVisible(true);
     }
 
     public void setCouleurBot(int couleurBot) {
@@ -78,6 +66,7 @@ public class ChessBoard {
                 row.getChildren().add(square);
             }
             board.getChildren().add(row);
+            board.getStyleClass().add("board");
         }
     }
 
@@ -180,11 +169,8 @@ public class ChessBoard {
     }
 
     public void finDePartie(int color) {
-        if (color == 0) {
-            showMessage("Les blancs ont gagné !");
-        } else {
-            showMessage("Les noirs ont gagné !");
-        }
+        mainController.showMessageEnding(color);
+        mainController.freezeTimers();
         tour = 2;
         FichierCoup fichierCoup = new FichierCoup("coups.txt");
         fichierCoup.enregistrerCoup(coups.toString());

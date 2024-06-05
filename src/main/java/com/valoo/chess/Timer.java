@@ -25,4 +25,5 @@ public class Timer {
     public void reset(int seconds) {
         timeBlanc.set(seconds);
     }
+
 }

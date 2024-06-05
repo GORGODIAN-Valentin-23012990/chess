@@ -21,7 +21,7 @@
                     <Image url="@/icone.jpg"/>
                 </image>
             </ImageView>
-            <Label id="J1Label" text="Adversaire" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label id="J1Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime1" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
@@ -36,7 +36,7 @@
                     <Image url="@/icone2.png"/>
                 </image>
             </ImageView>
-            <Label id="J2Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label id="J2Label" text="Joueur 2" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime2" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
@@ -71,6 +71,8 @@
                     </ImageView>
                 </graphic>
             </Button>
+
+            <Label fx:id="endgameMessage" text="" style="-fx-font-size: 20px;"/>
 
         </VBox>
     </VBox>
