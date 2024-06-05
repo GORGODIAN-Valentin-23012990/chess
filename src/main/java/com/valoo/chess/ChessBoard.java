@@ -28,7 +28,6 @@ public class ChessBoard {
         }
         createBoard();
         placePieces();
-        tour = 2;
     }
 
     public void setCouleurBot(int couleurBot) {
@@ -84,14 +83,12 @@ public class ChessBoard {
                 if(tour == 0) tour = 1;
                 else tour = 0;
 
-                if(couleurBot == 1) {
+                if(couleurBot == 1 && tour == 1) {
+                    tour = 0;
                     bot.play(this, 1);
-                    if(tour == 1) tour = 0;
-                    else tour = 1;
-                } else if (couleurBot == 0){
+                } else if (couleurBot == 0 && tour == 0) {
+                    tour = 1;
                     bot.play(this, 0);
-                    if(tour == 0) tour = 1;
-                    else tour = 0;
                 }
 
             } else {
