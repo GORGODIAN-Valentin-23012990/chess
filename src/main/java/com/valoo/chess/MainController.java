@@ -45,9 +45,7 @@ public class MainController {
 
     }
 
-    @FXML
-    private void handleJouerButtonAction() {
-
+    private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
 
@@ -111,10 +109,20 @@ public class MainController {
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
-        chessBoard = new ChessBoard(2, this);
+        chessBoard = new ChessBoard(bot, this);
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         System.out.println("Jeu réinitialisé !");
         switchActivePlayer();
+    }
+
+    @FXML
+    private void handleJouerButtonAction() {
+        gameCode(2);
+    }
+
+    @FXML
+    public void handleBotButtonAction() {
+        gameCode(1);
     }
 
     public void switchActivePlayer() {
