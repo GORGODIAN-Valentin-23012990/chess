@@ -91,7 +91,7 @@ public class MainController {
             timeline.stop();
         }
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
                 timer1.tpsDecr(1);
             } else {
