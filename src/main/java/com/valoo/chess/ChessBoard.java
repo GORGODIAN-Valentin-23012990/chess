@@ -28,6 +28,8 @@ public class ChessBoard {
         if(couleurBot == 0 || couleurBot == 1) {
             this.couleurBot = couleurBot;
             bot = new Bot(true);
+        } else if (couleurBot == 2) {
+            bot = new Bot(false);
         }
         createBoard();
         placePieces();
@@ -87,11 +89,11 @@ public class ChessBoard {
                 if(tour == 0) tour = 1;
                 else if(tour == 1) tour = 0;
 
-                if(couleurBot == 1 && tour == 1) {
+                if(bot.isActivated && couleurBot == 1 && tour == 1) {
                     tour = 0;
                     bot.play(this, 1);
                     mainController.switchActivePlayer();
-                } else if (couleurBot == 0 && tour == 0) {
+                } else if (bot.isActivated && couleurBot == 0 && tour == 0) {
                     tour = 1;
                     bot.play(this, 0);
                     mainController.switchActivePlayer();

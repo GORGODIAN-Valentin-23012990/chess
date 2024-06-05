@@ -1,0 +1,163 @@
+Index: src/main/java/com/valoo/chess/MainController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.valoo.chess;\n\nimport javafx.animation.KeyFrame;\nimport javafx.animation.Timeline;\nimport javafx.beans.binding.Bindings;\nimport javafx.beans.binding.StringBinding;\nimport javafx.fxml.FXML;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.ComboBox;\nimport javafx.scene.control.Label;\nimport javafx.scene.layout.VBox;\nimport javafx.util.Duration;\n\npublic class MainController {\n    @FXML\n    private ComboBox<String> myComboBox;\n    @FXML\n    private Label labelTime1;\n    @FXML\n    private VBox chessBoardContainer;\n    @FXML\n    private Label labelTime2;\n    @FXML\n    private Button btnJouer;\n\n    private Timer timer1;\n    private Timer timer2;\n    private ChessBoard chessBoard;\n    private int activePlayer; // 1 pour le joueur 1, 2 pour le joueur 2\n\n    public void initialize() {\n        // Ajouter le gestionnaire d'événements pour le bouton \"Jouer\"\n        btnJouer.setOnAction(event -> handleJouerButtonAction());\n        timer1 = new Timer(600);\n        timer2 = new Timer(600);\n        activePlayer = 1; // Le joueur 1 commence\n\n        StringBinding timeBinding1 = Bindings.createStringBinding(() -> {\n            return String.format(\"%02d:%02d\", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);\n        }, timer1.timeBlancProperty());\n        labelTime1.textProperty().bind(timeBinding1);\n\n        StringBinding timeBinding2 = Bindings.createStringBinding(() -> {\n            return String.format(\"%02d:%02d\", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);\n        }, timer2.timeBlancProperty());\n        labelTime2.textProperty().bind(timeBinding2);\n\n        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {\n            if (activePlayer == 1) {\n                timer1.tpsDecr(1);\n            } else {\n                timer2.tpsDecr(1);\n            }\n        }));\n        timeline.setCycleCount(Timeline.INDEFINITE);\n        timeline.play();\n    }\n\n    @FXML\n    private void handleJouerButtonAction() {\n        chessBoard = new ChessBoard(1, this);\n        chessBoardContainer.getChildren().add(chessBoard.getBoard());\n        System.out.println(\"Jeu réinitialisé !\");\n        switchActivePlayer();\n    }\n\n    public void switchActivePlayer() {\n        activePlayer = activePlayer == 1 ? 2 : 1;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/valoo/chess/MainController.java b/src/main/java/com/valoo/chess/MainController.java
+--- a/src/main/java/com/valoo/chess/MainController.java	(revision bd668efddd8e100d905c123ebf67b3defa0223cb)
++++ b/src/main/java/com/valoo/chess/MainController.java	(date 1717571640137)
+@@ -58,7 +58,7 @@
+ 
+     @FXML
+     private void handleJouerButtonAction() {
+-        chessBoard = new ChessBoard(1, this);
++        chessBoard = new ChessBoard(2, this);
+         chessBoardContainer.getChildren().add(chessBoard.getBoard());
+         System.out.println("Jeu réinitialisé !");
+         switchActivePlayer();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"2b2c82c4-a929-44e8-af22-9f503a323879\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/Timer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/valoo/chess/Timer.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2hPqXQpTGT8WWcu8Bj2QBPW3CPU\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Chess\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.valoo.chess.Chess\" />\n      <module name=\"chess\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.valoo.chess.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Chess\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"2b2c82c4-a929-44e8-af22-9f503a323879\" name=\"Changes\" comment=\"\" />\n      <created>1717506098367</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1717506098367</updated>\n      <workItem from=\"1717506100031\" duration=\"1023000\" />\n      <workItem from=\"1717568837107\" duration=\"2644000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision bd668efddd8e100d905c123ebf67b3defa0223cb)
++++ b/.idea/workspace.xml	(date 1717572297118)
+@@ -5,10 +5,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Timer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -64,11 +65,30 @@
+       <option name="presentableId" value="Default" />
+       <updated>1717506098367</updated>
+       <workItem from="1717506100031" duration="1023000" />
+-      <workItem from="1717568837107" duration="2644000" />
++      <workItem from="1717568837107" duration="3458000" />
++    </task>
++    <task id="LOCAL-00001" summary="mainController">
++      <created>1717571502203</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1717571502203</updated>
+     </task>
++    <task id="LOCAL-00002" summary="mainController">
++      <created>1717571589162</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1717571589162</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="mainController" />
++    <option name="LAST_COMMIT_MESSAGE" value="mainController" />
++  </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/com/valoo/chess/hello-view.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.scene.control.*?>\n<?import javafx.scene.layout.*?>\n<?import javafx.scene.image.*?>\n<?import javafx.scene.text.*?>\n<?import javafx.collections.FXCollections?>\n<?import java.lang.String?>\n<?import java.net.URL?>\n\n<?import javafx.scene.shape.Box?>\n<?import javafx.geometry.Insets?>\n<HBox xmlns:fx=\"http://javafx.com/fxml\" fx:controller=\"com.valoo.chess.MainController\" style=\"-fx-background-color: #3c3f41;\">\n    <stylesheets>\n        <URL value=\"@styles.css\" />\n    </stylesheets>\n    <VBox style=\"-fx-background-color: #2b2b2b;\" prefWidth=\"600\">\n        <HBox spacing=\"10\" alignment=\"CENTER_LEFT\" style=\"-fx-padding: 10; -fx-background-color: #393939;\">\n            <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                <image>\n                    <Image url=\"@/icone.jpg\"/>\n                </image>\n            </ImageView>\n            <Label id=\"J1Label\" text=\"Adversaire\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n            <Pane HBox.hgrow=\"ALWAYS\"/>\n            <Label fx:id=\"labelTime1\" text=\"10:00\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n        </HBox>\n\n        <VBox fx:id=\"chessBoardContainer\" spacing=\"10\" alignment=\"CENTER\" style=\"-fx-padding: 20;\">\n            <!-- On met le plateau d'échec ici -->\n        </VBox>\n\n        <HBox spacing=\"10\" alignment=\"CENTER_LEFT\" style=\"-fx-padding: 10; -fx-background-color: #393939;\">\n            <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                <image>\n                    <Image url=\"@/icone2.png\"/>\n                </image>\n            </ImageView>\n            <Label id=\"J2Label\" text=\"Joueur 1\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n            <Pane HBox.hgrow=\"ALWAYS\"/>\n            <Label fx:id=\"labelTime2\" text=\"10:00\" textFill=\"white\" style=\"-fx-font-size: 18px;\"/>\n        </HBox>\n    </VBox>\n\n    <VBox spacing=\"20\" style=\"-fx-background-color: #21201D;\" prefWidth=\"432\" prefHeight=\"900\">\n        <HBox alignment=\"TOP_CENTER\">\n            <Button fx:id=\"nvPartieBtn\" text=\"Nouvelle partie\" prefWidth=\"150\" prefHeight=\"40\"/>\n            <Button fx:id=\"partiesBtn\" text=\"Parties\"  prefWidth=\"150\" prefHeight=\"40\"/>\n            <Button fx:id=\"joueursBtn\" text=\"Joueurs\"  prefWidth=\"150\" prefHeight=\"40\"/>\n        </HBox>\n        <VBox alignment=\"CENTER\" spacing=\"20\">\n            <ComboBox fx:id=\"myComboBox\" promptText=\"10 min\" style=\"-fx-font-size: 20px;\" prefWidth=\"350\" prefHeight=\"60\" >\n                <items>\n                    <FXCollections fx:factory=\"observableArrayList\">\n                        <String fx:value=\"5 minutes\" />\n                        <String fx:value=\"10 minutes\" />\n                        <String fx:value=\"15 minutes\" />\n                    </FXCollections>\n                </items>\n            </ComboBox>\n            <Button fx:id=\"btnJouer\" text=\"Jouer\" prefHeight=\"60\" prefWidth=\"350\" onAction=\"#handleJouerButtonAction\"/>\n\n            <VBox prefHeight=\"100\" />\n\n            <Button fx:id=\"btnTournoi\" text=\"Tournois\" prefHeight=\"60\" prefWidth=\"350\">\n                <graphic>\n                    <ImageView fitHeight=\"32\" fitWidth=\"32\" pickOnBounds=\"true\" preserveRatio=\"true\">\n                        <image>\n                            <Image url=\"@/medaille.png\"/>\n                        </image>\n                    </ImageView>\n                </graphic>\n            </Button>\n\n        </VBox>\n    </VBox>\n</HBox>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/valoo/chess/hello-view.fxml b/src/main/resources/com/valoo/chess/hello-view.fxml
+--- a/src/main/resources/com/valoo/chess/hello-view.fxml	(revision bd668efddd8e100d905c123ebf67b3defa0223cb)
++++ b/src/main/resources/com/valoo/chess/hello-view.fxml	(date 1717572297062)
+@@ -23,7 +23,7 @@
+             </ImageView>
+             <Label id="J1Label" text="Adversaire" textFill="white" style="-fx-font-size: 18px;"/>
+             <Pane HBox.hgrow="ALWAYS"/>
+-            <Label fx:id="labelTime1" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
++            <Label fx:id="labelTime1" text="3:00" textFill="white" style="-fx-font-size: 18px;"/>
+         </HBox>
+ 
+         <VBox fx:id="chessBoardContainer" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+@@ -38,7 +38,7 @@
+             </ImageView>
+             <Label id="J2Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
+             <Pane HBox.hgrow="ALWAYS"/>
+-            <Label fx:id="labelTime2" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
++            <Label fx:id="labelTime2" text="3:00" textFill="white" style="-fx-font-size: 18px;"/>
+         </HBox>
+     </VBox>
+ 
+@@ -52,9 +52,9 @@
+             <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
+                 <items>
+                     <FXCollections fx:factory="observableArrayList">
+-                        <String fx:value="5 minutes" />
+-                        <String fx:value="10 minutes" />
+-                        <String fx:value="15 minutes" />
++                        <String fx:value="30 secondes" />
++                        <String fx:value="1 minute" />
++                        <String fx:value="3 minutes" />
+                     </FXCollections>
+                 </items>
+             </ComboBox>
+Index: coups.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>null(3,1 -> 3,3); null(5,6 -> 5,4); null(4,1 -> 4,2); null(4,7 -> 5,6); null(3,0 -> 7,4); null(3,7 -> 4,7); null(3,3 -> 3,4); null(2,6 -> 2,5); Pion[x=2,y=5](3,4 -> 2,5); Pion[x=2,y=5](1,6 -> 2,5); null(2,1 -> 2,3); null(6,7 -> 5,5); null(5,0 -> 3,2); null(3,6 -> 3,4); Pion[x=3,y=4](2,3 -> 3,4); Pion[x=3,y=4](2,5 -> 3,4); Roi[x=5,y=6](7,4 -> 5,6); \n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/coups.txt b/coups.txt
+--- a/coups.txt	(revision bd668efddd8e100d905c123ebf67b3defa0223cb)
++++ b/coups.txt	(date 1717571786021)
+@@ -1,1 +1,2 @@
+ null(3,1 -> 3,3); null(5,6 -> 5,4); null(4,1 -> 4,2); null(4,7 -> 5,6); null(3,0 -> 7,4); null(3,7 -> 4,7); null(3,3 -> 3,4); null(2,6 -> 2,5); Pion[x=2,y=5](3,4 -> 2,5); Pion[x=2,y=5](1,6 -> 2,5); null(2,1 -> 2,3); null(6,7 -> 5,5); null(5,0 -> 3,2); null(3,6 -> 3,4); Pion[x=3,y=4](2,3 -> 3,4); Pion[x=3,y=4](2,5 -> 3,4); Roi[x=5,y=6](7,4 -> 5,6); 
++null(4,1 -> 4,3); null(3,6 -> 3,4); null(3,4 -> 3,3); null(3,3 -> 3,2); Pion[x=2,y=1](3,2 -> 2,1); Reine[x=3,y=0](2,1 -> 3,0); Promotion -> Reine; Roi[x=4,y=0](3,0 -> 4,0); 
+Index: src/main/java/com/valoo/chess/ChessBoard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.valoo.chess;\n\nimport javafx.beans.binding.Binding;\nimport javafx.beans.binding.Bindings;\nimport javafx.beans.property.IntegerProperty;\nimport javafx.beans.property.SimpleIntegerProperty;\nimport javafx.scene.Node;\nimport javafx.scene.image.ImageView;\nimport javafx.scene.layout.HBox;\nimport javafx.scene.layout.StackPane;\nimport javafx.scene.layout.VBox;\n\npublic class ChessBoard {\n    private VBox board;\n    private Piece[][] matPiece;\n    private Piece selectedPiece;\n    private int tour;\n    private StringBuilder coups = new StringBuilder();\n    private int couleurBot;\n    private Bot bot;\n\n    private MainController mainController;\n\n    public ChessBoard(int couleurBot, MainController mainController) {\n        this.mainController = mainController;\n        board = new VBox();\n        tour = 0;\n        if(couleurBot == 0 || couleurBot == 1) {\n            this.couleurBot = couleurBot;\n            bot = new Bot(true);\n        }\n        createBoard();\n        placePieces();\n    }\n\n    public void setCouleurBot(int couleurBot) {\n        this.couleurBot = couleurBot;\n    }\n\n    public void setTour(int tour) {\n        this.tour = tour;\n    }\n\n    private void createBoard() {\n        for (int i = 0; i < 8; i++) {\n            HBox row = new HBox();\n            for (int j = 0; j < 8; j++) {\n                StackPane square = new StackPane();\n                square.setMinHeight(90);\n                square.setMinWidth(90);\n                if ((i + j) % 2 == 0) {\n                    square.setStyle(\"-fx-background-color: #7D945D\");\n                } else {\n                    square.setStyle(\"-fx-background-color: #EEEED5\");\n                }\n                int x = j;\n                int y = i;\n                square.setOnMouseClicked(event -> handleSquareClick(x, y));\n                row.getChildren().add(square);\n            }\n            board.getChildren().add(row);\n        }\n    }\n\n    private void handleSquareClick(int x, int y) {\n        Piece clickedPiece = getPiece(x, y);\n\n        if (clickedPiece != null && clickedPiece.getCouleur() == tour) {\n            if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {\n                selectedPiece = null;\n                updateBoard();\n                colorBoard();\n                if(tour == 0) tour = 1;\n                else tour = 0;\n                return;\n            }\n        }\n\n        if (selectedPiece == null) {\n            selectPiece(x, y);\n        } else {\n            if (movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {\n                selectedPiece = null;\n                mainController.switchActivePlayer();\n                updateBoard();\n                colorBoard();\n                if(tour == 0) tour = 1;\n                else tour = 0;\n\n                if(couleurBot == 1 && tour == 1) {\n                    tour = 0;\n                    bot.play(this, 1);\n                    mainController.switchActivePlayer();\n                } else if (couleurBot == 0 && tour == 0) {\n                    tour = 1;\n                    bot.play(this, 0);\n                    mainController.switchActivePlayer();\n                }\n\n            } else {\n                selectedPiece = null;\n                colorBoard();\n            }\n        }\n    }\n\n    private void placePieces() {\n        matPiece = new Piece[][]{\n                {new Tour(\"blanc\", \"tour\", 0, 0, 0), new Cavalier(\"blanc\", \"cavalier\", 0, 1, 0), new Fou(\"blanc\", \"fou\", 0, 2, 0), new Reine(\"blanc\", \"reine\", 0, 3, 0), new Roi(\"blanc\", \"roi\", 0, 4, 0), new Fou(\"blanc\", \"fou\", 0, 5, 0), new Cavalier(\"blanc\", \"cavalier\", 0, 6, 0), new Tour(\"blanc\", \"tour\", 0, 7, 0)},\n                {new Pion(\"blanc\", \"pion\", 0, 0, 1), new Pion(\"blanc\", \"pion\", 0, 1, 1), new Pion(\"blanc\", \"pion\", 0, 2, 1), new Pion(\"blanc\", \"pion\", 0, 3, 1), new Pion(\"blanc\", \"pion\", 0, 4, 1), new Pion(\"blanc\", \"pion\", 0, 5, 1), new Pion(\"blanc\", \"pion\", 0, 6, 1), new Pion(\"blanc\", \"pion\", 0, 7, 1)},\n                {null, null, null, null, null, null, null, null},\n                {null, null, null, null, null, null, null, null},\n                {null, null, null, null, null, null, null, null},\n                {null, null, null, null, null, null, null, null},\n                {new Pion(\"noir\", \"pion\", 1, 0, 6), new Pion(\"noir\", \"pion\", 1, 1, 6), new Pion(\"noir\", \"pion\", 1, 2, 6), new Pion(\"noir\", \"pion\", 1, 3, 6), new Pion(\"noir\", \"pion\", 1, 4, 6), new Pion(\"noir\", \"pion\", 1, 5, 6), new Pion(\"noir\", \"pion\", 1, 6, 6), new Pion(\"noir\", \"pion\", 1, 7, 6)},\n                {new Tour(\"noir\", \"tour\", 1, 0, 7), new Cavalier(\"noir\", \"cavalier\", 1, 1, 7), new Fou(\"noir\", \"fou\", 1, 2, 7), new Reine(\"noir\", \"reine\", 1, 3, 7), new Roi(\"noir\", \"roi\", 1, 4, 7), new Fou(\"noir\", \"fou\", 1, 5, 7), new Cavalier(\"noir\", \"cavalier\", 1, 6, 7), new Tour(\"noir\", \"tour\", 1, 7, 7)}\n        };\n\n        updateBoard();\n    }\n\n    public void updateBoard() {\n        for (int i = 0; i < 8; i++) {\n            HBox row = (HBox) board.getChildren().get(i);\n            for (int j = 0; j < 8; j++) {\n                StackPane square = (StackPane) row.getChildren().get(j);\n                square.getChildren().clear();\n                Piece piece = matPiece[i][j];\n                if (piece != null) {\n                    ImageView pieceView = new ImageView(piece.getImagePiece());\n                    pieceView.setFitWidth(90);\n                    pieceView.setFitHeight(90);\n                    pieceView.setUserData(piece);\n                    square.getChildren().add(pieceView);\n                }\n            }\n        }\n    }\n\n    public Piece getPiece(int x, int y) {\n        return matPiece[y][x];\n    }\n\n    public void selectPiece(int x, int y) {\n        Piece piece = getPiece(x, y);\n\n        if (piece != null && piece.getCouleur() == tour) {\n            selectedPiece = piece;\n            highlightValidMoves(piece);\n        }\n    }\n\n    private void highlightValidMoves(Piece piece) {\n        int[][] validMoves = piece.validMoves(this);\n        for (int[] move : validMoves) {\n            int x = move[0];\n            int y = move[1];\n            StackPane targetSquare = (StackPane) ((HBox) board.getChildren().get(y)).getChildren().get(x);\n            targetSquare.setStyle(\"-fx-background-color: #E2C64B\");\n        }\n    }\n\n    public void finDePartie() {\n        tour = 2;\n        FichierCoup fichierCoup = new FichierCoup(\"coups.txt\");\n        fichierCoup.enregistrerCoup(coups.toString());\n    }\n\n    public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {\n        Piece piece = getPiece(currentX, currentY);\n        if (piece != null) {\n            int[][] validMoves = piece.validMoves(this);\n            for (int[] move : validMoves) {\n                if (move[0] == targetX && move[1] == targetY) {\n                    Piece targetPiece = getPiece(targetX, targetY);\n                    if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {\n                        coups.append(targetPiece)\n                                .append(\"(\").append(currentX).append(\",\").append(currentY).append(\" -> \")\n                                .append(targetX).append(\",\").append(targetY).append(\"); \");\n\n                        if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {\n                            int tourX = targetX == 6 ? 7 : 0;\n                            int tourY = piece.getCouleur() == 0 ? 0 : 7;\n                            Piece tour = getPiece(tourX, tourY);\n                            matPiece[tourY][tourX] = null;\n                            matPiece[tourY][targetX == 6 ? 5 : 3] = tour;\n                            tour.setX(targetX == 6 ? 5 : 3);\n                            tour.setY(tourY);\n                            coups.append(\"Tour(\").append(tourX).append(\",\").append(tourY).append(\" -> \")\n                                    .append(targetX == 6 ? 5 : 3).append(\",\").append(tourY).append(\"); \");\n                        }\n\n                        if (targetPiece instanceof Roi) {\n                            System.out.println(\"Partie terminée\");\n                            finDePartie();\n                        }\n\n                        matPiece[targetY][targetX] = piece;\n                        matPiece[currentY][currentX] = null;\n\n                        if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {\n                            matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? \"blanc\" : \"noir\", \"reine\", piece.getCouleur(), targetX, targetY);\n                            coups.append(\"Promotion -> Reine; \");\n                        }\n\n                        piece.setX(targetX);\n                        piece.setY(targetY);\n\n                        return true;\n                    }\n                }\n            }\n        }\n\n        return false;\n    }\n\n    private void colorBoard() {\n        for (int i = 0; i < 8; i++) {\n            HBox row = (HBox) board.getChildren().get(i);\n            for (int j = 0; j < 8; j++) {\n                StackPane square = (StackPane) row.getChildren().get(j);\n                if ((i + j) % 2 == 0) {\n                    square.setStyle(\"-fx-background-color: #7D945D\");\n                } else {\n                    square.setStyle(\"-fx-background-color: #EEEED5\");\n                }\n            }\n        }\n    }\n\n    public VBox getBoard() {\n        return board;\n    }\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/valoo/chess/ChessBoard.java b/src/main/java/com/valoo/chess/ChessBoard.java
+--- a/src/main/java/com/valoo/chess/ChessBoard.java	(revision bd668efddd8e100d905c123ebf67b3defa0223cb)
++++ b/src/main/java/com/valoo/chess/ChessBoard.java	(date 1717571899972)
+@@ -28,6 +28,8 @@
+         if(couleurBot == 0 || couleurBot == 1) {
+             this.couleurBot = couleurBot;
+             bot = new Bot(true);
++        } else if (couleurBot == 2) {
++            bot = new Bot(false);
+         }
+         createBoard();
+         placePieces();
+@@ -87,11 +89,11 @@
+                 if(tour == 0) tour = 1;
+                 else tour = 0;
+ 
+-                if(couleurBot == 1 && tour == 1) {
++                if(bot.isActivated && couleurBot == 1 && tour == 1) {
+                     tour = 0;
+                     bot.play(this, 1);
+                     mainController.switchActivePlayer();
+-                } else if (couleurBot == 0 && tour == 0) {
++                } else if (bot.isActivated && couleurBot == 0 && tour == 0) {
+                     tour = 1;
+                     bot.play(this, 0);
+                     mainController.switchActivePlayer();

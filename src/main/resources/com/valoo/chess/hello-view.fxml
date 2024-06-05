@@ -23,7 +23,7 @@
             </ImageView>
             <Label id="J1Label" text="Adversaire" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
-            <Label fx:id="labelTime1" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label fx:id="labelTime1" text="3:00" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
 
         <VBox fx:id="chessBoardContainer" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
@@ -38,7 +38,7 @@
             </ImageView>
             <Label id="J2Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
-            <Label fx:id="labelTime2" text="10:00" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label fx:id="labelTime2" text="3:00" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
     </VBox>
 
@@ -49,7 +49,7 @@
             <Button fx:id="joueursBtn" text="Joueurs"  prefWidth="150" prefHeight="40"/>
         </HBox>
         <VBox alignment="CENTER" spacing="20">
-            <ComboBox fx:id="myComboBox" promptText="3 minutes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
+            <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="30 secondes" />
