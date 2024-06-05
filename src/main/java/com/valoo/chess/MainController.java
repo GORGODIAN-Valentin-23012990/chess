@@ -41,33 +41,12 @@ public class MainController {
         timeline.setCycleCount(Timeline.INDEFINITE);
         // Ajouter le gestionnaire d'événements pour le bouton "Jouer"
         btnJouer.setOnAction(event -> handleJouerButtonAction());
-        timer1 = new Timer(600);
-        timer2 = new Timer(600);
-        activePlayer = 1; // Le joueur 1 commence
 
-        StringBinding timeBinding1 = Bindings.createStringBinding(() -> {
-            return String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);
-        }, timer1.timeBlancProperty());
-        labelTime1.textProperty().bind(timeBinding1);
-
-        StringBinding timeBinding2 = Bindings.createStringBinding(() -> {
-            return String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);
-        }, timer2.timeBlancProperty());
-        labelTime2.textProperty().bind(timeBinding2);
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            if (activePlayer == 1) {
-                timer1.tpsDecr(1);
-            } else {
-                timer2.tpsDecr(1);
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
 
     @FXML
     private void handleJouerButtonAction() {
+
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         int seconds = 0;
 
@@ -83,7 +62,7 @@ public class MainController {
 
         timer1 = new Timer(seconds);
         timer2 = new Timer(seconds);
-        activePlayer = 1; // Le joueur 1 commence
+        activePlayer = 2; // Le joueur 1 commence
 
         StringBinding timeBinding1 = Bindings.createStringBinding(() -> {
             return String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);
@@ -94,6 +73,9 @@ public class MainController {
             return String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);
         }, timer2.timeBlancProperty());
         labelTime2.textProperty().bind(timeBinding2);
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
