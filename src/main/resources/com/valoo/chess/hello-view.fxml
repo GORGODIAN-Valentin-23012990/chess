@@ -49,12 +49,12 @@
             <Button fx:id="joueursBtn" text="Joueurs"  prefWidth="150" prefHeight="40"/>
         </HBox>
         <VBox alignment="CENTER" spacing="20">
-            <ComboBox fx:id="myComboBox" promptText="10 min" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
+            <ComboBox fx:id="myComboBox" promptText="3 minutes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="5 minutes" />
-                        <String fx:value="10 minutes" />
-                        <String fx:value="15 minutes" />
+                        <String fx:value="30 secondes" />
+                        <String fx:value="1 minute" />
+                        <String fx:value="3 minutes" />
                     </FXCollections>
                 </items>
             </ComboBox>

@@ -85,7 +85,7 @@ public class ChessBoard {
                 updateBoard();
                 colorBoard();
                 if(tour == 0) tour = 1;
-                else tour = 0;
+                else if(tour == 1) tour = 0;
 
                 if(couleurBot == 1 && tour == 1) {
                     tour = 0;
