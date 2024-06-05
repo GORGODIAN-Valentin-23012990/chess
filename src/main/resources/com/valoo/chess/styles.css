@@ -22,12 +22,12 @@
 }
 
 #labelTime1 {
+    -fx-border-radius: 5;
     -fx-text-fill: #FFFFFF; /* White text */
     -fx-font-size: 18px;
     -fx-background-color: grey; /* Green background */
     -fx-padding: 5;
     -fx-background-radius: 2;
-    -fx-border-radius: 2;
 }
 #labelTime2 {
     -fx-text-fill: #FFFFFF; /* White text */
@@ -58,6 +58,14 @@
     -fx-font-size: 10px;
 
 }
+.text-field {
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+    -fx-background-color: #2b2b2b; /* Couleur d'arrière-plan */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-border-color: #3c3f41; /* Couleur de la bordure */
+    -fx-font-size: 20px; /* Taille de la police */
+}
 
 #btnJouer {
     -fx-background-color: #4CAF50;
@@ -73,6 +81,15 @@
 }
 
 #btnTournoi {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#btnValider {
     -fx-background-color: #171715;
     -fx-text-fill: white;
     -fx-font-size: 25px;

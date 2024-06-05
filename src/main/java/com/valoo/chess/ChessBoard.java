@@ -25,9 +25,12 @@ public class ChessBoard {
     private Bot bot;
 
     private MainController mainController;
+    private FichierCoup fichierCoup;
 
 
     public ChessBoard(int couleurBot, MainController mainController) {
+        FichierCoup fichierCoup = new FichierCoup("coups.txt");
+        fichierCoup.enregistrerCoup("\n");
         this.mainController = mainController;
         board = new VBox();
         tour = 0;
@@ -177,12 +180,11 @@ public class ChessBoard {
         mainController.showMessageEnding(color);
         mainController.freezeTimers();
         tour = 2;
-        coups.append(";\n");
-        FichierCoup fichierCoup = new FichierCoup("coups.txt");
-        fichierCoup.enregistrerCoup(coups.toString());
+
     }
 
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
+        fichierCoup = new FichierCoup("coups.txt");
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
             int[][] validMoves = piece.validMoves(this);
@@ -192,7 +194,7 @@ public class ChessBoard {
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
                         // On stocke dans coups les coups joués avec le modèle suivant : currentX currentY targetX targetY
                         coups.append(currentX).append(currentY).append(targetX).append(targetY);
-
+                        fichierCoup.enregistrerCoup(coups.toString());
                         if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
                             int tourX = targetX == 6 ? 7 : 0;
                             int tourY = piece.getCouleur() == 0 ? 0 : 7;
@@ -201,8 +203,6 @@ public class ChessBoard {
                             matPiece[tourY][targetX == 6 ? 5 : 3] = tour;
                             tour.setX(targetX == 6 ? 5 : 3);
                             tour.setY(tourY);
-                            // On stocke le roque dans coups, avec le mouvement de la tour
-                            coups.append(targetX == 6 ? 5 : 3).append(tourY);
                         }
 
                         if (targetPiece instanceof Roi) {
@@ -214,8 +214,8 @@ public class ChessBoard {
 
                         if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {
                             matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? "blanc" : "noir", "reine", piece.getCouleur(), targetX, targetY);
-                            coups.append("Promotion -> Reine; ");
-                        }
+                            coups.append(currentX).append(currentY).append(targetX).append(targetY);
+                            fichierCoup.enregistrerCoup(coups.toString());                        }
 
                         piece.setX(targetX);
                         piece.setY(targetY);
@@ -241,6 +241,12 @@ public class ChessBoard {
                 }
             }
         }
+    }
+
+    // Fonction qui permet de charger tous les coups joués une partie x
+    public void chargerPartie(int x) {
+        FichierCoup fichierCoup = new FichierCoup("coups.txt");
+        fichierCoup.lireCoup(x);
     }
 
     public VBox getBoard() {
