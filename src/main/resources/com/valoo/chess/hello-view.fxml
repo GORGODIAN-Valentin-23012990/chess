@@ -74,8 +74,9 @@
                 </graphic>
             </Button>
 
-            <Label fx:id="endgameMessage" text="" style="-fx-font-size: 20px;"/>
-
+            <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
+            <!--Image du joueur 1-->
+            <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
         </VBox>
     </VBox>
 </HBox>

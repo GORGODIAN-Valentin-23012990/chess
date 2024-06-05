@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -242,11 +243,15 @@ public class ChessBoard {
         return board;
     }
 
+    public Image getIcon1() {
+        return new Image(getClass().getResourceAsStream("/icone.jpg"));
+    }
+
+    public Image getIcon2() {
+        return new Image(getClass().getResourceAsStream("/icone2.png"));
+    }
+
     public Bot getBot() {
         return bot;
     }
-
-
-
-
 }

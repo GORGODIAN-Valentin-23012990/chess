@@ -109,3 +109,16 @@
     -fx-max-height: 100px;
     -fx-text-alignment: center;
 }
+
+.afterMatch {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-max-width: 300px;
+    -fx-max-height: 100px;
+    -fx-text-alignment: center;
+}

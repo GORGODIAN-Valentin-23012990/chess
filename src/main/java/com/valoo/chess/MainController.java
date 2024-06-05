@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -25,6 +26,9 @@ public class MainController {
 
     @FXML
     private Label endgameMessage;
+
+    @FXML
+    private ImageView iconBottomRight;
 
     private Timer timer1;
     private Timer timer2;
@@ -130,11 +134,22 @@ public class MainController {
     private void handleJouerButtonAction() {
         gameCode(2);
         endgameMessage.setText("Partie en cours...");
+        if (endgameMessage.getStyleClass().contains("afterMatch")) {
+            endgameMessage.getStyleClass().remove("afterMatch");
+        }
+        // set the iconBottomRight image to the winner's icon
+        iconBottomRight.setImage(null);
     }
 
     @FXML
     public void handleBotButtonAction() {
         gameCode(1);
+        endgameMessage.setText("Partie en cours...");
+        if (endgameMessage.getStyleClass().contains("afterMatch")) {
+            endgameMessage.getStyleClass().remove("afterMatch");
+        }
+        // set the iconBottomRight image to the winner's icon
+        iconBottomRight.setImage(null);
     }
 
     public void switchActivePlayer() {
@@ -144,6 +159,9 @@ public class MainController {
     }
 
     public void showMessageEnding(int color) {
+        endgameMessage.getStyleClass().add("afterMatch");
+        // set the iconBottomRight image to the winner's icon
+        iconBottomRight.setImage(color == 0 ? chessBoard.getIcon1() : chessBoard.getIcon2());
         if (color == 0) {
             endgameMessage.setText("Le joueur 1 a gagné !");
         } else {
