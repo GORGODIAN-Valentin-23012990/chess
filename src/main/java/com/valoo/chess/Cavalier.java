@@ -1,10 +1,21 @@
 package com.valoo.chess;
 public class Cavalier extends Piece {
 
+    /**
+     * @param color couleur du cavalier
+     * @param type type du cavalier
+     * @param couleur couleur du cavalier
+     * @param x position x
+     * @param y position y
+     */
     public Cavalier(String color, String type, int couleur, int x, int y) {
         super(color, type, couleur, x, y);
     }
 
+    /**
+     * @param board plateau de jeu
+     * @return tableau de coordonnées de toutes les positions possibles
+     */
     // La fonction validMoves renvoie un tableau de coordonnées de toutes les positions possibles
     // Exemple de renvoi [ [1, 2], [3, 4], [5, 6] ]
     public int[][] validMoves (ChessBoard board) {
@@ -49,7 +60,9 @@ public class Cavalier extends Piece {
     }
 
 
-
+    /**
+     * @return chemin d'acces de l'image du cavalier
+     */
     public String getImage() {
         if (getCouleur() == 0) {
             return "/cavalier_noir.png";

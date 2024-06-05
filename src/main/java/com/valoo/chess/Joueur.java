@@ -6,6 +6,10 @@ public class Joueur {
     private int partieGagnee;
     private int partieJouee;
 
+    /**
+     * @param nom  nom du joueur
+     * @param prenom prenom du joueur
+     */
     public Joueur(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
@@ -13,6 +17,9 @@ public class Joueur {
         this.partieJouee = 0;
     }
 
+    /**
+     * @return nombre de parties gagnées
+     */
     public String toString() {
         return "["+nom +","+ prenom + " , " + partieGagnee + "," + partieJouee + " ]";
     }
