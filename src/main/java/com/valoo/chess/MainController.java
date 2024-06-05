@@ -119,5 +119,8 @@ public class MainController {
 
     public void switchActivePlayer() {
         activePlayer = activePlayer == 1 ? 2 : 1;
+        // remettre les timers au temps initial
+        timer1.reset(seconds);
+        timer2.reset(seconds);
     }
 }
