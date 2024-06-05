@@ -11,8 +11,9 @@ public class FichierCoup {
     private String fileName;
 
     public FichierCoup() {
-        int numParties = countFilesInDirectory("/parties");
-        this.fileName = "Partie" + (numParties + 1) + ".txt";
+        // On génère un nombre au hasard pour le nom du fichier
+        int random = (int) (Math.random() * 1000);
+        this.fileName = "Partie" + random + ".txt";
     }
 
     private int countFilesInDirectory(String directoryPath) {
