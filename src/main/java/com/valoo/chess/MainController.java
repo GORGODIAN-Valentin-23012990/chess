@@ -31,6 +31,14 @@ public class MainController {
     private Timeline timeline;
 
     public void initialize() {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            if (activePlayer == 1) {
+                timer1.tpsDecr(1);
+            } else {
+                timer2.tpsDecr(1);
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
         // Ajouter le gestionnaire d'événements pour le bouton "Jouer"
         btnJouer.setOnAction(event -> handleJouerButtonAction());
         timer1 = new Timer(600);
@@ -86,20 +94,6 @@ public class MainController {
             return String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);
         }, timer2.timeBlancProperty());
         labelTime2.textProperty().bind(timeBinding2);
-
-        if (timeline != null) {
-            timeline.stop();
-        }
-
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            if (activePlayer == 1) {
-                timer1.tpsDecr(1);
-            } else {
-                timer2.tpsDecr(1);
-            }
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
 
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
