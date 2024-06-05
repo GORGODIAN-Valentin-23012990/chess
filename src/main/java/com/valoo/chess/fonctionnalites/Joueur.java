@@ -1,4 +1,4 @@
-package com.valoo.chess;
+package com.valoo.chess.fonctionnalites;
 
 public class Joueur {
     private String nom;

@@ -10,7 +10,7 @@
 
 <?import javafx.scene.shape.Box?>
 <?import javafx.geometry.Insets?>
-<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.valoo.chess.MainController" style="-fx-background-color: #3c3f41;">
+<HBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.valoo.chess.controller.MainController" style="-fx-background-color: #3c3f41;">
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
@@ -51,10 +51,11 @@
             <VBox fx:id="menuJoueur" alignment="CENTER" spacing="20">
                 <TextField fx:id="prenomField" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
                 <TextField fx:id="nomField" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnValider" text="Valider" prefHeight="60" prefWidth="350" />
+                <Button fx:id="btnValider" text="Valider" prefHeight="60" prefWidth="350"/>
             </VBox>
             <VBox fx:id="menuPartie" alignment="CENTER" spacing="20">
                 <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnCreer" text="Créer" prefHeight="60" prefWidth="350"   onAction="#handleChargerPartie"/>
             </VBox>
             <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
                 <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >

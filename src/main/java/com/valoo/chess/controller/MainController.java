@@ -1,20 +1,23 @@
-package com.valoo.chess;
+package com.valoo.chess.controller;
 
+import com.valoo.chess.ChessBoard;
+import com.valoo.chess.fonctionnalites.Timer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class MainController {
@@ -157,7 +160,6 @@ public class MainController {
         }
         chessBoard = new ChessBoard(bot, this);
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
-        System.out.println("Jeu réinitialisé !");
         switchActivePlayer();
     }
 
@@ -204,5 +206,12 @@ public class MainController {
         }
         freezeTimers();
     }
+
+    @FXML
+    public void handleChargerPartie() {
+        chessBoard.jouerPartie("coups.txt");
+        chessBoard.updateBoard();
+    }
+
 
 }

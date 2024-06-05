@@ -1,4 +1,7 @@
-package com.valoo.chess;
+package com.valoo.chess.pieces;
+
+import com.valoo.chess.ChessBoard;
+
 public class Cavalier extends Piece {
 
     /**

@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/coups.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coups.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Cavalier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Cavalier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Chess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/FichierCoup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Fou.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Fou.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Pion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Pion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Reine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Reine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Roi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Roi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/pieces/Tour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -37,6 +53,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
@@ -54,7 +71,7 @@
       <module name="chess" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.valoo.chess.*" />
+          <option name="PATTERN" value="com.valoo.chess.pieces.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,6 +108,7 @@
       <workItem from="1717568837107" duration="2644000" />
       <workItem from="1717572069880" duration="595000" />
       <workItem from="1717587377872" duration="3616000" />
+      <workItem from="1717596141584" duration="2487000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>

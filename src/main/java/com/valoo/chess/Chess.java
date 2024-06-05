@@ -28,12 +28,8 @@ public class   Chess extends Application {
         }
         VBox chessBoardContainer = (VBox) loader.getNamespace().get("chessBoardContainer");
 
-        System.out.println("true");
 
         root.setLeft(helloView);
-//
-//        FichierCoup fichierCoups = new FichierCoup("coups.txt");
-//        fichierCoups.lireCoup(0);
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");

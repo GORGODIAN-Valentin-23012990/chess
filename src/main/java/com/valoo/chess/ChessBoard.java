@@ -1,19 +1,14 @@
 package com.valoo.chess;
 
-import javafx.beans.binding.Binding;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
+import com.valoo.chess.controller.MainController;
+import com.valoo.chess.fonctionnalites.Bot;
+import com.valoo.chess.fonctionnalites.FichierCoup;
+import com.valoo.chess.pieces.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class ChessBoard {
     private VBox board;
@@ -34,8 +29,7 @@ public class ChessBoard {
      * Crée un plateau de jeu d'échec
      */
     public ChessBoard(int couleurBot, MainController mainController) {
-        FichierCoup fichierCoup = new FichierCoup("coups.txt");
-        fichierCoup.enregistrerCoup("\n");
+        fichierCoup = new FichierCoup();
         this.mainController = mainController;
         board = new VBox();
         tour = 0;
@@ -219,7 +213,7 @@ public class ChessBoard {
     }
 
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
-        fichierCoup = new FichierCoup("coups.txt");
+        FichierCoup fichierCoup = new FichierCoup();
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
             int[][] validMoves = piece.validMoves(this);
@@ -228,8 +222,7 @@ public class ChessBoard {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
                         // On stocke dans coups les coups joués avec le modèle suivant : currentX currentY targetX targetY
-                        coups.append(currentX).append(currentY).append(targetX).append(targetY);
-                        fichierCoup.enregistrerCoup(coups.toString());
+                        fichierCoup.ecrireCoup(currentX, currentY, targetX, targetY);
                         if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
                             int tourX = targetX == 6 ? 7 : 0;
                             int tourY = piece.getCouleur() == 0 ? 0 : 7;
@@ -250,7 +243,7 @@ public class ChessBoard {
                         if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {
                             matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? "blanc" : "noir", "reine", piece.getCouleur(), targetX, targetY);
                             coups.append(currentX).append(currentY).append(targetX).append(targetY);
-                            fichierCoup.enregistrerCoup(coups.toString());                        }
+                        }
 
                         piece.setX(targetX);
                         piece.setY(targetY);
@@ -278,10 +271,10 @@ public class ChessBoard {
         }
     }
 
-    // Fonction qui permet de charger tous les coups joués une partie x
-    public void chargerPartie(int x) {
-        FichierCoup fichierCoup = new FichierCoup("coups.txt");
-        fichierCoup.lireCoup(x);
+    // Fonction qui prend en paramètre le nom d'un fichier, et qui joue tous les coups du fichier
+    public void jouerPartie(String fileName) {
+        FichierCoup fichierCoup = new FichierCoup();
+        fichierCoup.jouerPartie(this);
     }
 
     public VBox getBoard() {
