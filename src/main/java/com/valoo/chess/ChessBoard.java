@@ -19,7 +19,10 @@ public class ChessBoard {
     private int couleurBot;
     private Bot bot;
 
-    public ChessBoard(int couleurBot) {
+    private MainController mainController;
+
+    public ChessBoard(int couleurBot, MainController mainController) {
+        this.mainController = mainController;
         board = new VBox();
         tour = 0;
         if(couleurBot == 0 || couleurBot == 1) {
@@ -78,6 +81,7 @@ public class ChessBoard {
         } else {
             if (movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
                 selectedPiece = null;
+                mainController.switchActivePlayer();
                 updateBoard();
                 colorBoard();
                 if(tour == 0) tour = 1;
@@ -86,9 +90,11 @@ public class ChessBoard {
                 if(couleurBot == 1 && tour == 1) {
                     tour = 0;
                     bot.play(this, 1);
+                    mainController.switchActivePlayer();
                 } else if (couleurBot == 0 && tour == 0) {
                     tour = 1;
                     bot.play(this, 0);
+                    mainController.switchActivePlayer();
                 }
 
             } else {

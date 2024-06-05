@@ -1,0 +1,19 @@
+Index: src/main/java/com/valoo/chess/Chess.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npackage com.valoo.chess;\n\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.layout.BorderPane;\nimport javafx.scene.layout.VBox;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\n\npublic class Chess extends Application {\n    public void start(Stage primaryStage) {\n        BorderPane root = new BorderPane();\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/com/valoo/chess/hello-view.fxml\"));\n        Parent helloView = null;\n\n        try {\n            helloView = loader.load();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        VBox chessBoardContainer = (VBox) loader.getNamespace().get(\"chessBoardContainer\");\n        // Create the chess board and add it to the VBox\n        ChessBoard chessBoard = new ChessBoard();\n        chessBoardContainer.getChildren().add(chessBoard.getBoard());\n\n        root.setLeft(helloView);\n        // check les moves possibles du cavalier\n\n        Reine reine = new Reine(\"blanc\", \"reine\", 0, 3, 0);\n        int[][] moves = reine.validMoves(chessBoard);\n        for (int[] move : moves) {\n            System.out.println(move[0] + \" \" + move[1]);\n        }\n\n        Scene scene = new Scene(root);\n        primaryStage.setTitle(\"Chess\");\n        // On règle la taille de la fenêtre pour qu'elle prenne automatiquement toute la largeur de l'écran\n        primaryStage.setWidth(1200);\n        primaryStage.setHeight(900);\n        primaryStage.setScene(scene);\n        primaryStage.setResizable(false);\n        primaryStage.show();\n    }\n\n    public static void main(String[] args) {\n        launch(args);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/valoo/chess/Chess.java b/src/main/java/com/valoo/chess/Chess.java
+--- a/src/main/java/com/valoo/chess/Chess.java	(revision 6576aa804df0ceeadda5fd7c0596d8ca8f170404)
++++ b/src/main/java/com/valoo/chess/Chess.java	(date 1717506434397)
+@@ -11,7 +11,7 @@
+ 
+ import java.io.IOException;
+ 
+-public class Chess extends Application {
++public class   Chess extends Application {
+     public void start(Stage primaryStage) {
+         BorderPane root = new BorderPane();
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));

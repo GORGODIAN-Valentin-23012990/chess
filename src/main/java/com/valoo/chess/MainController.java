@@ -1,5 +1,7 @@
 package com.valoo.chess;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXML;
@@ -7,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class MainController {
     @FXML
@@ -20,28 +23,48 @@ public class MainController {
     @FXML
     private Button btnJouer;
 
-    private Timer timer;
+    private Timer timer1;
+    private Timer timer2;
     private ChessBoard chessBoard;
+    private int activePlayer; // 1 pour le joueur 1, 2 pour le joueur 2
 
     public void initialize() {
-        timer = new Timer(10); // Replace 10 with your desired initial time
-
-        StringBinding timeBlancBinding = Bindings.createStringBinding(() ->
-                String.valueOf(timer.timeBlancProperty().get()), timer.timeBlancProperty());
-
-        StringBinding timeNoirBinding = Bindings.createStringBinding(() ->
-                String.valueOf(timer.timeNoirProperty().get()), timer.timeNoirProperty());
-
-        labelTime1.textProperty().bind(timeBlancBinding);
-        labelTime2.textProperty().bind(timeNoirBinding);
-
         // Ajouter le gestionnaire d'événements pour le bouton "Jouer"
         btnJouer.setOnAction(event -> handleJouerButtonAction());
+        timer1 = new Timer(600);
+        timer2 = new Timer(600);
+        activePlayer = 1; // Le joueur 1 commence
+
+        StringBinding timeBinding1 = Bindings.createStringBinding(() -> {
+            return String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60);
+        }, timer1.timeBlancProperty());
+        labelTime1.textProperty().bind(timeBinding1);
+
+        StringBinding timeBinding2 = Bindings.createStringBinding(() -> {
+            return String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60);
+        }, timer2.timeBlancProperty());
+        labelTime2.textProperty().bind(timeBinding2);
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            if (activePlayer == 1) {
+                timer1.tpsDecr(1);
+            } else {
+                timer2.tpsDecr(1);
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @FXML
     private void handleJouerButtonAction() {
+        chessBoard = new ChessBoard(1, this);
+        chessBoardContainer.getChildren().add(chessBoard.getBoard());
         System.out.println("Jeu réinitialisé !");
+        switchActivePlayer();
+    }
 
+    public void switchActivePlayer() {
+        activePlayer = activePlayer == 1 ? 2 : 1;
     }
 }

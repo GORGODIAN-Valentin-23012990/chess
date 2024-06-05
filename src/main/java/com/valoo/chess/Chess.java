@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Chess extends Application {
+public class   Chess extends Application {
 
     private ChessBoard chessBoard;
 
@@ -26,11 +26,6 @@ public class Chess extends Application {
             e.printStackTrace();
         }
         VBox chessBoardContainer = (VBox) loader.getNamespace().get("chessBoardContainer");
-
-
-        // Create the chess board and add it to the VBox
-        ChessBoard chessBoard = new ChessBoard(1);
-        chessBoardContainer.getChildren().add(chessBoard.getBoard());
 
         System.out.println("true");
 
