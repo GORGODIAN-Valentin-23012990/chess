@@ -19,7 +19,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainController {
 
@@ -142,6 +141,8 @@ public class MainController {
             NVPartie.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
         });
 
+        btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
+
         handleChargerPartie();
 
         btnJouer.setOnAction(event -> handleJouerButtonAction());
@@ -166,6 +167,7 @@ public class MainController {
         bindJ1(nomJ1, prenomJ1);
         menuJoueur.setVisible(false);
         menuJoueur2.setVisible(true);
+        Joueur joueur = new Joueur(nomJ1, prenomJ1);
     }
     public void actionBtnValider2() {
         prenomJ2 = prenomField2.getText();
@@ -173,6 +175,7 @@ public class MainController {
         bindJ2(nomJ2, prenomJ2);
         menuJoueur2.setVisible(false);
         menuPrincipal.setVisible(true);
+        Joueur joueur = new Joueur(nomJ2, prenomJ2);
     }
 
     public void bindJ1(String nom, String prenom) {
@@ -271,6 +274,7 @@ public class MainController {
         String nom = nomField.getText();
         String prenom = prenomField.getText();
         Joueur joueur = new Joueur(nom, prenom);
+
         System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
     }
 
@@ -287,6 +291,14 @@ public class MainController {
         }
         // set the iconBottomRight image to the winner's icon
         iconBottomRight.setImage(null);
+    }
+
+    @FXML
+    public void handleAjoutJoueur() {
+        String nom = nomField.getText();
+        String prenom = prenomField.getText();
+        Joueur joueur = new Joueur(nom, prenom);
+        System.out.println("grzzz");
     }
 
     @FXML
