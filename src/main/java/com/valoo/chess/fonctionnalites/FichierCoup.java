@@ -13,6 +13,7 @@ public class FichierCoup {
     public FichierCoup() {
         int random = (int) (Math.random() * 1000);
         this.fileName = String.format("parties/Partie%d.txt", random);
+        System.out.println("File name: " + fileName);
     }
 
     public FichierCoup(String fileName) {
@@ -30,6 +31,7 @@ public class FichierCoup {
     }
 
     public void ecrireCoup(int xAvant, int yAvant, int xApres, int yApres) {
+        System.out.println("Writing move to file: " + fileName);
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName, true))) {
             printWriter.println(String.format("%d%d%d%d", xAvant, yAvant, xApres, yApres));
         } catch (IOException e) {

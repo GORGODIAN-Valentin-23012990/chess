@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,6 +50,10 @@ public class MainController {
     Button Partie;
     @FXML
     Button Joueurs;
+    @FXML
+    VBox menuParties;
+
+    boolean partiesChargees = false;
 
     ArrayList<Node> Menu = new ArrayList<Node>();
     ArrayList<Node> Menu2 = new ArrayList<Node>();
@@ -209,8 +214,18 @@ public class MainController {
 
     @FXML
     public void handleChargerPartie() {
-        chessBoard.jouerPartie("parties/Partie35.txt");
-        chessBoard.updateBoard();
+        if(!partiesChargees){
+            File directory = new File("parties/");
+            File[] files = directory.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        myComboBox.getItems().add(file.getName());
+                    }
+                }
+            }
+            partiesChargees = true;
+        }
     }
 
     @FXML
