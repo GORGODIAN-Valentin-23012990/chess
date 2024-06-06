@@ -103,7 +103,6 @@ public class MainController {
         menuPartie.setVisible(false);
         menuJoueur2.setVisible(false);
         menuTournoi.setVisible(false);
-        listeFichiersParties = new VBox();
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
