@@ -19,7 +19,6 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainController {
 
@@ -31,6 +30,8 @@ public class MainController {
     private TextField nomField;
     @FXML
     private Button btnValider;
+    @FXML
+    private Button btnClearParties;
     @FXML
     Label J1Label;
     @FXML
@@ -118,6 +119,7 @@ public class MainController {
         btnValider.setOnAction(event -> actionBtnValider());
         btnValider2.setOnAction(event -> actionBtnValider2());
         btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
+        btnClearParties.setOnAction(event -> handleClearParties());
 
 
         Partie.setOnAction(event -> {
@@ -138,6 +140,8 @@ public class MainController {
             resetButtonStyles(NVPartie, Joueurs, Partie);
             NVPartie.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
         });
+
+        btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
 
         handleChargerPartie();
 
@@ -163,6 +167,7 @@ public class MainController {
         bindJ1(nomJ1, prenomJ1);
         menuJoueur.setVisible(false);
         menuJoueur2.setVisible(true);
+        Joueur joueur = new Joueur(nomJ1, prenomJ1);
     }
     public void actionBtnValider2() {
         prenomJ2 = prenomField2.getText();
@@ -170,6 +175,7 @@ public class MainController {
         bindJ2(nomJ2, prenomJ2);
         menuJoueur2.setVisible(false);
         menuPrincipal.setVisible(true);
+        Joueur joueur = new Joueur(nomJ2, prenomJ2);
     }
 
     public void bindJ1(String nom, String prenom) {
@@ -216,14 +222,14 @@ public class MainController {
         activePlayer = 2; // Player 1 starts
 
         StringBinding timeBinding1 = Bindings.createStringBinding(() ->
-                        String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
-                timer1.timeBlancProperty()
+                        String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60),
+                timer2.timeBlancProperty()
         );
         labelTime1.textProperty().bind(timeBinding1);
 
         StringBinding timeBinding2 = Bindings.createStringBinding(() ->
-                        String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60),
-                timer2.timeBlancProperty()
+                        String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
+                timer1.timeBlancProperty()
         );
         labelTime2.textProperty().bind(timeBinding2);
 
@@ -268,6 +274,7 @@ public class MainController {
         String nom = nomField.getText();
         String prenom = prenomField.getText();
         Joueur joueur = new Joueur(nom, prenom);
+
         System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
     }
 
@@ -284,6 +291,14 @@ public class MainController {
         }
         // set the iconBottomRight image to the winner's icon
         iconBottomRight.setImage(null);
+    }
+
+    @FXML
+    public void handleAjoutJoueur() {
+        String nom = nomField.getText();
+        String prenom = prenomField.getText();
+        Joueur joueur = new Joueur(nom, prenom);
+        System.out.println("grzzz");
     }
 
     @FXML
@@ -363,9 +378,23 @@ public class MainController {
 
     @FXML
     public void handleSuiv() {
-        chessBoard.coupSuivant("parties/Partie35.txt");
-        chessBoard.updateBoard();
+//        chessBoard.coupSuivant("parties/Partie35.txt");
+//        chessBoard.updateBoard();
     }
 
+    @FXML
+    public void handleClearParties() {
+        File directory = new File("src/main/resources/parties/");
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();
+                }
+            }
+        }
+        listeFichiersParties.getChildren().clear();
+        listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
+    }
 
 }
