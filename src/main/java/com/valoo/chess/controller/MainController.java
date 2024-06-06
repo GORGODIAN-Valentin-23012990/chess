@@ -65,8 +65,7 @@ public class MainController {
     Button Joueurs;
     @FXML
     private VBox listeFichiersParties;
-    @FXML
-    Button btnCreer;
+
     @FXML
     VBox menuJoueur2;
     @FXML
@@ -140,10 +139,9 @@ public class MainController {
             NVPartie.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
         });
 
-
+        handleChargerPartie();
 
         btnJouer.setOnAction(event -> handleJouerButtonAction());
-        btnCreer.setOnAction(event -> handleChargerPartie());
     }
 
     // Méthode pour réinitialiser les styles des boutons
@@ -326,36 +324,34 @@ public class MainController {
         freezeTimers();
     }
 
-    @FXML
     public void handleChargerPartie() {
-        if (!partiesChargees) {
-            File directory = new File("src/main/resources/parties/");
-            File[] files = directory.listFiles();
-            if (files != null) {
-                for (File file : files) {
-                    if (file.isFile()) {
-                        System.out.println(file.getName());
-                        Button fileButton = new Button(file.getName());
-                        fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
-                        fileButton.setOnAction(event -> {
-                            // Ajoutez le code pour charger la partie ici
-                            if(chessBoard == null) {
-                                chessBoard = new ChessBoard(2, this);
-                                chessBoardContainer.getChildren().add(chessBoard.getBoard());
-                            } else {
-                                chessBoard.resetBoard();
-                            }
-                            System.out.println("Chargement de la partie: " + file.getName());
-                            chessBoard.jouerPartie(file.getName());
-                        });
-                        listeFichiersParties.getChildren().add(fileButton);
-                    }
+        File directory = new File("src/main/resources/parties/");
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    Button fileButton = new Button(file.getName());
+                    fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
+                    fileButton.setOnAction(event -> {
+                        timer1 = new Timer(30);
+                        timer2 = new Timer(30);
+                        if(chessBoard == null) {
+                            chessBoard = new ChessBoard(2, this);
+                            chessBoardContainer.getChildren().add(chessBoard.getBoard());
+                        } else {
+                            chessBoard.resetBoard();
+                        }
+                        chessBoard.jouerPartie(file.getName());
+                    });
+                    listeFichiersParties.getChildren().add(fileButton);
                 }
-                // Forcer la mise à jour de l'interface utilisateur
-                listeFichiersParties.layout();
             }
-            partiesChargees = true;
+            // Forcer la mise à jour de l'interface utilisateur
+            listeFichiersParties.layout();
+        } else {
+            listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
         }
+
     }
 
 

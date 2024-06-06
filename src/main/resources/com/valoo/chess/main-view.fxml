@@ -74,7 +74,6 @@
                 <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
                 <Button fx:id="btnPrec" text="Précédent" prefHeight="60" prefWidth="350" onAction="#handlePrec"/>
                 <Button fx:id="btnSuiv" text="Suivant" prefHeight="60" prefWidth="350" onAction="#handleSuiv"/>
-                <Button fx:id="btnCreer" text="Charger partie" prefHeight="60" prefWidth="350"   onAction="#handleChargerPartie"/>
                 <VBox fx:id="listeFichiersParties" alignment="CENTER">
                 </VBox>
 

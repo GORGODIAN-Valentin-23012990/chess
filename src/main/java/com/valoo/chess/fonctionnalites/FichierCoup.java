@@ -18,7 +18,7 @@ public class FichierCoup {
         fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
 
         // On vide le fichier Historique.txt et on y copie tous les coups de fileName
-        try (PrintWriter printWriter = new PrintWriter(new FileWriter("src/main/resources/parties/Historique.txt"))) {
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter("src/main/resources/Historique.txt"))) {
             // Vider le fichier Historique.txt
             printWriter.print("");
             // Ajouter le fichier de la nouvelle partie
@@ -55,20 +55,27 @@ public class FichierCoup {
     }
 
     public void jouerPartie(ChessBoard board, String fileName) {
+        int xAvant, yAvant, xApres = 0, yApres = 0;
         System.out.println("Jouer partie: " + fileName);
         try (Scanner input = new Scanner(new File("src/main/resources/parties/" + fileName))) {
             board.resetBoard();
             while (input.hasNext()) {
                 String line = input.nextLine();
-                int xAvant = Character.getNumericValue(line.charAt(0));
-                int yAvant = Character.getNumericValue(line.charAt(1));
-                int xApres = Character.getNumericValue(line.charAt(2));
-                int yApres = Character.getNumericValue(line.charAt(3));
+                xAvant = Character.getNumericValue(line.charAt(0));
+                yAvant = Character.getNumericValue(line.charAt(1));
+                xApres = Character.getNumericValue(line.charAt(2));
+                yApres = Character.getNumericValue(line.charAt(3));
                 board.movePiece(xAvant, yAvant, xApres, yApres);
+            }
+            // On regarde si la dernière pièce bougée est noire ou blanche et on change le tour en conséquence
+            if (board.getPiece(xApres, yApres).getCouleur() == 0) {
+                board.setTour(1);
+            } else {
+                board.setTour(0);
             }
             board.updateBoard();
         } catch (Exception e) {
-            System.err.println("Error reading moves from file: " + e.getMessage());
+
         }
     }
 
@@ -80,7 +87,7 @@ public class FichierCoup {
 
         indexHistorique--;
 
-        try (Scanner input = new Scanner(new File("src/main/resources/parties/Historique.txt"))) {
+        try (Scanner input = new Scanner(new File("src/main/resources/Historique.txt"))) {
             board.resetBoard();
             int currentLine = 0;
             while (input.hasNext() && currentLine < indexHistorique) {
@@ -102,7 +109,7 @@ public class FichierCoup {
     public void coupSuivant(ChessBoard board) {
         indexHistorique++;
 
-        try (Scanner input = new Scanner(new File("src/main/resources/parties/Historique.txt"))) {
+        try (Scanner input = new Scanner(new File("src/main/resources/Historique.txt"))) {
             board.resetBoard();
             int currentLine = 0;
             while (input.hasNext() && currentLine < indexHistorique) {
