@@ -17,11 +17,9 @@
     <VBox style="-fx-background-color: #2b2b2b;" prefWidth="780">
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
             <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@/icone.jpg"/>
-                </image>
+                <Image url="@/icone.jpg"/>
             </ImageView>
-            <Label id="J1Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label fx:id="J1Label" text="Joueur 1" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime1" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
@@ -32,11 +30,9 @@
 
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
             <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@/icone2.png"/>
-                </image>
+                <Image url="@/icone2.png"/>
             </ImageView>
-            <Label id="J2Label" text="Joueur 2" textFill="white" style="-fx-font-size: 18px;"/>
+            <Label fx:id="J2Label" text="Joueur 2" textFill="white" style="-fx-font-size: 18px;"/>
             <Pane HBox.hgrow="ALWAYS"/>
             <Label fx:id="labelTime2" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
@@ -52,6 +48,11 @@
                 <TextField fx:id="prenomField" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
                 <TextField fx:id="nomField" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
                 <Button fx:id="btnValider" text="Valider" prefHeight="60" prefWidth="350"/>
+            </VBox>
+            <VBox fx:id="menuJoueur2" alignment="CENTER" spacing="20">
+                <TextField fx:id="prenomField2" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomField2" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValider2" text="Valider" prefHeight="60" prefWidth="350"/>
             </VBox>
             <VBox fx:id="menuPartie" spacing="20">
                 <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>

@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -19,6 +20,19 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MainController {
+
+    @FXML
+    private Button btnTournoi;
+    @FXML
+    private TextField prenomField;
+    @FXML
+    private TextField nomField;
+    @FXML
+    private Button btnValider;
+    @FXML
+    Label J1Label;
+    @FXML
+    Label J2Label;
     @FXML
     private ComboBox<String> myComboBox;
     @FXML
@@ -51,6 +65,14 @@ public class MainController {
     private VBox listeFichiersParties;
     @FXML
     Button btnCreer;
+    @FXML
+    VBox menuJoueur2;
+    @FXML
+    Button btnValider2;
+    @FXML
+    TextField prenomField2;
+    @FXML
+    TextField nomField2;
 
     boolean partiesChargees = false;
 
@@ -65,11 +87,18 @@ public class MainController {
 
     private Timeline timeline;
     private int seconds;
+    private String nomJ1;
+    private String nomJ2;
+    private String prenomJ1;
+    private String prenomJ2;
+
 
 
     public void initialize() {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
+        menuJoueur2.setVisible(false);
+        listeFichiersParties = new VBox();
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
@@ -79,13 +108,39 @@ public class MainController {
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-
-
+        btnValider.setOnAction(event -> actionBtnValider());
+        btnValider2.setOnAction(event -> actionBtnValider2());
         Partie.setOnAction(event -> showVBox(menuPartie));
         Joueurs.setOnAction(event -> showVBox(menuJoueur));
         NVPartie.setOnAction(event -> showVBox(menuPrincipal));
         btnJouer.setOnAction(event -> handleJouerButtonAction());
         btnCreer.setOnAction(event -> handleChargerPartie());
+    }
+
+    public void actionBtnValider(){
+        prenomJ1 = prenomField.getText();
+        nomJ1 = nomField.getText();
+        bindJ1(nomJ1, prenomJ1);
+        menuJoueur.setVisible(false);
+        menuJoueur2.setVisible(true);
+    }
+    public void actionBtnValider2() {
+        prenomJ2 = prenomField2.getText();
+        nomJ2 = nomField2.getText();
+        bindJ2(nomJ2, prenomJ2);
+        menuJoueur2.setVisible(false);
+        menuPrincipal.setVisible(true);
+    }
+
+    public void bindJ1(String nom, String prenom) {
+        String nomJ1 = nom+" "+prenom;
+        J1Label.setText(nomJ1);
+    }
+
+    public void bindJ2(String nom, String prenom) {
+        String nomj2 = nom+" "+prenom;
+
+        J2Label.setText(nomj2);
     }
     private void showVBox(VBox vbox) {
         menuJoueur.setVisible(false);
