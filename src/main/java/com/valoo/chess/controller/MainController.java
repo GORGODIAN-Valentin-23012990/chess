@@ -319,6 +319,7 @@ public class MainController {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
         chessBoard = new ChessBoard(bot, this);
+        partieChargee = chessBoard.getFileName();
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         switchActivePlayer();
     }

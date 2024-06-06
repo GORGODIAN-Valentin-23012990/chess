@@ -327,4 +327,7 @@ public class ChessBoard {
     public Bot getBot() {
         return bot;
     }
+    public String getFileName() {
+        return fichierCoup.getFileName();
+    }
 }
