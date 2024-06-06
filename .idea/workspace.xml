@@ -4,16 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mains.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie6.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/robot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/stockage/Joueurs.txt" afterDir="false" />
+    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="boutons jouer">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Historique.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +196,7 @@
       <workItem from="1717680371804" duration="3012000" />
       <workItem from="1717686689907" duration="631000" />
       <workItem from="1717689728093" duration="145000" />
-      <workItem from="1717689904133" duration="1655000" />
+      <workItem from="1717689904133" duration="5602000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
@@ -256,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717676917131</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="boutons jouer">
+      <option name="closed" value="true" />
+      <created>1717691803410</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717691803410</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +285,7 @@
     <MESSAGE value="meilleur système de coup" />
     <MESSAGE value="ajout système de nom" />
     <MESSAGE value="fix affichage fichiers" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix affichage fichiers" />
+    <MESSAGE value="boutons jouer" />
+    <option name="LAST_COMMIT_MESSAGE" value="boutons jouer" />
   </component>
 </project>

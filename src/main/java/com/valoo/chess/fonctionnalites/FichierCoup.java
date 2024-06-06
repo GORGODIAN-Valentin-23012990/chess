@@ -21,26 +21,23 @@ public class FichierCoup {
         int fileCount = files != null ? files.length : 0;
         fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
         coups = new ArrayList<>();
-        indexHistorique = 0;
-
-        // On vide le fichier Historique.txt et on y copie tous les coups de fileName
-        try (PrintWriter printWriter = new PrintWriter(new FileWriter("src/main/resources/Historique.txt"))) {
-            // Vider le fichier Historique.txt
-            printWriter.print("");
-            // Ajouter le fichier de la nouvelle partie
-            printWriter.println(fileName);
+        // On ouvre le fichier en écriture pour le créer s'il n'existe pas
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
+            printWriter.println();
         } catch (IOException e) {
             System.err.println("Error writing move to file: " + e.getMessage());
         }
 
-        // Initialisation de coups
+        // indexHistorique prend la valeur du nombre de lignes du fichier
         try (Scanner scanner = new Scanner(new File(fileName))) {
             while (scanner.hasNextLine()) {
                 coups.add(scanner.nextLine());
+                indexHistorique++;
             }
         } catch (IOException e) {
             System.err.println("Error reading moves from file: " + e.getMessage());
         }
+
     }
 
     public FichierCoup(String fileName) {
@@ -48,10 +45,19 @@ public class FichierCoup {
         coups = new ArrayList<>();
         indexHistorique = 0;
 
+        // On ouvre le fichier en écriture pour le créer s'il n'existe pas
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
+            printWriter.println();
+        } catch (IOException e) {
+            System.err.println("Error writing move to file: " + e.getMessage());
+        }
+
+
         // Initialisation de coups
         try (Scanner scanner = new Scanner(new File(this.fileName))) {
             while (scanner.hasNextLine()) {
                 coups.add(scanner.nextLine());
+                indexHistorique++;
             }
         } catch (IOException e) {
             System.err.println("Error reading moves from file: " + e.getMessage());
@@ -73,61 +79,102 @@ public class FichierCoup {
         }
     }
 
+    // Cette fonction est similaire à ecrireCoup sauf qu'elle prend en paramètre unn String et l'ajoute directement au fichier
+    public void ecrireCoup(String coup) {
+        coups.add(coup);
+        indexHistorique++;
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName, true))) {
+            printWriter.println(coup);
+        } catch (IOException e) {
+            System.err.println("Error writing move to file: " + e.getMessage());
+        }
+    }
+
     public void jouerPartie(ChessBoard board, String fileName) {
+        indexHistorique = 0;
         int xApres = 0, yApres = 0;
-        System.out.println("Jouer partie: " + fileName);
         try (Scanner input = new Scanner(new File("src/main/resources/parties/" + fileName))) {
-            board.resetBoard();
-            while (input.hasNext()) {
-                String line = input.nextLine();
-                int xAvant = Character.getNumericValue(line.charAt(0));
-                int yAvant = Character.getNumericValue(line.charAt(1));
-                xApres = Character.getNumericValue(line.charAt(2));
-                yApres = Character.getNumericValue(line.charAt(3));
-                board.movePiece(xAvant, yAvant, xApres, yApres);
-            }
-            // On regarde si la dernière pièce bougée est noire ou blanche et on change le tour en conséquence
-            if (board.getPiece(xApres, yApres).getCouleur() == 0) {
-                board.setTour(1);
+            if(input == null) {
+                return;
+                // On vérifie ensuite si le fichier est vide
+            } else if (!input.hasNext()) {
+                System.out.println("Fichier vide");
             } else {
-                board.setTour(0);
+                board.resetBoard();
+                while (input.hasNext()) {
+                    String line = input.nextLine();
+                    indexHistorique++;
+                    int xAvant = Character.getNumericValue(line.charAt(0));
+                    int yAvant = Character.getNumericValue(line.charAt(1));
+                    xApres = Character.getNumericValue(line.charAt(2));
+                    yApres = Character.getNumericValue(line.charAt(3));
+                    board.movePiece(xAvant, yAvant, xApres, yApres);
+                }
+                // On regarde si la dernière pièce bougée est noire ou blanche et on change le tour en conséquence
+                if (board.getPiece(xApres, yApres).getCouleur() == 0) {
+                    board.setTour(1);
+                } else {
+                    board.setTour(0);
+                }
+                board.updateBoard();
             }
-            board.updateBoard();
         } catch (Exception e) {
             System.err.println("Error playing game from file: " + e.getMessage());
         }
     }
 
-    public void annulerCoup(ChessBoard board) {
-        if (indexHistorique <= 0) {
-            System.err.println("No moves to undo.");
-            return;
-        }
-
-        indexHistorique--;
-        rejouerCoups(board);
-    }
-
-    public void coupSuivant(ChessBoard board) {
-        if (indexHistorique >= coups.size()) {
-            System.err.println("No moves to redo.");
-            return;
-        }
-
-        indexHistorique++;
-        rejouerCoups(board);
-    }
-
-    private void rejouerCoups(ChessBoard board) {
+    public void annulerCoup(ChessBoard board, String fileName) {
+        --indexHistorique;
+        System.out.println("Annulation du coup du fichier " + fileName);
+        // on fait le coup de chaque ligne jusquà indexHistorique
         board.resetBoard();
-        for (int i = 0; i < indexHistorique; i++) {
-            String line = coups.get(i);
-            int xAvant = Character.getNumericValue(line.charAt(0));
-            int yAvant = Character.getNumericValue(line.charAt(1));
-            int xApres = Character.getNumericValue(line.charAt(2));
-            int yApres = Character.getNumericValue(line.charAt(3));
-            board.movePiece(xAvant, yAvant, xApres, yApres);
+        try (Scanner input = new Scanner(new File(fileName))) {
+            if(input == null) {
+                System.out.println("Fichier vide");
+            } else {
+                System.out.println(indexHistorique);
+                for(int i = 0; i < indexHistorique; i++) {
+                    System.out.println("Annulation du coup " + i);
+                    String line = input.nextLine();
+                    int xAvant = Character.getNumericValue(line.charAt(0));
+                    int yAvant = Character.getNumericValue(line.charAt(1));
+                    int xApres = Character.getNumericValue(line.charAt(2));
+                    int yApres = Character.getNumericValue(line.charAt(3));
+                    board.movePiece(xAvant, yAvant, xApres, yApres);
+                }
+                board.updateBoard();
+            }
+        } catch (Exception e) {
+            System.err.println("Error undoing move from file: " + e.getMessage());
         }
-        board.updateBoard();
+    }
+
+    public void coupSuivant(ChessBoard board, String fileName) {
+        ++indexHistorique;
+        System.out.println("Rejouer le coup du fichier " + fileName);
+        // on fait le coup de chaque ligne jusquà indexHistorique
+        try (Scanner input = new Scanner(new File(fileName))) {
+            if(input == null) {
+                System.out.println("Fichier vide");
+            } else {
+                System.out.println(indexHistorique);
+                for(int i = 0; i < indexHistorique; i++) {
+                    System.out.println("Rejouer le coup " + i);
+                    String line = input.nextLine();
+                    int xAvant = Character.getNumericValue(line.charAt(0));
+                    int yAvant = Character.getNumericValue(line.charAt(1));
+                    int xApres = Character.getNumericValue(line.charAt(2));
+                    int yApres = Character.getNumericValue(line.charAt(3));
+                    board.movePiece(xAvant, yAvant, xApres, yApres);
+                }
+                board.updateBoard();
+            }
+        } catch (Exception e) {
+            System.err.println("Error redoing move from file: " + e.getMessage());
+        }
+    }
+
+    public void setIndexHistorique(int indexHistorique) {
+        this.indexHistorique = indexHistorique;
     }
 }

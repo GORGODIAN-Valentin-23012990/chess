@@ -64,6 +64,11 @@ public class MainController {
     private ImageView iconBottomRight;
 
     @FXML
+    private Button btnPrec;
+    @FXML
+    private Button btnSuiv;
+
+    @FXML
     Button NVPartie;
     @FXML
     Button Partie;
@@ -82,9 +87,12 @@ public class MainController {
     TextField nomField2;
     @FXML
     VBox menuTournoi;
+    @FXML
+    Button btnSauvegarde;
 
     @FXML
     private Button btnValiderTournoi;
+    private String partieChargee;
 
     boolean partiesChargees = false;
 
@@ -114,6 +122,7 @@ public class MainController {
         menuJoueur2.setVisible(false);
         menuTournoi.setVisible(false);
         choixJeuBox.setVisible(false);
+        btnSauvegarde.setVisible(false);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
@@ -153,8 +162,15 @@ public class MainController {
 
         handleChargerPartie();
 
+        btnPrec.setOnAction(event -> handlePrec());
+        btnSuiv.setOnAction(event -> handleSuiv());
+
         btnJouer.setOnAction(event -> handleJouerButtonAction());
-    }
+
+        btnSauvegarde.setOnAction(event ->
+                handleSauvegarde());
+                handleChargerPartie();
+        }
 
     // Méthode pour réinitialiser les styles des boutons
     private void resetButtonStyles(Button activeButton, Button... buttons) {
@@ -205,6 +221,7 @@ public class MainController {
     private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
+        btnSauvegarde.setVisible(true);
 
         if (selectedTime != null) {
             switch (selectedTime) {
@@ -239,6 +256,34 @@ public class MainController {
                         String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
                 timer1.timeBlancProperty()
         );
+
+        timer1.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == 0) {
+                timer2.reset(seconds);
+                if (activePlayer == 1) {
+                    activePlayer = 2;
+                    if (chessBoard != null) {
+                        chessBoard.getBot().play(chessBoard, 0);
+                        chessBoard.updateBoard();
+                    }
+                }
+            }
+        });
+
+        // Quand le timer 2 arrive à zero, on le reintialise et on fait jouer le bot pour ce coup
+        timer2.timeBlancProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == 0) {
+                timer1.reset(seconds);
+                if (activePlayer == 2) {
+                    activePlayer = 1;
+                    if (chessBoard != null) {
+                        chessBoard.getBot().play(chessBoard, 1);
+                        chessBoard.updateBoard();
+                    }
+                }
+            }
+        });
+
         labelTime2.textProperty().bind(timeBinding2);
 
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -359,6 +404,7 @@ public class MainController {
     }
 
     public void handleChargerPartie() {
+        listeFichiersParties.getChildren().clear();
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
         if (files != null) {
@@ -367,6 +413,7 @@ public class MainController {
                     Button fileButton = new Button(file.getName());
                     fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
                     fileButton.setOnAction(event -> {
+                        partieChargee = new String(file.getName());
                         timer1 = new Timer(30);
                         timer2 = new Timer(30);
                         if(chessBoard == null) {
@@ -392,13 +439,12 @@ public class MainController {
 
     @FXML
     public void handlePrec(){
-//        chessBoard.annulerCoup("parties/Partie35.txt");
+        chessBoard.annulerCoup("src/main/resources/parties/" + partieChargee);
     }
 
     @FXML
     public void handleSuiv() {
-//        chessBoard.coupSuivant("parties/Partie35.txt");
-//        chessBoard.updateBoard();
+        chessBoard.coupSuivant("src/main/resources/parties/" + partieChargee);
     }
 
     @FXML
@@ -414,6 +460,11 @@ public class MainController {
         }
         listeFichiersParties.getChildren().clear();
         listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
+    }
+
+    @FXML
+    public void handleSauvegarde() {
+        chessBoard.enregistrerCoup();
     }
 
 }

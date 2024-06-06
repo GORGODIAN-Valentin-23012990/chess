@@ -142,6 +142,8 @@
                 </Button>
             </HBox>
 
+            <Button fx:id="btnSauvegarde" text="Sauvegarder la partie" prefHeight="60" prefWidth="350" onAction="#handleSauvegarde"/>
+
             <VBox prefHeight="80"  fx:id="espace" alignment="CENTER"/>
 
             <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">

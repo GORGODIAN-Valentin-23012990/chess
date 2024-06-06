@@ -19,9 +19,9 @@ public class ChessBoard {
     private Piece[][] matPiece;
     private Piece selectedPiece;
     private int tour;
-    private StringBuilder coups = new StringBuilder();
     private int couleurBot;
     private Bot bot;
+    private StringBuilder coupsJoues;
 
     private List<Joueur> joueurs = new ArrayList<>();
     private MainController mainController;
@@ -43,6 +43,7 @@ public class ChessBoard {
         fichierCoup = new FichierCoup();
         this.mainController = mainController;
         board = new VBox();
+        coupsJoues = new StringBuilder();
         tour = 0;
         if(couleurBot == 0 || couleurBot == 1) {
             this.couleurBot = couleurBot;
@@ -235,6 +236,11 @@ public class ChessBoard {
 
     }
 
+    public void enregistrerCoup(){
+        fichierCoup.ecrireCoup(coupsJoues.toString());
+        coupsJoues = new StringBuilder();
+    }
+
 
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
         Piece piece = getPiece(currentX, currentY);
@@ -245,7 +251,7 @@ public class ChessBoard {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
                         // On stocke dans coups les coups joués avec le modèle suivant : currentX currentY targetX targetY
-                        fichierCoup.ecrireCoup(currentX, currentY, targetX, targetY);
+                        coupsJoues.append(currentX).append(currentY).append(targetX).append(targetY).append("\n");
                         if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
                             int tourX = targetX == 6 ? 7 : 0;
                             int tourY = piece.getCouleur() == 0 ? 0 : 7;
@@ -265,7 +271,6 @@ public class ChessBoard {
 
                         if (piece instanceof Pion && (targetY == 0 || targetY == 7)) {
                             matPiece[targetY][targetX] = new Reine(piece.getCouleur() == 0 ? "blanc" : "noir", "reine", piece.getCouleur(), targetX, targetY);
-                            coups.append(currentX).append(currentY).append(targetX).append(targetY);
                         }
 
                         piece.setX(targetX);
@@ -299,11 +304,12 @@ public class ChessBoard {
         fichierCoup.jouerPartie(this, fileName);
     }
 
-//    public void annulerCoup(String filename) {
-//        fichierCoup.annulerCoup(this, filename);
-//    }
+    public void annulerCoup(String filename) {
+        fichierCoup.annulerCoup(this, filename);
+    }
 
     public void coupSuivant(String filename) {
+        fichierCoup.coupSuivant(this, filename);
     }
 
     public VBox getBoard() {

@@ -89,6 +89,10 @@
     -fx-font-weight: bold;
 }
 
+#btnTournoi:hover {
+    -fx-background-color: black;
+}
+
 #btnValider {
     -fx-background-color: #171715;
     -fx-text-fill: white;
@@ -228,5 +232,16 @@
     -fx-font-weight: bold;
 }
 
+#btnSauvegarde {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
 
+#btnSauvegarde:hover {
+    -fx-background-color: black;
+}
 
