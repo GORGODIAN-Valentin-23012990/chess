@@ -32,6 +32,8 @@ public class MainController {
     @FXML
     private Button btnValider;
     @FXML
+    private Button btnClearParties;
+    @FXML
     Label J1Label;
     @FXML
     Label J2Label;
@@ -118,6 +120,7 @@ public class MainController {
         btnValider.setOnAction(event -> actionBtnValider());
         btnValider2.setOnAction(event -> actionBtnValider2());
         btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
+        btnClearParties.setOnAction(event -> handleClearParties());
 
 
         Partie.setOnAction(event -> {
@@ -216,14 +219,14 @@ public class MainController {
         activePlayer = 2; // Player 1 starts
 
         StringBinding timeBinding1 = Bindings.createStringBinding(() ->
-                        String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
-                timer1.timeBlancProperty()
+                        String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60),
+                timer2.timeBlancProperty()
         );
         labelTime1.textProperty().bind(timeBinding1);
 
         StringBinding timeBinding2 = Bindings.createStringBinding(() ->
-                        String.format("%02d:%02d", timer2.getTimeBlanc() / 60, timer2.getTimeBlanc() % 60),
-                timer2.timeBlancProperty()
+                        String.format("%02d:%02d", timer1.getTimeBlanc() / 60, timer1.getTimeBlanc() % 60),
+                timer1.timeBlancProperty()
         );
         labelTime2.textProperty().bind(timeBinding2);
 
@@ -363,9 +366,23 @@ public class MainController {
 
     @FXML
     public void handleSuiv() {
-        chessBoard.coupSuivant("parties/Partie35.txt");
-        chessBoard.updateBoard();
+//        chessBoard.coupSuivant("parties/Partie35.txt");
+//        chessBoard.updateBoard();
     }
 
+    @FXML
+    public void handleClearParties() {
+        File directory = new File("src/main/resources/parties/");
+        File[] files = directory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    file.delete();
+                }
+            }
+        }
+        listeFichiersParties.getChildren().clear();
+        listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
+    }
 
 }

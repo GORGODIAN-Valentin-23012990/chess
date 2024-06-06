@@ -60,7 +60,7 @@
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
                             <image>
-                                <Image url="@/new_game.png"/>
+                                <Image url="@/partie.png"/>
                             </image>
                         </ImageView>
                     </VBox>
@@ -98,8 +98,9 @@
                 <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
                 <Button fx:id="btnPrec" text="Précédent" prefHeight="60" prefWidth="350" onAction="#handlePrec"/>
                 <Button fx:id="btnSuiv" text="Suivant" prefHeight="60" prefWidth="350" onAction="#handleSuiv"/>
+                <Button fx:id="btnClearParties" text="Effacer les parties" prefHeight="60" prefWidth="350" onAction="#handleClearParties"/>
                 <VBox fx:id="listeFichiersParties" alignment="CENTER">
-                </VBox>
+            </VBox>
 
             </VBox>
             <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">

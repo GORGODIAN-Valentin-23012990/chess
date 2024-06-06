@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="fix affichage fichiers">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Historique.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stockage/Historique.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie2.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie3.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie4.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie5.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
