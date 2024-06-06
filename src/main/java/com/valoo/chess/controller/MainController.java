@@ -1,6 +1,7 @@
 package com.valoo.chess.controller;
 
 import com.valoo.chess.ChessBoard;
+import com.valoo.chess.fonctionnalites.Joueur;
 import com.valoo.chess.fonctionnalites.Timer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,6 +19,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
 
@@ -73,6 +75,8 @@ public class MainController {
     TextField prenomField2;
     @FXML
     TextField nomField2;
+    @FXML
+    VBox menuTournoi;
 
     boolean partiesChargees = false;
 
@@ -98,6 +102,7 @@ public class MainController {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
         menuJoueur2.setVisible(false);
+        menuTournoi.setVisible(false);
         listeFichiersParties = new VBox();
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -107,6 +112,7 @@ public class MainController {
                 timer2.tpsDecr(1);
             }
         }));
+        btnTournoi.setOnAction(event -> actionBtnTournoi());
         timeline.setCycleCount(Timeline.INDEFINITE);
         btnValider.setOnAction(event -> actionBtnValider());
         btnValider2.setOnAction(event -> actionBtnValider2());
@@ -117,6 +123,10 @@ public class MainController {
         btnCreer.setOnAction(event -> handleChargerPartie());
     }
 
+    public void actionBtnTournoi() {
+         menuPrincipal.setVisible(false);
+         menuTournoi.setVisible(true);
+    }
     public void actionBtnValider(){
         prenomJ1 = prenomField.getText();
         nomJ1 = nomField.getText();
@@ -148,9 +158,6 @@ public class MainController {
         menuPartie.setVisible(false);
         vbox.setVisible(true);
     }
-
-
-
     private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
@@ -252,7 +259,16 @@ public class MainController {
         // set the iconBottomRight image to the winner's icon
         iconBottomRight.setImage(null);
     }
-
+    public Joueur getJoueur1() {
+        String nom = nomJ1;
+        String prenom = prenomJ1;
+        return new Joueur(nomJ1, prenomJ1);
+    }
+    public Joueur getJoueur2() {
+        String nom = nomJ2;
+        String prenom = prenomJ2;
+        return new Joueur(nomJ2, prenomJ2);
+    }
     public void switchActivePlayer() {
         activePlayer = activePlayer == 1 ? 2 : 1;
         timer1.reset(seconds);

@@ -3,12 +3,16 @@ package com.valoo.chess;
 import com.valoo.chess.controller.MainController;
 import com.valoo.chess.fonctionnalites.Bot;
 import com.valoo.chess.fonctionnalites.FichierCoup;
+import com.valoo.chess.fonctionnalites.Joueur;
 import com.valoo.chess.pieces.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChessBoard {
     private VBox board;
@@ -19,9 +23,16 @@ public class ChessBoard {
     private int couleurBot;
     private Bot bot;
 
+    private List<Joueur> joueurs = new ArrayList<>();
     private MainController mainController;
     private FichierCoup fichierCoup;
 
+    public void JoueurTournoi(List<Joueur> joueurs){
+        this.joueurs = joueurs;
+        joueurs.add(new Joueur(this.mainController.getJoueur1().getNom(), this.mainController.getJoueur1().getPrenom()));
+        joueurs.add(new Joueur(this.mainController.getJoueur2().getNom(), this.mainController.getJoueur2().getPrenom()));
+        System.out.println(joueurs);
+    }
 
     /**
      * @param couleurBot couleur du bot
@@ -217,6 +228,7 @@ public class ChessBoard {
         tour = 2;
 
     }
+
 
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
         Piece piece = getPiece(currentX, currentY);

@@ -64,16 +64,16 @@
 
             </VBox>
             <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
-                <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="30 secondes" />
-                            <String fx:value="1 minute" />
-                            <String fx:value="3 minutes" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-                <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
+            <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="30 secondes" />
+                        <String fx:value="1 minute" />
+                        <String fx:value="3 minutes" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
 
 
             <VBox prefHeight="80" />
@@ -92,7 +92,14 @@
             <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
             <!--Image du joueur 1-->
             <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
-        </VBox>
+
+            <VBox fx:id="menuTournoi" alignment="CENTER" spacing="20">
+
+
+
+            </VBox>
+            <VBox prefHeight="80" />
+            </VBox>
         </StackPane>
     </VBox>
 </HBox>
