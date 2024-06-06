@@ -232,6 +232,10 @@
     -fx-font-weight: bold;
 }
 
+#btnJouer2:hover {
+    -fx-background-color: #43A047;
+}
+
 #btnSauvegarde {
     -fx-background-color: #171715;
     -fx-text-fill: white;
@@ -243,5 +247,36 @@
 
 #btnSauvegarde:hover {
     -fx-background-color: black;
+}
+
+#listeFichiersParties .button {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#listeFichiersParties .button:hover {
+    -fx-background-color: black;
+}
+
+#listeFichiersParties .label {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 17px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#btnClearParties {
+    -fx-background-color: #FA742C;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
 }
 

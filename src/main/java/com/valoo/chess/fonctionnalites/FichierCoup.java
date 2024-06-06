@@ -120,14 +120,13 @@ public class FichierCoup {
     }
 
     public void annulerCoup(ChessBoard board, String fileName) {
+
         --indexHistorique;
+
         // on fait le coup de chaque ligne jusquà indexHistorique
         board.resetBoard();
         try (Scanner input = new Scanner(new File(fileName))) {
-            if(input == null) {
-                return;
-            } else {
-                System.out.println(indexHistorique);
+            if(input != null) {
                 for(int i = 0; i < indexHistorique; i++) {
                     String line = input.nextLine();
                     int xAvant = Character.getNumericValue(line.charAt(0));
@@ -150,7 +149,6 @@ public class FichierCoup {
             if(input == null) {
                 return;
             } else {
-                System.out.println(indexHistorique);
                 for(int i = 0; i < indexHistorique; i++) {
                     String line = input.nextLine();
                     int xAvant = Character.getNumericValue(line.charAt(0));
@@ -168,5 +166,9 @@ public class FichierCoup {
 
     public void setIndexHistorique(int indexHistorique) {
         this.indexHistorique = indexHistorique;
+    }
+
+    public int getIndexHistorique() {
+        return indexHistorique;
     }
 }

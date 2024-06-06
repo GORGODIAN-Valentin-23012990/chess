@@ -315,7 +315,7 @@ public class MainController {
         }
         chessBoard = new ChessBoard(bot, this);
         handleChargerPartie();
-        partieChargee = chessBoard.getFileName();
+        partieChargee = chessBoard.getFileName().substring(27, chessBoard.getFileName().length());
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         switchActivePlayer();
     }
@@ -401,16 +401,17 @@ public class MainController {
     }
 
     public void handleChargerPartie() {
+        String nomBtn;
         listeFichiersParties.getChildren().clear();
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
-        if (files != null) {
+        if (files.length > 0) {
             for (File file : files) {
                 if (file.isFile()) {
-                    Button fileButton = new Button(file.getName());
-                    fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
+                    Button fileButton = new Button(file.getName().substring(0, file.getName().length() - 4));
+                    fileButton.setPrefWidth(200);
                     fileButton.setOnAction(event -> {
-                        partieChargee = file.getName();
+                        partieChargee = fileButton.getText() + ".txt";
                         timer1 = new Timer(30);
                         timer2 = new Timer(30);
                         if(chessBoard == null) {
@@ -427,7 +428,7 @@ public class MainController {
             // Forcer la mise à jour de l'interface utilisateur
             listeFichiersParties.layout();
         } else {
-            listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
+            handleClearParties();
         }
 
     }
@@ -436,12 +437,21 @@ public class MainController {
 
     @FXML
     public void handlePrec(){
-        chessBoard.annulerCoup("src/main/resources/parties/" + partieChargee);
+        if(partieChargee == null) {
+            return;
+        } else {
+            chessBoard.annulerCoup("src/main/resources/parties/" + partieChargee);
+
+        }
     }
 
     @FXML
     public void handleSuiv() {
-        chessBoard.coupSuivant("src/main/resources/parties/" + partieChargee);
+        if (partieChargee == null) {
+            return;
+        } else {
+            chessBoard.coupSuivant("src/main/resources/parties/" + partieChargee);
+        }
     }
 
     @FXML

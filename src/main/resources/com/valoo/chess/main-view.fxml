@@ -14,7 +14,7 @@
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
-    <VBox style="-fx-background-color: #2b2b2b;" prefWidth="780">
+    <VBox style="-fx-background-color: #2b2b2b;" minWidth="780">
         <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10; -fx-background-color: #393939;">
             <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
                 <Image url="@/icone.jpg"/>
@@ -39,9 +39,9 @@
     </VBox>
 
 
-    <VBox spacing="20" style="-fx-background-color: #21201D;" prefWidth="432" prefHeight="900">
+    <VBox spacing="20" style="-fx-background-color: #21201D;" minWidth="432" minHeight="900">
         <HBox alignment="TOP_CENTER">
-            <Button fx:id="NVPartie" text="Nouvelle partie"  prefWidth="150" prefHeight="150" alignment="CENTER">
+            <Button fx:id="NVPartie" text="Nouvelle partie"  minWidth="150" minHeight="65" alignment="CENTER">
                 <graphic>
                     <VBox alignment="CENTER">
                     <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
@@ -55,7 +55,7 @@
             </Button>
 
 
-            <Button fx:id="Partie" text="Parties"  prefWidth="150" prefHeight="150" alignment="CENTER">
+            <Button fx:id="Partie" text="Parties"  minWidth="150" minHeight="65" alignment="CENTER">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
@@ -69,7 +69,7 @@
             </Button>
 
 
-            <Button fx:id="Joueurs" text="Joueurs"  prefWidth="150" prefHeight="150" alignment="CENTER">
+            <Button fx:id="Joueurs" text="Joueurs"  minWidth="150" minHeight="65" alignment="CENTER">
                 <graphic>
                     <VBox alignment="CENTER">
                         <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
@@ -85,95 +85,114 @@
 
         <StackPane>
             <VBox fx:id="menuJoueur" alignment="CENTER" spacing="20">
-                <TextField fx:id="prenomField" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomField" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnValider" text="Valider" prefHeight="60" prefWidth="350" onAction="#handleAjoutJoueur"/>
+                <TextField fx:id="prenomField" promptText="prénom" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomField" promptText="nom" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValider" text="Valider" minHeight="60" minWidth="350" onAction="#handleAjoutJoueur"/>
             </VBox>
             <VBox fx:id="menuJoueur2" alignment="CENTER" spacing="20">
-                <TextField fx:id="prenomField2" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomField2" promptText="nom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnValider2" text="Valider" prefHeight="60" prefWidth="350"/>
+                <TextField fx:id="prenomField2" promptText="prénom" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomField2" promptText="nom" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValider2" text="Valider" minHeight="60" minWidth="350"/>
             </VBox>
-            <VBox fx:id="menuPartie" spacing="20">
-                <TextField fx:id="nomPartie" promptText="nom de la partie" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnPrec" text="Précédent" prefHeight="60" prefWidth="350" onAction="#handlePrec"/>
-                <Button fx:id="btnSuiv" text="Suivant" prefHeight="60" prefWidth="350" onAction="#handleSuiv"/>
-                <Button fx:id="btnClearParties" text="Effacer les parties" prefHeight="60" prefWidth="350" onAction="#handleClearParties"/>
-                <VBox fx:id="listeFichiersParties" alignment="CENTER">
+            <VBox fx:id="menuPartie" spacing="20" alignment="TOP_CENTER">
+
+                <Button fx:id="btnClearParties" text="Effacer les parties" minHeight="60" minWidth="350" onAction="#handleClearParties"/>
+                <VBox fx:id="listeFichiersParties" alignment="TOP_CENTER" spacing="10" minHeight="900"/>
+
+
             </VBox>
+            <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
+                <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" minWidth="350" minHeight="60" >
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="30 secondes" />
+                            <String fx:value="1 minute" />
+                            <String fx:value="3 minutes" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button fx:id="btnJouer" text="Jouer" minHeight="70" minWidth="350" onAction="#handleJouerButtonAction"/>
 
-        </VBox>
-        <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
-            <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" prefWidth="350" prefHeight="60" >
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="30 secondes" />
-                        <String fx:value="1 minute" />
-                        <String fx:value="3 minutes" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-            <Button fx:id="btnJouer" text="Jouer" prefHeight="60" prefWidth="350" onAction="#handleJouerButtonAction"/>
-
-            <HBox fx:id="choixJeuBox" alignment="CENTER" spacing="15">
-                <Button fx:id="btnJouer2" text="Jouer contre un joueur" prefHeight="150" prefWidth="150" onAction="#handleJouer2ButtonAction" style="-fx-font-size: 12" wrapText="true" textAlignment="CENTER">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitHeight="70" fitWidth="70" pickOnBounds="true" preserveRatio="true" >
-                                <image>
-                                    <Image url="@/mains.png"/>
-                                </image>
-                            </ImageView>
-                        </VBox>
-                    </graphic>
-                    <contentDisplay>TOP</contentDisplay>
-                </Button>
-                <Button fx:id="btnJouerBot" text="Jouer contre le bot" prefHeight="150" prefWidth="150" onAction="#handleBotButtonAction" style="-fx-font-size: 12">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitHeight="70" fitWidth="70" pickOnBounds="true" preserveRatio="true" >
-                                <image>
-                                    <Image url="@/robot.png"/>
-                                </image>
-                            </ImageView>
-                        </VBox>
-                    </graphic>
-                    <contentDisplay>TOP</contentDisplay>
-                </Button>
+                <HBox fx:id="choixJeuBox" alignment="CENTER" spacing="15">
+                    <Button fx:id="btnJouer2" text="Jouer contre un joueur" minHeight="115" minWidth="150" maxWidth="150" onAction="#handleJouer2ButtonAction" style="-fx-font-size: 12" wrapText="true" textAlignment="CENTER">
+                        <graphic>
+                            <VBox alignment="CENTER">
+                                <ImageView fitHeight="70" fitWidth="70" pickOnBounds="true" preserveRatio="true" >
+                                    <image>
+                                        <Image url="@/mains.png"/>
+                                    </image>
+                                </ImageView>
+                            </VBox>
+                        </graphic>
+                        <contentDisplay>TOP</contentDisplay>
+                    </Button>
+                    <Button fx:id="btnJouerBot" text="Jouer contre le bot" minHeight="115" minWidth="150" maxWidth="150" onAction="#handleBotButtonAction" style="-fx-font-size: 12" wrapText="true" textAlignment="CENTER">
+                        <graphic>
+                            <VBox alignment="CENTER">
+                                <ImageView fitHeight="70" fitWidth="70" pickOnBounds="true" preserveRatio="true" >
+                                    <image>
+                                        <Image url="@/robot.png"/>
+                                    </image>
+                                </ImageView>
+                            </VBox>
+                        </graphic>
+                        <contentDisplay>TOP</contentDisplay>
+                    </Button>
             </HBox>
+            <VBox minHeight="10"  fx:id="espace" alignment="CENTER"/>
 
+                <Button fx:id="btnTournoi" text="Tournois" minHeight="70"  minWidth="350">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/medaille.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="btnPrec" minHeight="80" minWidth="150" onAction="#handlePrec">
+                        <graphic>
+                            <VBox alignment="CENTER">
+                                <ImageView fitHeight="75" fitWidth="75" pickOnBounds="true" preserveRatio="true" >
+                                    <image>
+                                        <Image url="@/flecheGauche.png"/>
+                                    </image>
+                                </ImageView>
+                            </VBox>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnSuiv" minHeight="80" minWidth="150" onAction="#handleSuiv">
+                        <graphic>
+                            <VBox alignment="CENTER">
+                                <ImageView fitHeight="75" fitWidth="75" pickOnBounds="true" preserveRatio="true" >
+                                    <image>
+                                        <Image url="@/flecheDroite.png"/>
+                                    </image>
+                                </ImageView>
+                            </VBox>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
+                <!--Image du joueur 1-->
+                <ImageView fx:id="iconBottomRight" fitHeight="200" fitWidth="200" pickOnBounds="true" preserveRatio="true"></ImageView>
 
-            <VBox prefHeight="80"  fx:id="espace" alignment="CENTER"/>
-
-            <Button fx:id="btnTournoi" text="Tournois" prefHeight="60" prefWidth="350">
-                <graphic>
-                    <ImageView fitHeight="32" fitWidth="32" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@/medaille.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Button>
-
-            <Label fx:id="endgameMessage" text="En attente..." style="-fx-font-size: 20px;"/>
-            <!--Image du joueur 1-->
-            <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
-
-            <VBox prefHeight="80" />
+                <VBox minHeight="80" />
             </VBox>
             <VBox fx:id="menuTournoi" alignment="CENTER" spacing="20">
                 <!-- Demander le nom des 10 joueurs-->
-                <TextField fx:id="nomJoueur1" promptText="Nom du joueur 1" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur2" promptText="Nom du joueur 2" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur3" promptText="Nom du joueur 3" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur4" promptText="Nom du joueur 4" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur5" promptText="Nom du joueur 5" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur6" promptText="Nom du joueur 6" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur7" promptText="Nom du joueur 7" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur8" promptText="Nom du joueur 8" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur9" promptText="Nom du joueur 9" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <TextField fx:id="nomJoueur10" promptText="Nom du joueur 10" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
-                <Button fx:id="btnValiderTournoi" text="Valider" prefHeight="60" prefWidth="350" onAction="#handleValiderTournoi"/>
+                <TextField fx:id="nomJoueur1" promptText="Nom du joueur 1" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur2" promptText="Nom du joueur 2" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur3" promptText="Nom du joueur 3" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur4" promptText="Nom du joueur 4" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur5" promptText="Nom du joueur 5" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur6" promptText="Nom du joueur 6" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur7" promptText="Nom du joueur 7" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur8" promptText="Nom du joueur 8" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur9" promptText="Nom du joueur 9" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur10" promptText="Nom du joueur 10" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValiderTournoi" text="Valider" minHeight="60" minWidth="350" onAction="#handleValiderTournoi"/>
             </VBox>
         </StackPane>
     </VBox>

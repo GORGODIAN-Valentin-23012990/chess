@@ -262,7 +262,10 @@ public class ChessBoard {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
                         // On stocke dans coups les coups joués avec le modèle suivant : currentX currentY targetX targetY
-                        if(haveToWrite) fichierCoup.ecrireCoup(currentX, currentY, targetX, targetY);
+                        if(haveToWrite) {
+                            fichierCoup.ecrireCoup(currentX, currentY, targetX, targetY);
+                            fichierCoup.setIndexHistorique(fichierCoup.getIndexHistorique() + 1);
+                        }
 
                         // On regarde si la pièce qui bouge est un roi et si la case de destination utilise le grand roque
                         if (piece instanceof Roi && targetX - currentX == 2) {
