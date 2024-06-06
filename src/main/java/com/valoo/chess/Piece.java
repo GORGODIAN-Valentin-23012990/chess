@@ -12,6 +12,7 @@ public abstract class Piece {
     private String type;
 
     /**
+     * Constructeur de la classe Piece
      * @param color couleur de la pièce
      * @param type type de la pièce
      */
@@ -21,6 +22,7 @@ public abstract class Piece {
     }
 
     /**
+     * Constructeur de la classe Piece
      * @param color couleur de la pièce
      * @param type type de la pièce
      * @param couleur couleur de la pièce
@@ -38,7 +40,9 @@ public abstract class Piece {
 
 
     /**
+     *
      * @return image de la pièce
+     *
      */
     public Image getImagePiece() {
         return image;

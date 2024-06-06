@@ -47,14 +47,14 @@
 
 #Partie {
     -fx-background-color: black;
-    -fx-text-fill: #90908E;
+    -fx-text-fill: white;
     -fx-font-size: 10px;
 }
 
 
 #Joueurs {
     -fx-background-color: black;
-    -fx-text-fill: #90908E;
+    -fx-text-fill: white;
     -fx-font-size: 10px;
 
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -39,6 +40,9 @@ public class MainController {
     VBox menuPrincipal;
     @FXML
     private ImageView iconBottomRight;
+
+    @FXML
+    private ImageView newGame;
 
     @FXML
     Button NVPartie;
@@ -72,11 +76,38 @@ public class MainController {
         timeline.setCycleCount(Timeline.INDEFINITE);
 
 
-        Partie.setOnAction(event -> showVBox(menuPartie));
-        Joueurs.setOnAction(event -> showVBox(menuJoueur));
-        NVPartie.setOnAction(event -> showVBox(menuPrincipal));
+        Partie.setOnAction(event -> {
+            showVBox(menuPartie);
+            //newGame.setImage(new Image("@/new_game_dark.png"));
+            resetButtonStyles(Partie, Joueurs, NVPartie);
+            Partie.setStyle("-fx-background-color: #21201D");
+        });
+        Joueurs.setOnAction(event -> {
+            showVBox(menuJoueur);
+            resetButtonStyles(Joueurs, Partie, NVPartie);
+            Joueurs.setStyle("-fx-background-color: #21201D");
+        });
+        NVPartie.setOnAction(event ->  {
+            showVBox(menuPrincipal);
+            resetButtonStyles(NVPartie, Partie, Joueurs);
+            NVPartie.setStyle("-fx-background-color: #21201D");
+        });
+
+
+
         btnJouer.setOnAction(event -> handleJouerButtonAction());
     }
+
+    // Méthode pour réinitialiser les styles des boutons
+    private void resetButtonStyles(Button activeButton, Button... buttons) {
+        for (Button button : buttons) {
+            if (button != activeButton) {
+                button.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+            }
+        }
+    }
+
+
     private void showVBox(VBox vbox) {
         menuJoueur.setVisible(false);
         menuPrincipal.setVisible(false);

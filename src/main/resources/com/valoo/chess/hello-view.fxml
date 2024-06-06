@@ -43,10 +43,26 @@
     </VBox>
     <VBox spacing="20" style="-fx-background-color: #21201D;" prefWidth="432" prefHeight="900">
         <HBox alignment="TOP_CENTER">
-            <Button fx:id="NVPartie" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
-            <Button fx:id="Partie" text="Parties"  prefWidth="150" prefHeight="40"/>
-            <Button fx:id="Joueurs" text="Joueurs"  prefWidth="150" prefHeight="40"/>
+            <VBox alignment="CENTER" spacing="5">
+                <ImageView  fx:id="newGame" fitHeight="20" fitWidth="20">
+                    <Image url="@/new_game.png"/>
+                </ImageView>
+                <Button fx:id="NVPartie" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <ImageView fitHeight="20" fitWidth="20">
+                    <Image url="@/partie.png"/>
+                </ImageView>
+                <Button fx:id="Partie" text="Parties" prefWidth="150" prefHeight="40"/>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5">
+                <ImageView fitHeight="20" fitWidth="20">
+                    <Image url="@/joueur.png"/>
+                </ImageView>
+                <Button fx:id="Joueurs" text="Joueurs" prefWidth="150" prefHeight="40"/>
+            </VBox>
         </HBox>
+
         <StackPane>
             <VBox fx:id="menuJoueur" alignment="CENTER" spacing="20">
                 <TextField fx:id="prenomField" promptText="prénom" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
