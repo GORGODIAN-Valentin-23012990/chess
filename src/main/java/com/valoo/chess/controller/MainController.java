@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -24,6 +25,10 @@ public class MainController {
 
     @FXML
     private Button btnTournoi;
+    @FXML
+    private VBox espace;
+    @FXML
+    private Button btnJouer2;
     @FXML
     private TextField prenomField;
     @FXML
@@ -87,6 +92,8 @@ public class MainController {
     ArrayList<Node> Menu2 = new ArrayList<Node>();
     ArrayList<Node> Menu3 = new ArrayList<Node>();
     ArrayList<Node> MainMenu = new ArrayList<Node>();
+    @FXML
+    private HBox choixJeuBox;
     private Timer timer1;
     private Timer timer2;
     private ChessBoard chessBoard;
@@ -106,6 +113,7 @@ public class MainController {
         menuPartie.setVisible(false);
         menuJoueur2.setVisible(false);
         menuTournoi.setVisible(false);
+        choixJeuBox.setVisible(false);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
@@ -284,6 +292,17 @@ public class MainController {
 
     @FXML
     private void handleJouerButtonAction() {
+        if(choixJeuBox.isVisible()) {
+            choixJeuBox.setVisible(false);
+            espace.setVisible(true);
+        } else {
+            choixJeuBox.setVisible(true);
+            espace.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void handleJouer2ButtonAction() {
         gameCode(2);
         endgameMessage.setText("Partie en cours...");
         if (endgameMessage.getStyleClass().contains("afterMatch")) {
