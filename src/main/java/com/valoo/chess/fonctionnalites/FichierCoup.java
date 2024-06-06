@@ -12,12 +12,12 @@ public class FichierCoup {
 
     public FichierCoup() {
         int random = (int) (Math.random() * 1000);
-        this.fileName = String.format("parties/Partie%d.txt", random);
+        this.fileName = String.format("src/main/resources/parties/partie%d.txt", random);
         System.out.println("File name: " + fileName);
     }
 
     public FichierCoup(String fileName) {
-        this.fileName = "parties/" + fileName;
+        this.fileName = "src/main/resources/parties/" + fileName;
     }
 
     public String getFileName() {

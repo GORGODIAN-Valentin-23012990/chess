@@ -111,7 +111,7 @@
       <workItem from="1717598848316" duration="39000" />
       <workItem from="1717598897044" duration="886000" />
       <workItem from="1717603086288" duration="3197000" />
-      <workItem from="1717658351818" duration="1198000" />
+      <workItem from="1717658351818" duration="2691000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
@@ -162,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717590484587</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="écriture correcte dans les fichiers">
+      <created>1717659660262</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1717659660262</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +182,7 @@
     <MESSAGE value="Bot marche" />
     <MESSAGE value="css" />
     <MESSAGE value="meilleur système de coup" />
-    <option name="LAST_COMMIT_MESSAGE" value="meilleur système de coup" />
+    <MESSAGE value="écriture correcte dans les fichiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="écriture correcte dans les fichiers" />
   </component>
 </project>

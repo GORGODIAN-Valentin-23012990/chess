@@ -16,9 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class MainController {
@@ -51,7 +48,9 @@ public class MainController {
     @FXML
     Button Joueurs;
     @FXML
-    VBox menuParties;
+    VBox listeFichiersParties;
+    @FXML
+    Button btnCreer;
 
     boolean partiesChargees = false;
 
@@ -67,9 +66,11 @@ public class MainController {
     private Timeline timeline;
     private int seconds;
 
+
     public void initialize() {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
+        listeFichiersParties = new VBox();
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
                 timer1.tpsDecr(1);
@@ -84,6 +85,7 @@ public class MainController {
         Joueurs.setOnAction(event -> showVBox(menuJoueur));
         NVPartie.setOnAction(event -> showVBox(menuPrincipal));
         btnJouer.setOnAction(event -> handleJouerButtonAction());
+        btnCreer.setOnAction(event -> handleChargerPartie());
     }
     private void showVBox(VBox vbox) {
         menuJoueur.setVisible(false);
@@ -214,19 +216,29 @@ public class MainController {
 
     @FXML
     public void handleChargerPartie() {
-        if(!partiesChargees){
-            File directory = new File("parties/");
+        if (!partiesChargees) {
+            File directory = new File("src/main/resources/parties/");
             File[] files = directory.listFiles();
             if (files != null) {
                 for (File file : files) {
                     if (file.isFile()) {
-                        myComboBox.getItems().add(file.getName());
+                        System.out.println(file.getName());
+                        Button fileButton = new Button(file.getName());
+                        fileButton.setOnAction(event -> {
+                            // Ajoutez le code pour charger la partie ici
+                            System.out.println("Chargement de la partie: " + file.getName());
+                        });
+                        listeFichiersParties.getChildren().add(fileButton);
                     }
                 }
+                // Forcer la mise à jour de l'interface utilisateur
+                listeFichiersParties.layout();
             }
             partiesChargees = true;
         }
     }
+
+
 
     @FXML
     public void handlePrec(){

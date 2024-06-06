@@ -58,7 +58,7 @@
                 <Button fx:id="btnPrec" text="Précédent" prefHeight="60" prefWidth="350" onAction="#handlePrec"/>
                 <Button fx:id="btnSuiv" text="Suivant" prefHeight="60" prefWidth="350" onAction="#handleSuiv"/>
                 <Button fx:id="btnCreer" text="Charger partie" prefHeight="60" prefWidth="350"   onAction="#handleChargerPartie"/>
-                <VBox fx:id="listeParties"/>
+                <VBox fx:id="listeFichiersParties"/>
 
             </VBox>
             <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
