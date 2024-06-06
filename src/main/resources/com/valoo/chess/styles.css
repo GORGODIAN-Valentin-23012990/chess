@@ -198,4 +198,24 @@
     -fx-font-weight: bold;
 }
 
+#nomJoueur1, #nomJoueur2, #nomJoueur3, #nomJoueur4, #nomJoueur5, #nomJoueur6, #nomJoueur7, #nomJoueur8, #nomJoueur9, #nomJoueur10 {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+    -fx-max-width: 350px;
+    -fx-max-height: 30px;
+}
+
+#btnValiderTournoi {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
 

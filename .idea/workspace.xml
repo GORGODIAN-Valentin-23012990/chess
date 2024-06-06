@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Tournoi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/Tournoi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717667170808</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="design">
+      <created>1717676199435</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1717676199435</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +169,7 @@
     <MESSAGE value="css" />
     <MESSAGE value="meilleur système de coup" />
     <MESSAGE value="ajout système de nom" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout système de nom" />
+    <MESSAGE value="design" />
+    <option name="LAST_COMMIT_MESSAGE" value="design" />
   </component>
 </project>

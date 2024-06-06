@@ -109,12 +109,21 @@
             <!--Image du joueur 1-->
             <ImageView fx:id="iconBottomRight" fitHeight="300" fitWidth="300" pickOnBounds="true" preserveRatio="true"></ImageView>
 
-            <VBox fx:id="menuTournoi" alignment="CENTER" spacing="20">
-
-
-
-            </VBox>
             <VBox prefHeight="80" />
+            </VBox>
+            <VBox fx:id="menuTournoi" alignment="CENTER" spacing="20">
+                <!-- Demander le nom des 10 joueurs-->
+                <TextField fx:id="nomJoueur1" promptText="Nom du joueur 1" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur2" promptText="Nom du joueur 2" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur3" promptText="Nom du joueur 3" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur4" promptText="Nom du joueur 4" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur5" promptText="Nom du joueur 5" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur6" promptText="Nom du joueur 6" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur7" promptText="Nom du joueur 7" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur8" promptText="Nom du joueur 8" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur9" promptText="Nom du joueur 9" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <TextField fx:id="nomJoueur10" promptText="Nom du joueur 10" prefWidth="350" prefHeight="60" style="-fx-font-size: 20px;"/>
+                <Button fx:id="btnValiderTournoi" text="Valider" prefHeight="60" prefWidth="350" onAction="#handleValiderTournoi"/>
             </VBox>
         </StackPane>
     </VBox>

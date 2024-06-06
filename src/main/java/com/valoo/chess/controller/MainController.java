@@ -78,6 +78,9 @@ public class MainController {
     @FXML
     VBox menuTournoi;
 
+    @FXML
+    private Button btnValiderTournoi;
+
     boolean partiesChargees = false;
 
     ArrayList<Node> Menu = new ArrayList<Node>();
@@ -115,6 +118,7 @@ public class MainController {
         timeline.setCycleCount(Timeline.INDEFINITE);
         btnValider.setOnAction(event -> actionBtnValider());
         btnValider2.setOnAction(event -> actionBtnValider2());
+        btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
 
 
         Partie.setOnAction(event -> {
@@ -260,6 +264,13 @@ public class MainController {
         chessBoard = new ChessBoard(bot, this);
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         switchActivePlayer();
+    }
+
+    public void handleValiderTournoi() {
+        String nom = nomField.getText();
+        String prenom = prenomField.getText();
+        Joueur joueur = new Joueur(nom, prenom);
+        System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
     }
 
     public void freezeTimers() {
