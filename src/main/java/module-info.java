@@ -8,4 +8,10 @@ module com.valoo.chess {
 
     opens com.valoo.chess to javafx.fxml;
     exports com.valoo.chess;
+    exports com.valoo.chess.pieces;
+    opens com.valoo.chess.pieces to javafx.fxml;
+    exports com.valoo.chess.controller;
+    opens com.valoo.chess.controller to javafx.fxml;
+    exports com.valoo.chess.fonctionnalites;
+    opens com.valoo.chess.fonctionnalites to javafx.fxml;
 }

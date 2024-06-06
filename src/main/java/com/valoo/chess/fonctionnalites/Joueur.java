@@ -1,11 +1,10 @@
-package com.valoo.chess;
+package com.valoo.chess.fonctionnalites;
 
 public class Joueur {
     private String nom;
     private String prenom;
     private int partieGagnee;
     private int partieJouee;
-
     /**
      * @param nom  nom du joueur
      * @param prenom prenom du joueur
@@ -16,7 +15,9 @@ public class Joueur {
         this.partieGagnee = 0;
         this.partieJouee = 0;
     }
-
+    public void setPartieGagnee(int partieGagnee) {
+        this.partieGagnee = partieGagnee;
+    }
     /**
      * @return nombre de parties gagnées
      */

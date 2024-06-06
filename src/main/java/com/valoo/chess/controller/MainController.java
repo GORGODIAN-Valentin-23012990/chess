@@ -1,24 +1,40 @@
-package com.valoo.chess;
+package com.valoo.chess.controller;
 
+import com.valoo.chess.ChessBoard;
+import com.valoo.chess.fonctionnalites.Joueur;
+import com.valoo.chess.fonctionnalites.Timer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
+
+    @FXML
+    private Button btnTournoi;
+    @FXML
+    private TextField prenomField;
+    @FXML
+    private TextField nomField;
+    @FXML
+    private Button btnValider;
+    @FXML
+    Label J1Label;
+    @FXML
+    Label J2Label;
     @FXML
     private ComboBox<String> myComboBox;
     @FXML
@@ -42,14 +58,27 @@ public class MainController {
     private ImageView iconBottomRight;
 
     @FXML
-    private ImageView newGame;
-
-    @FXML
     Button NVPartie;
     @FXML
     Button Partie;
     @FXML
     Button Joueurs;
+    @FXML
+    private VBox listeFichiersParties;
+    @FXML
+    Button btnCreer;
+    @FXML
+    VBox menuJoueur2;
+    @FXML
+    Button btnValider2;
+    @FXML
+    TextField prenomField2;
+    @FXML
+    TextField nomField2;
+    @FXML
+    VBox menuTournoi;
+
+    boolean partiesChargees = false;
 
     ArrayList<Node> Menu = new ArrayList<Node>();
     ArrayList<Node> Menu2 = new ArrayList<Node>();
@@ -62,10 +91,20 @@ public class MainController {
 
     private Timeline timeline;
     private int seconds;
+    private String nomJ1;
+    private String nomJ2;
+    private String prenomJ1;
+    private String prenomJ2;
+
+
 
     public void initialize() {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
+        menuJoueur2.setVisible(false);
+        menuTournoi.setVisible(false);
+        listeFichiersParties = new VBox();
+
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
                 timer1.tpsDecr(1);
@@ -73,50 +112,52 @@ public class MainController {
                 timer2.tpsDecr(1);
             }
         }));
+        btnTournoi.setOnAction(event -> actionBtnTournoi());
         timeline.setCycleCount(Timeline.INDEFINITE);
-
-
-        Partie.setOnAction(event -> {
-            showVBox(menuPartie);
-            //newGame.setImage(new Image("@/new_game_dark.png"));
-            resetButtonStyles(Partie, Joueurs, NVPartie);
-            Partie.setStyle("-fx-background-color: #21201D");
-        });
-        Joueurs.setOnAction(event -> {
-            showVBox(menuJoueur);
-            resetButtonStyles(Joueurs, Partie, NVPartie);
-            Joueurs.setStyle("-fx-background-color: #21201D");
-        });
-        NVPartie.setOnAction(event ->  {
-            showVBox(menuPrincipal);
-            resetButtonStyles(NVPartie, Partie, Joueurs);
-            NVPartie.setStyle("-fx-background-color: #21201D");
-        });
-
-
-
+        btnValider.setOnAction(event -> actionBtnValider());
+        btnValider2.setOnAction(event -> actionBtnValider2());
+        Partie.setOnAction(event -> showVBox(menuPartie));
+        Joueurs.setOnAction(event -> showVBox(menuJoueur));
+        NVPartie.setOnAction(event -> showVBox(menuPrincipal));
         btnJouer.setOnAction(event -> handleJouerButtonAction());
+        btnCreer.setOnAction(event -> handleChargerPartie());
     }
 
-    // Méthode pour réinitialiser les styles des boutons
-    private void resetButtonStyles(Button activeButton, Button... buttons) {
-        for (Button button : buttons) {
-            if (button != activeButton) {
-                button.setStyle("-fx-background-color: black; -fx-text-fill: white;");
-            }
-        }
+    public void actionBtnTournoi() {
+         menuPrincipal.setVisible(false);
+         menuTournoi.setVisible(true);
+    }
+    public void actionBtnValider(){
+        prenomJ1 = prenomField.getText();
+        nomJ1 = nomField.getText();
+        bindJ1(nomJ1, prenomJ1);
+        menuJoueur.setVisible(false);
+        menuJoueur2.setVisible(true);
+    }
+    public void actionBtnValider2() {
+        prenomJ2 = prenomField2.getText();
+        nomJ2 = nomField2.getText();
+        bindJ2(nomJ2, prenomJ2);
+        menuJoueur2.setVisible(false);
+        menuPrincipal.setVisible(true);
     }
 
+    public void bindJ1(String nom, String prenom) {
+        String nomJ1 = nom+" "+prenom;
+        J1Label.setText(nomJ1);
+    }
 
+    public void bindJ2(String nom, String prenom) {
+        String nomj2 = nom+" "+prenom;
+
+        J2Label.setText(nomj2);
+    }
     private void showVBox(VBox vbox) {
         menuJoueur.setVisible(false);
         menuPrincipal.setVisible(false);
         menuPartie.setVisible(false);
         vbox.setVisible(true);
     }
-
-
-
     private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
@@ -183,12 +224,13 @@ public class MainController {
             }
         });
 
+        handleChargerPartie();
+
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
         chessBoard = new ChessBoard(bot, this);
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
-        System.out.println("Jeu réinitialisé !");
         switchActivePlayer();
     }
 
@@ -217,7 +259,16 @@ public class MainController {
         // set the iconBottomRight image to the winner's icon
         iconBottomRight.setImage(null);
     }
-
+    public Joueur getJoueur1() {
+        String nom = nomJ1;
+        String prenom = prenomJ1;
+        return new Joueur(nomJ1, prenomJ1);
+    }
+    public Joueur getJoueur2() {
+        String nom = nomJ2;
+        String prenom = prenomJ2;
+        return new Joueur(nomJ2, prenomJ2);
+    }
     public void switchActivePlayer() {
         activePlayer = activePlayer == 1 ? 2 : 1;
         timer1.reset(seconds);
@@ -235,5 +286,51 @@ public class MainController {
         }
         freezeTimers();
     }
+
+    @FXML
+    public void handleChargerPartie() {
+        if (!partiesChargees) {
+            File directory = new File("src/main/resources/parties/");
+            File[] files = directory.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        System.out.println(file.getName());
+                        Button fileButton = new Button(file.getName());
+                        fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
+                        fileButton.setOnAction(event -> {
+                            // Ajoutez le code pour charger la partie ici
+                            if(chessBoard == null) {
+                                chessBoard = new ChessBoard(2, this);
+                                chessBoardContainer.getChildren().add(chessBoard.getBoard());
+                            } else {
+                                chessBoard.resetBoard();
+                            }
+                            System.out.println("Chargement de la partie: " + file.getName());
+                            chessBoard.jouerPartie(file.getName());
+                        });
+                        listeFichiersParties.getChildren().add(fileButton);
+                    }
+                }
+                // Forcer la mise à jour de l'interface utilisateur
+                listeFichiersParties.layout();
+            }
+            partiesChargees = true;
+        }
+    }
+
+
+
+    @FXML
+    public void handlePrec(){
+//        chessBoard.annulerCoup("parties/Partie35.txt");
+    }
+
+    @FXML
+    public void handleSuiv() {
+        chessBoard.coupSuivant("parties/Partie35.txt");
+        chessBoard.updateBoard();
+    }
+
 
 }

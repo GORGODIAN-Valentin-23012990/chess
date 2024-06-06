@@ -1,4 +1,4 @@
-package com.valoo.chess;
+package com.valoo.chess.fonctionnalites;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

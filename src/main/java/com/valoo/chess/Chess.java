@@ -18,7 +18,7 @@ public class   Chess extends Application {
     public void start(Stage primaryStage) {
 
         BorderPane root = new BorderPane();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/valoo/chess/main-view.fxml"));
         Parent helloView = null;
 
         try {
@@ -28,12 +28,8 @@ public class   Chess extends Application {
         }
         VBox chessBoardContainer = (VBox) loader.getNamespace().get("chessBoardContainer");
 
-        System.out.println("true");
 
         root.setLeft(helloView);
-//
-//        FichierCoup fichierCoups = new FichierCoup("coups.txt");
-//        fichierCoups.lireCoup(0);
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Chess");

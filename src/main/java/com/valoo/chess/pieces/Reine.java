@@ -1,4 +1,7 @@
-package com.valoo.chess;
+package com.valoo.chess.pieces;
+
+import com.valoo.chess.ChessBoard;
+import com.valoo.chess.pieces.Piece;
 
 public class Reine extends Piece {
 
