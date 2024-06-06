@@ -43,15 +43,8 @@ public class ChessBoard {
         placePieces();
     }
 
+    // La méthode resetBoard permet de réinitialiser le plateau de jeu
     public void resetBoard(){
-        tour = 0;
-        if(couleurBot == 0 || couleurBot == 1) {
-            this.couleurBot = couleurBot;
-            bot = new Bot(true);
-        } else if (couleurBot == 2) {
-            bot = new Bot(false);
-        }
-        createBoard();
         placePieces();
     }
 
@@ -287,9 +280,9 @@ public class ChessBoard {
         fichierCoup.jouerPartie(this, fileName);
     }
 
-    public void annulerCoup(String filename) {
-        fichierCoup.annulerCoup(this, filename);
-    }
+//    public void annulerCoup(String filename) {
+//        fichierCoup.annulerCoup(this, filename);
+//    }
 
     public void coupSuivant(String filename) {
     }

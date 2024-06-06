@@ -48,7 +48,7 @@ public class MainController {
     @FXML
     Button Joueurs;
     @FXML
-    VBox listeFichiersParties;
+    private VBox listeFichiersParties;
     @FXML
     Button btnCreer;
 
@@ -70,7 +70,7 @@ public class MainController {
     public void initialize() {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
-        listeFichiersParties = new VBox();
+
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
                 timer1.tpsDecr(1);
@@ -162,6 +162,8 @@ public class MainController {
             }
         });
 
+        handleChargerPartie();
+
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
@@ -224,9 +226,15 @@ public class MainController {
                     if (file.isFile()) {
                         System.out.println(file.getName());
                         Button fileButton = new Button(file.getName());
+                        fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
                         fileButton.setOnAction(event -> {
                             // Ajoutez le code pour charger la partie ici
+                            if(chessBoard == null) {
+                                chessBoard = new ChessBoard(2, this);
+                                chessBoardContainer.getChildren().add(chessBoard.getBoard());
+                            }
                             System.out.println("Chargement de la partie: " + file.getName());
+                            chessBoard.jouerPartie(file.getName());
                         });
                         listeFichiersParties.getChildren().add(fileButton);
                     }
@@ -242,7 +250,7 @@ public class MainController {
 
     @FXML
     public void handlePrec(){
-        chessBoard.annulerCoup("parties/Partie35.txt");
+//        chessBoard.annulerCoup("parties/Partie35.txt");
     }
 
     @FXML

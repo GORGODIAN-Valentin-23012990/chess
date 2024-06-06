@@ -11,9 +11,10 @@ public class FichierCoup {
     private String fileName;
 
     public FichierCoup() {
-        int random = (int) (Math.random() * 1000);
-        this.fileName = String.format("src/main/resources/parties/partie%d.txt", random);
-        System.out.println("File name: " + fileName);
+        File directory = new File("src/main/resources/parties/");
+        File[] files = directory.listFiles();
+        int fileCount = files != null ? files.length : 0;
+        fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
     }
 
     public FichierCoup(String fileName) {
@@ -31,7 +32,6 @@ public class FichierCoup {
     }
 
     public void ecrireCoup(int xAvant, int yAvant, int xApres, int yApres) {
-        System.out.println("Writing move to file: " + fileName);
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName, true))) {
             printWriter.println(String.format("%d%d%d%d", xAvant, yAvant, xApres, yApres));
         } catch (IOException e) {
@@ -39,6 +39,7 @@ public class FichierCoup {
         }
     }
 
+    // Cette fonction prend en parametre un index et affiche le coup correspondant dans le fichier
     public void lireCoup(int index) {
         try (Scanner input = new Scanner(new File(fileName))) {
             for (int i = 0; input.hasNext(); i++) {
@@ -53,39 +54,20 @@ public class FichierCoup {
         }
     }
 
+    // Cette fonction prend en parametre un chessboard et le nom d'un fichier, clear le chessboard et joue tous les coups stockés dans le fichier à l'aide de la fonction lireCoup
     public void jouerPartie(ChessBoard board, String fileName) {
-        try (Scanner input = new Scanner(new File(fileName))) {
+        try (Scanner input = new Scanner(new File("src/main/resources/parties/" + fileName))) {
+            board.resetBoard();
             while (input.hasNext()) {
                 String line = input.nextLine();
-                int xAvant = Integer.parseInt(line.substring(0, 1));
-                int yAvant = Integer.parseInt(line.substring(1, 2));
-                int xApres = Integer.parseInt(line.substring(2, 3));
-                int yApres = Integer.parseInt(line.substring(3, 4));
+                int xAvant = Character.getNumericValue(line.charAt(0));
+                int yAvant = Character.getNumericValue(line.charAt(1));
+                int xApres = Character.getNumericValue(line.charAt(2));
+                int yApres = Character.getNumericValue(line.charAt(3));
                 board.movePiece(xAvant, yAvant, xApres, yApres);
             }
         } catch (Exception e) {
             System.err.println("Error playing game from file: " + e.getMessage());
-        }
-    }
-
-    public void annulerCoup(ChessBoard board, String fileName) {
-        try (Scanner input = new Scanner(new File(fileName));
-             PrintWriter printWriter = new PrintWriter(new FileWriter("parties/Historique.txt"))) {
-
-            while (input.hasNext()) {
-                String line = input.nextLine();
-                if (input.hasNext()) {
-                    printWriter.println(line);
-                    int xAvant = Integer.parseInt(line.substring(0, 1));
-                    int yAvant = Integer.parseInt(line.substring(1, 2));
-                    int xApres = Integer.parseInt(line.substring(2, 3));
-                    int yApres = Integer.parseInt(line.substring(3, 4));
-                    board.movePiece(xAvant, yAvant, xApres, yApres);
-                }
-            }
-            board.updateBoard();
-        } catch (Exception e) {
-            System.err.println("Error undoing move: " + e.getMessage());
         }
     }
 }

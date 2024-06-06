@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,17 +72,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Chess" />
@@ -112,6 +103,7 @@
       <workItem from="1717598897044" duration="886000" />
       <workItem from="1717603086288" duration="3197000" />
       <workItem from="1717658351818" duration="2691000" />
+      <workItem from="1717661774373" duration="3277000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
