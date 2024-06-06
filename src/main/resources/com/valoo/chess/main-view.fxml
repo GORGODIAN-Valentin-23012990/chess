@@ -43,19 +43,19 @@
                 <ImageView  fx:id="newGame" fitHeight="20" fitWidth="20">
                     <Image url="@/new_game.png"/>
                 </ImageView>
-                <Button fx:id="NVPartie" text="Nouvelle partie" prefWidth="150" prefHeight="40"/>
+                <Button fx:id="NVPartie" text="Nouvelle partie"  prefWidth="150" prefHeight="150"/>
             </VBox>
             <VBox alignment="CENTER" spacing="5">
                 <ImageView fitHeight="20" fitWidth="20">
                     <Image url="@/partie.png"/>
                 </ImageView>
-                <Button fx:id="Partie" text="Parties" prefWidth="150" prefHeight="40"/>
+                <Button fx:id="Partie" text="Parties" prefWidth="150" prefHeight="150"/>
             </VBox>
             <VBox alignment="CENTER" spacing="5">
                 <ImageView fitHeight="20" fitWidth="20">
                     <Image url="@/joueur.png"/>
                 </ImageView>
-                <Button fx:id="Joueurs" text="Joueurs" prefWidth="150" prefHeight="40"/>
+                <Button fx:id="Joueurs" text="Joueurs" prefWidth="150" prefHeight="150"/>
             </VBox>
         </HBox>
 
