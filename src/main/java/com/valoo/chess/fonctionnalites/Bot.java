@@ -24,7 +24,7 @@ public class Bot {
                 if (moves.length > 0) {
                     int moveIndex = (int) (Math.random() * moves.length);
                     int[] move = moves[moveIndex];
-                    board.movePiece(x, y, move[0], move[1]);
+                    board.movePiece(x, y, move[0], move[1], true);
                     break;
                 }
             }

@@ -55,6 +55,22 @@ public class ChessBoard {
         placePieces();
     }
 
+    public ChessBoard(int couleurBot, MainController mainController, String fileName) {
+        fichierCoup = new FichierCoup(fileName);
+        this.mainController = mainController;
+        board = new VBox();
+        coupsJoues = new StringBuilder();
+        tour = 0;
+        if(couleurBot == 0 || couleurBot == 1) {
+            this.couleurBot = couleurBot;
+            bot = new Bot(true);
+        } else if (couleurBot == 2) {
+            bot = new Bot(false);
+        }
+        createBoard();
+        jouerPartie(fileName);
+    }
+
     // La méthode resetBoard permet de réinitialiser le plateau de jeu
     public void resetBoard(){
         placePieces();
@@ -109,7 +125,7 @@ public class ChessBoard {
         Piece clickedPiece = getPiece(x, y);
 
         if (clickedPiece != null && clickedPiece.getCouleur() == tour) {
-            if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
+            if (selectedPiece != null && movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y, true)) {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
@@ -123,7 +139,7 @@ public class ChessBoard {
         if (selectedPiece == null) {
             selectPiece(x, y);
         } else {
-            if (movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y)) {
+            if (movePiece(selectedPiece.getX(), selectedPiece.getY(), x, y, true)) {
                 selectedPiece = null;
                 mainController.switchActivePlayer();
                 updateBoard();
@@ -236,13 +252,8 @@ public class ChessBoard {
 
     }
 
-    public void enregistrerCoup(){
-        fichierCoup.ecrireCoup(coupsJoues.toString());
-        coupsJoues = new StringBuilder();
-    }
 
-
-    public boolean movePiece(int currentX, int currentY, int targetX, int targetY) {
+    public boolean movePiece(int currentX, int currentY, int targetX, int targetY, boolean haveToWrite) {
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
             int[][] validMoves = piece.validMoves(this);
@@ -251,15 +262,24 @@ public class ChessBoard {
                     Piece targetPiece = getPiece(targetX, targetY);
                     if (targetPiece == null || targetPiece.getCouleur() != piece.getCouleur()) {
                         // On stocke dans coups les coups joués avec le modèle suivant : currentX currentY targetX targetY
-                        coupsJoues.append(currentX).append(currentY).append(targetX).append(targetY).append("\n");
-                        if (piece instanceof Roi && Math.abs(currentX - targetX) == 2) {
-                            int tourX = targetX == 6 ? 7 : 0;
-                            int tourY = piece.getCouleur() == 0 ? 0 : 7;
-                            Piece tour = getPiece(tourX, tourY);
-                            matPiece[tourY][tourX] = null;
-                            matPiece[tourY][targetX == 6 ? 5 : 3] = tour;
-                            tour.setX(targetX == 6 ? 5 : 3);
-                            tour.setY(tourY);
+                        if(haveToWrite) fichierCoup.ecrireCoup(currentX, currentY, targetX, targetY);
+
+                        // On regarde si la pièce qui bouge est un roi et si la case de destination utilise le grand roque
+                        if (piece instanceof Roi && targetX - currentX == 2) {
+                            Piece tour = getPiece(7, targetY);
+                            matPiece[targetY][targetX - 1] = tour;
+                            matPiece[targetY][7] = null;
+                            tour.setX(targetX - 1);
+                            tour.setY(targetY);
+                        }
+
+                        // On regarde si la pièce qui bouge est un roi et si la case de destination utilise le petit roque
+                        if (piece instanceof Roi && currentX - targetX == 2) {
+                            Piece tour = getPiece(0, targetY);
+                            matPiece[targetY][targetX + 1] = tour;
+                            matPiece[targetY][0] = null;
+                            tour.setX(targetX + 1);
+                            tour.setY(targetY);
                         }
 
                         if (targetPiece instanceof Roi) {

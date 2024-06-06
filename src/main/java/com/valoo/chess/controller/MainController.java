@@ -87,8 +87,7 @@ public class MainController {
     TextField nomField2;
     @FXML
     VBox menuTournoi;
-    @FXML
-    Button btnSauvegarde;
+
 
     @FXML
     private Button btnValiderTournoi;
@@ -122,7 +121,6 @@ public class MainController {
         menuJoueur2.setVisible(false);
         menuTournoi.setVisible(false);
         choixJeuBox.setVisible(false);
-        btnSauvegarde.setVisible(false);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
@@ -167,10 +165,8 @@ public class MainController {
 
         btnJouer.setOnAction(event -> handleJouerButtonAction());
 
-        btnSauvegarde.setOnAction(event ->
-                handleSauvegarde());
-                handleChargerPartie();
-        }
+
+    }
 
     // Méthode pour réinitialiser les styles des boutons
     private void resetButtonStyles(Button activeButton, Button... buttons) {
@@ -221,7 +217,6 @@ public class MainController {
     private void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
-        btnSauvegarde.setVisible(true);
 
         if (selectedTime != null) {
             switch (selectedTime) {
@@ -313,12 +308,13 @@ public class MainController {
             }
         });
 
-        handleChargerPartie();
+
 
         if (chessBoard != null) {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
         chessBoard = new ChessBoard(bot, this);
+        handleChargerPartie();
         partieChargee = chessBoard.getFileName();
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         switchActivePlayer();
@@ -414,7 +410,7 @@ public class MainController {
                     Button fileButton = new Button(file.getName());
                     fileButton.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #000000; -fx-border-width: 1px; -fx-padding: 5px;");
                     fileButton.setOnAction(event -> {
-                        partieChargee = new String(file.getName());
+                        partieChargee = file.getName();
                         timer1 = new Timer(30);
                         timer2 = new Timer(30);
                         if(chessBoard == null) {
@@ -463,9 +459,6 @@ public class MainController {
         listeFichiersParties.getChildren().add(new Label("Aucune partie enregistrée"));
     }
 
-    @FXML
-    public void handleSauvegarde() {
-        chessBoard.enregistrerCoup();
-    }
+
 
 }

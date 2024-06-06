@@ -68,16 +68,34 @@ public class Roi extends Piece {
                 i++;
             }
 
-            // On vérifie le nombre de coups du roi et de la tour pour le roque
-            if (move[0] == getX() + 2 && move[1] == getY() && getNbCoups() == 0) {
-                Piece tour = board.getPiece(7, getY());
-                if (tour != null && tour instanceof Tour && ((Tour) tour).getNbCoups() == 0) {
-                    if (board.getPiece(getX() + 1, getY()) == null && board.getPiece(getX() + 2, getY()) == null) {
-                        moves[i][0] = x;
-                        moves[i][1] = y;
-                        i++;
-                    }
-                }
+            // Pour les blancs, on vérifie que le roi est à la case 4,0 et que la tour est à la case 0,0 pour le grand roque
+            // On vérifie aussi que les cases entre le roi et la tour sont vides
+            if (getCouleur() == 1 && x == 2 && y == 0 && board.getPiece(0, 0) != null && board.getPiece(0, 0) instanceof Tour && board.getPiece(0, 0).getCouleur() == 1 && board.getPiece(1, 0) == null && board.getPiece(2, 0) == null && board.getPiece(3, 0) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y;
+                i++;
+            }
+
+            // On fait maintenant la même chose pour le petit roque
+            if (getCouleur() == 1 && x == 6 && y == 0 && board.getPiece(7, 0) != null && board.getPiece(7, 0) instanceof Tour && board.getPiece(7, 0).getCouleur() == 1 && board.getPiece(5, 0) == null && board.getPiece(6, 0) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y;
+                i++;
+            }
+
+            // Pour les noirs, on vérifie que le roi est à la case 4,7 et que la tour est à la case 0,7 pour le grand roque
+            // On vérifie aussi que les cases entre le roi et la tour sont vides
+            if (getCouleur() == 0 && x == 2 && y == 7 && board.getPiece(0, 7) != null && board.getPiece(0, 7) instanceof Tour && board.getPiece(0, 7).getCouleur() == 0 && board.getPiece(1, 7) == null && board.getPiece(2, 7) == null && board.getPiece(3, 7) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y;
+                i++;
+            }
+
+            // On fait maintenant la même chose pour le petit roque
+            if (getCouleur() == 0 && x == 6 && y == 7 && board.getPiece(7, 7) != null && board.getPiece(7, 7) instanceof Tour && board.getPiece(7, 7).getCouleur() == 0 && board.getPiece(5, 7) == null && board.getPiece(6, 7) == null) {
+                moves[i][0] = x;
+                moves[i][1] = y;
+                i++;
             }
         }
 
