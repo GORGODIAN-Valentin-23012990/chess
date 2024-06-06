@@ -117,18 +117,6 @@
     -fx-background-color: black;
 }
 
-#btnJouerBot {
-    -fx-background-color: #171715;
-    -fx-text-fill: white;
-    -fx-font-size: 20px;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-    -fx-font-weight: bold;
-}
-
-#btnJouerBot:hover {
-    -fx-background-color: black;
-}
 
 
 .board {
@@ -217,5 +205,28 @@
     -fx-border-radius: 10;
     -fx-font-weight: bold;
 }
+
+#btnJouerBot{
+    -fx-background-color: #FA742C;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#btnJouerBot:hover {
+    -fx-background-color: #F67C3A;
+}
+
+#btnJouer2 {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
 
 

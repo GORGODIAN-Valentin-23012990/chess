@@ -112,6 +112,7 @@ public class ChessBoard {
                 selectedPiece = null;
                 updateBoard();
                 colorBoard();
+                // On attend un peu si le bot est activé pour simuler une réflexion
                 if(tour == 0) tour = 1;
                 else tour = 0;
                 return;
@@ -130,12 +131,16 @@ public class ChessBoard {
                 else if(tour == 1) tour = 0;
 
                 if(bot.isActivated && couleurBot == 1 && tour == 1) {
+                    updateBoard();
+                    colorBoard();
                     tour = 0;
                     bot.play(this, 1);
                     updateBoard();
                     mainController.switchActivePlayer();
 
                 } else if (bot.isActivated && couleurBot == 0 && tour == 0) {
+                    updateBoard();
+                    colorBoard();
                     tour = 1;
                     bot.play(this, 0);
                     updateBoard();
@@ -147,6 +152,7 @@ public class ChessBoard {
                 colorBoard();
             }
         }
+
     }
 
     /**

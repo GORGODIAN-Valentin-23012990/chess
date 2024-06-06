@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.attach_pid30313" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Historique.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/ChessTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/controller/MainControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/FichierCoupTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/JoueurTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/TimerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mains.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/robot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stockage/Joueurs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +34,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2hPqXQpTGT8WWcu8Bj2QBPW3CPU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,26 +46,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/amuhome/c23007921/javafxSAE/nouveau dossier 4/chess&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Chess.executor": "Run",
+    "JUnit.MainControllerTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/amuhome/c23007921/javafxSAE/nouveau dossier 4/chess",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -75,18 +80,16 @@
       <recent name="com.valoo.chess" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MainControllerTest">
-    <configuration name="BotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Chess">
+    <configuration name="Chess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.Chess" />
       <module name="chess" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.valoo.chess.fonctionnalites.*" />
+          <option name="PATTERN" value="com.valoo.chess.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.valoo.chess.fonctionnalites" />
-      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.fonctionnalites.BotTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -153,13 +156,21 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Chess" />
         <item itemvalue="JUnit.MainControllerTest" />
         <item itemvalue="JUnit.JoueurTest" />
         <item itemvalue="JUnit.FichierCoupTest" />
         <item itemvalue="JUnit.TimerTest" />
-        <item itemvalue="JUnit.BotTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -179,6 +190,8 @@
       <workItem from="1717676606654" duration="2258000" />
       <workItem from="1717680371804" duration="3012000" />
       <workItem from="1717686689907" duration="631000" />
+      <workItem from="1717689728093" duration="145000" />
+      <workItem from="1717689904133" duration="1655000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
