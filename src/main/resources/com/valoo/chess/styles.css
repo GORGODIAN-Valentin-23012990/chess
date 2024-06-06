@@ -42,20 +42,20 @@
 #NVPartie {
     -fx-background-color: #21201D;
     -fx-text-fill: white;
-    -fx-font-size: 10px;
+    -fx-font-size: 13px;
 }
 
 #Partie {
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-font-size: 10px;
+    -fx-font-size: 13;
 }
 
 
 #Joueurs {
     -fx-background-color: black;
     -fx-text-fill: white;
-    -fx-font-size: 10px;
+    -fx-font-size: 13px;
 
 }
 .text-field {

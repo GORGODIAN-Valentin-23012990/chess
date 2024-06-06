@@ -116,11 +116,40 @@ public class MainController {
         timeline.setCycleCount(Timeline.INDEFINITE);
         btnValider.setOnAction(event -> actionBtnValider());
         btnValider2.setOnAction(event -> actionBtnValider2());
-        Partie.setOnAction(event -> showVBox(menuPartie));
-        Joueurs.setOnAction(event -> showVBox(menuJoueur));
-        NVPartie.setOnAction(event -> showVBox(menuPrincipal));
+
+
+        Partie.setOnAction(event -> {
+            showVBox(menuPartie);
+            resetButtonStyles(Partie, Joueurs, NVPartie);
+            Partie.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
+
+        });
+
+        Joueurs.setOnAction(event -> {
+            showVBox(menuJoueur);
+            resetButtonStyles(Joueurs, Partie, NVPartie);
+            Joueurs.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
+        });
+
+        NVPartie.setOnAction(event -> {
+            showVBox(menuPrincipal);
+            resetButtonStyles(NVPartie, Joueurs, Partie);
+            NVPartie.setStyle("-fx-background-color: #21201D; -fx-text-fill: white;");
+        });
+
+
+
         btnJouer.setOnAction(event -> handleJouerButtonAction());
         btnCreer.setOnAction(event -> handleChargerPartie());
+    }
+
+    // Méthode pour réinitialiser les styles des boutons
+    private void resetButtonStyles(Button activeButton, Button... buttons) {
+        for (Button button : buttons) {
+            if (button != activeButton) {
+                button.setStyle("-fx-background-color: black; -fx-text-fill: white;");
+            }
+        }
     }
 
     public void actionBtnTournoi() {

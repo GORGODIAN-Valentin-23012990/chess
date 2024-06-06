@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
+    <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="ajout système de nom">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="2hPqXQpTGT8WWcu8Bj2QBPW3CPU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
