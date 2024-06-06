@@ -54,8 +54,9 @@ public class FichierCoup {
         }
     }
 
-    // Cette fonction prend en parametre un chessboard et le nom d'un fichier, clear le chessboard et joue tous les coups stockés dans le fichier à l'aide de la fonction lireCoup
+    // Cette fonction prend en parametre un chessboard et le nom d'un fichier, clear le chessboard et joue tous les coups stockés dans le fichier
     public void jouerPartie(ChessBoard board, String fileName) {
+        System.out.println("Jouer partie: " + fileName);
         try (Scanner input = new Scanner(new File("src/main/resources/parties/" + fileName))) {
             board.resetBoard();
             while (input.hasNext()) {
@@ -66,8 +67,9 @@ public class FichierCoup {
                 int yApres = Character.getNumericValue(line.charAt(3));
                 board.movePiece(xAvant, yAvant, xApres, yApres);
             }
+            board.updateBoard();
         } catch (Exception e) {
-            System.err.println("Error playing game from file: " + e.getMessage());
+            System.err.println("Error reading moves from file: " + e.getMessage());
         }
     }
 }

@@ -232,6 +232,8 @@ public class MainController {
                             if(chessBoard == null) {
                                 chessBoard = new ChessBoard(2, this);
                                 chessBoardContainer.getChildren().add(chessBoard.getBoard());
+                            } else {
+                                chessBoard.resetBoard();
                             }
                             System.out.println("Chargement de la partie: " + file.getName());
                             chessBoard.jouerPartie(file.getName());

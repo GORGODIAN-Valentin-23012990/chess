@@ -46,6 +46,7 @@ public class ChessBoard {
     // La méthode resetBoard permet de réinitialiser le plateau de jeu
     public void resetBoard(){
         placePieces();
+        updateBoard();
     }
 
     /**
