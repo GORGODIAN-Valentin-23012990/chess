@@ -37,26 +37,50 @@
             <Label fx:id="labelTime2" text="30" textFill="white" style="-fx-font-size: 18px;"/>
         </HBox>
     </VBox>
+
+
     <VBox spacing="20" style="-fx-background-color: #21201D;" prefWidth="432" prefHeight="900">
         <HBox alignment="TOP_CENTER">
-            <VBox alignment="CENTER" spacing="5">
-                <ImageView  fx:id="newGame" fitHeight="20" fitWidth="20">
-                    <Image url="@/new_game.png"/>
-                </ImageView>
-                <Button fx:id="NVPartie" text="Nouvelle partie"  prefWidth="150" prefHeight="150"/>
-            </VBox>
-            <VBox alignment="CENTER" spacing="5">
-                <ImageView fitHeight="20" fitWidth="20">
-                    <Image url="@/partie.png"/>
-                </ImageView>
-                <Button fx:id="Partie" text="Parties" prefWidth="150" prefHeight="150"/>
-            </VBox>
-            <VBox alignment="CENTER" spacing="5">
-                <ImageView fitHeight="20" fitWidth="20">
-                    <Image url="@/joueur.png"/>
-                </ImageView>
-                <Button fx:id="Joueurs" text="Joueurs" prefWidth="150" prefHeight="150"/>
-            </VBox>
+            <Button fx:id="NVPartie" text="Nouvelle partie"  prefWidth="150" prefHeight="150" alignment="CENTER">
+                <graphic>
+                    <VBox alignment="CENTER">
+                    <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
+                        <image>
+                            <Image url="@/new_game.png"/>
+                        </image>
+                    </ImageView>
+                    </VBox>
+                </graphic>
+                <contentDisplay>TOP</contentDisplay> //permet de mettre l'image au dessus du texte
+            </Button>
+
+
+            <Button fx:id="Partie" text="Parties"  prefWidth="150" prefHeight="150" alignment="CENTER">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
+                            <image>
+                                <Image url="@/new_game.png"/>
+                            </image>
+                        </ImageView>
+                    </VBox>
+                </graphic>
+                <contentDisplay>TOP</contentDisplay> //permet d'afficher l'image au dessus du texte
+            </Button>
+
+
+            <Button fx:id="Joueurs" text="Joueurs"  prefWidth="150" prefHeight="150" alignment="CENTER">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true" >
+                            <image>
+                                <Image url="@/joueur.png"/>
+                            </image>
+                        </ImageView>
+                    </VBox>
+                </graphic>
+                <contentDisplay>TOP</contentDisplay> //permet d'afficher l'image au dessus du texte
+            </Button>
         </HBox>
 
         <StackPane>
