@@ -55,7 +55,7 @@ public class MainController {
     @FXML
     private Label endgameMessage;
     @FXML
-    private VBox menuJoueur;
+    VBox menuJoueur;
     @FXML
     VBox menuPartie;
     @FXML
@@ -97,14 +97,14 @@ public class MainController {
     private Timer timer1;
     private Timer timer2;
     private ChessBoard chessBoard;
-    private int activePlayer; // 1 for player 1, 2 for player 2
+    int activePlayer; // 1 for player 1, 2 for player 2
 
     private Timeline timeline;
     private int seconds;
-    private String nomJ1;
-    private String nomJ2;
-    private String prenomJ1;
-    private String prenomJ2;
+    String nomJ1;
+    String nomJ2;
+    String prenomJ1;
+    String prenomJ2;
 
 
 

@@ -5,12 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b2c82c4-a929-44e8-af22-9f503a323879" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.attach_pid30313" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Historique.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/ChessTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/controller/MainControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/FichierCoupTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/JoueurTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/valoo/chess/fonctionnalites/TimerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Historique.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Historique.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parties/Partie7.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +28,9 @@
       <list>
         <option value="FxmlFile" />
         <option value="package-info" />
+        <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,8 +53,10 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/amuhome/b23010591/Documents/java/javafx/chess&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/amuhome/c23007921/javafxSAE/nouveau dossier 4/chess&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,23 +65,99 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="Chess" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.Chess" />
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.valoo.chess.controller" />
+      <recent name="com.valoo.chess.fonctionnalites" />
+      <recent name="com.valoo.chess" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MainControllerTest">
+    <configuration name="BotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chess" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.valoo.chess.pieces.*" />
+          <option name="PATTERN" value="com.valoo.chess.fonctionnalites.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess.fonctionnalites" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.fonctionnalites.BotTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FichierCoupTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.fonctionnalites.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess.fonctionnalites" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.fonctionnalites.FichierCoupTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JoueurTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.fonctionnalites.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess.fonctionnalites" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.fonctionnalites.JoueurTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.controller.MainControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TimerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.valoo.chess.fonctionnalites.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.valoo.chess.fonctionnalites" />
+      <option name="MAIN_CLASS_NAME" value="com.valoo.chess.fonctionnalites.TimerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Chess" />
+        <item itemvalue="JUnit.MainControllerTest" />
+        <item itemvalue="JUnit.JoueurTest" />
+        <item itemvalue="JUnit.FichierCoupTest" />
+        <item itemvalue="JUnit.TimerTest" />
+        <item itemvalue="JUnit.BotTest" />
       </list>
     </recent_temporary>
   </component>
@@ -91,6 +177,8 @@
       <workItem from="1717662184372" duration="6810000" />
       <workItem from="1717674209493" duration="157000" />
       <workItem from="1717676606654" duration="2258000" />
+      <workItem from="1717680371804" duration="3012000" />
+      <workItem from="1717686689907" duration="631000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
@@ -155,21 +243,7 @@
       <option name="project" value="LOCAL" />
       <updated>1717676917131</updated>
     </task>
-    <task id="LOCAL-00010" summary="patch">
-      <created>1717682994145</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1717682994146</updated>
-    </task>
-    <task id="LOCAL-00011" summary="on avance oklm">
-      <created>1717686544648</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1717686544648</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,8 +259,6 @@
     <MESSAGE value="meilleur système de coup" />
     <MESSAGE value="ajout système de nom" />
     <MESSAGE value="fix affichage fichiers" />
-    <MESSAGE value="patch" />
-    <MESSAGE value="on avance oklm" />
-    <option name="LAST_COMMIT_MESSAGE" value="on avance oklm" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix affichage fichiers" />
   </component>
 </project>

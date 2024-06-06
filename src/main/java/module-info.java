@@ -5,6 +5,7 @@ module com.valoo.chess {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
+    requires org.testng;
 
     opens com.valoo.chess to javafx.fxml;
     exports com.valoo.chess;
