@@ -102,6 +102,7 @@
                 <VBox fx:id="listeFichiersParties" alignment="TOP_CENTER" spacing="10" minHeight="800" maxHeight="375">
                     <Label fx:id="labelparties" text="Parties :" />
                     <Button fx:id="btnClearParties" text="Effacer les parties" minHeight="60" minWidth="350" onAction="#handleClearParties"/>
+                    <VBox fx:id="listeFichiers" alignment="TOP_CENTER" spacing="10"/>
                 </VBox>
 
                 <VBox fx:id="listeProblemes" alignment="TOP_CENTER" spacing="10" minHeight="800">

@@ -26,6 +26,8 @@ public class MainController {
     @FXML
     private Button btnTournoi;
     @FXML
+    private VBox listeParties;
+    @FXML
     private VBox menuPartieHBox;
     @FXML
     private VBox listeProblemes;
@@ -445,8 +447,9 @@ public class MainController {
     }
 
     public void handleChargerPartie() {
-        menuPartieHBox.setVisible(true);
+        listeFichiersParties.setVisible(true);
         listeProblemes.setVisible(false);
+        listeParties.getChildren().clear();
         String nomBtn;
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
@@ -467,11 +470,11 @@ public class MainController {
                         }
                         chessBoard.jouerPartie(file.getName());
                     });
-                    listeFichiersParties.getChildren().add(fileButton);
+                    listeParties.getChildren().add(fileButton);
                 }
             }
             // Forcer la mise à jour de l'interface utilisateur
-            listeFichiersParties.layout();
+            listeParties.layout();
         } else {
             handleClearParties();
         }
