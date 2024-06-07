@@ -15,35 +15,11 @@ public class FichierCoup {
     private List<String> coups;
     private int indexHistorique;
 
-//    public FichierCoup() {
-//        File directory = new File("src/main/resources/parties/");
-//        File[] files = directory.listFiles();
-//        int fileCount = files != null ? files.length : 0;
-//        fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
-//        coups = new ArrayList<>();
-//        // On ouvre le fichier en écriture pour le créer s'il n'existe pas
-//        try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
-//            printWriter.print("");
-//        } catch (IOException e) {
-//            System.err.println("Error writing move to file: " + e.getMessage());
-//        }
-//
-//        // indexHistorique prend la valeur du nombre de lignes du fichier
-//        try (Scanner scanner = new Scanner(new File(fileName))) {
-//            while (scanner.hasNextLine()) {
-//                coups.add(scanner.nextLine());
-//            }
-//        } catch (IOException e) {
-//            System.err.println("Error reading moves from file: " + e.getMessage());
-//        }
-//
-//    }
-
     public FichierCoup() {
-        File directory = new File("src/main/resources/problemes/");
+        File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
         int fileCount = files != null ? files.length : 0;
-        fileName = "src/main/resources/problemes/Problème" + (fileCount + 1) + ".txt";
+        fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
         coups = new ArrayList<>();
         // On ouvre le fichier en écriture pour le créer s'il n'existe pas
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
@@ -62,6 +38,7 @@ public class FichierCoup {
         }
 
     }
+
 
     public FichierCoup(String fileName) {
         this.fileName = "src/main/resources/parties/" + fileName;

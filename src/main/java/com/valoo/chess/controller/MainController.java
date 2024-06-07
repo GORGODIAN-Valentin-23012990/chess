@@ -26,9 +26,9 @@ public class MainController {
     @FXML
     private Button btnTournoi;
     @FXML
-    private VBox listeParties;
+    private VBox listeFichiers;
     @FXML
-    private VBox menuPartieHBox;
+    private HBox menuPartieHBox;
     @FXML
     private VBox listeProblemes;
     @FXML
@@ -170,7 +170,7 @@ public class MainController {
 
         btnValiderTournoi.setOnAction(event -> handleValiderTournoi());
 
-        handleChargerPartie();
+//        handleChargerPartie();
 
         btnPrec.setOnAction(event -> handlePrec());
         btnSuiv.setOnAction(event -> handleSuiv());
@@ -183,7 +183,7 @@ public class MainController {
     }
 
     public void handleChargerProblemes() {
-        menuPartieHBox.setVisible(false);
+        listeFichiers.setVisible(false);
         listeProblemes.setVisible(true);
         String nomBtn;
         listeFichiersProblemes.getChildren().clear();
@@ -360,7 +360,7 @@ public class MainController {
             chessBoardContainer.getChildren().remove(chessBoard.getBoard());
         }
         chessBoard = new ChessBoard(bot, this);
-        handleChargerPartie();
+//        handleChargerPartie();
         partieChargee = chessBoard.getFileName().substring(27, chessBoard.getFileName().length());
         chessBoardContainer.getChildren().add(chessBoard.getBoard());
         switchActivePlayer();
@@ -447,9 +447,9 @@ public class MainController {
     }
 
     public void handleChargerPartie() {
-        listeFichiersParties.setVisible(true);
         listeProblemes.setVisible(false);
-        listeParties.getChildren().clear();
+        listeFichiers.setVisible(true);
+
         String nomBtn;
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
@@ -470,11 +470,11 @@ public class MainController {
                         }
                         chessBoard.jouerPartie(file.getName());
                     });
-                    listeParties.getChildren().add(fileButton);
+                    listeFichiers.getChildren().add(fileButton);
                 }
             }
             // Forcer la mise à jour de l'interface utilisateur
-            listeParties.layout();
+            listeFichiers.layout();
         } else {
             handleClearParties();
         }
