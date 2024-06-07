@@ -94,23 +94,20 @@
                 <TextField fx:id="nomField2" promptText="nom" minWidth="350" minHeight="60" style="-fx-font-size: 20px;"/>
                 <Button fx:id="btnValider2" text="Valider" minHeight="60" minWidth="350"/>
             </VBox>
-            <VBox fx:id="menuPartie" spacing="20" alignment="TOP_CENTER">
-                <HBox fx:id="menuPartieHBox" spacing="10" alignment="CENTER">
-                    <Button fx:id="btnAffichageParties" text="Afficher les parties" minHeight="115" minWidth="150" maxWidth="150"  onAction="#handleChargerPartie"/>
-                    <Button fx:id="btnAffichageProblemes" text="Afficher les problèmes" minHeight="115" minWidth="150" maxWidth="150"  onAction="#handleChargerProblemes"/>
-                </HBox>
-                <VBox fx:id="listeFichiersParties" alignment="TOP_CENTER" spacing="10" minHeight="800" maxHeight="375">
-                    <Label fx:id="labelparties" text="Parties :" />
-                    <Button fx:id="btnClearParties" text="Effacer les parties" minHeight="60" minWidth="350" onAction="#handleClearParties"/>
+            <VBox fx:id="menuPartie" spacing="40" alignment="TOP_CENTER">
+                <VBox fx:id="listeFichiersParties" alignment="TOP_CENTER" spacing="20" maxHeight="400">
+                    <Label fx:id="labelparties" text="Parties" minHeight="70" minWidth="350"/>
+                    <Button fx:id="btnClearParties" text="Effacer les parties" minHeight="50" minWidth="300" onAction="#handleClearParties"/>
                     <VBox fx:id="listeFichiers" alignment="TOP_CENTER" spacing="10"/>
                 </VBox>
 
-                <VBox fx:id="listeProblemes" alignment="TOP_CENTER" spacing="10" minHeight="800">
-                    <Label fx:id="labelProbleme" text="Problèmes:" />
+                <VBox fx:id="listeProblemes" spacing="10"  alignment="TOP_CENTER" maxHeight="400">
+                    <Label fx:id="labelProbleme" text="Problème" minHeight="50" minWidth="300" />
                     <VBox fx:id="listeFichiersProblemes" alignment="TOP_CENTER" spacing="10"/>
                 </VBox>
+                <VBox minHeight="500"/>
             </VBox>
-            <VBox fx:id="menuPrincipal" alignment="CENTER" spacing="20">
+            <VBox fx:id="menuPrincipal" alignment="TOP_CENTER" spacing="20">
                 <ComboBox fx:id="myComboBox" promptText="30 secondes" style="-fx-font-size: 20px;" minWidth="350" minHeight="60" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">

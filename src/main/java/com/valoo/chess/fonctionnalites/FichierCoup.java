@@ -90,7 +90,7 @@ public class FichierCoup {
     public void jouerPartie(ChessBoard board, String fileName) {
         indexHistorique = 0;
         int xApres = 0, yApres = 0;
-        try (Scanner input = new Scanner(new File("src/main/resources/parties/" + fileName))) {
+        try (Scanner input = new Scanner(new File("src/main/resources/" + fileName))) {
             if(input == null) {
                 return;
                 // On vérifie ensuite si le fichier est vide

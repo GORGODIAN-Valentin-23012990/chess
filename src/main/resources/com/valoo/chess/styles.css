@@ -262,7 +262,20 @@
     -fx-background-color: black;
 }
 
-#listeFichiersParties .label {
+#listeProblemes .button {
+    -fx-background-color: #171715;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#listeProblemes .button:hover {
+    -fx-background-color: black;
+}
+
+#listeFichiers .label {
     -fx-background-color: #171715;
     -fx-text-fill: white;
     -fx-font-size: 17px;
@@ -280,15 +293,22 @@
     -fx-font-weight: bold;
 }
 
-#labelProbleme {
+#labelparties {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
     -fx-font-size: 25px;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
-#labelProbleme:hover {
-    -fx-background-color: #43A047;
+#labelProbleme {
+    -fx-background-color: #FA742C;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
 }
