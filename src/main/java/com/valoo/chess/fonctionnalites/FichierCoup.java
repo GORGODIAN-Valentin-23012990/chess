@@ -15,11 +15,35 @@ public class FichierCoup {
     private List<String> coups;
     private int indexHistorique;
 
+//    public FichierCoup() {
+//        File directory = new File("src/main/resources/parties/");
+//        File[] files = directory.listFiles();
+//        int fileCount = files != null ? files.length : 0;
+//        fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
+//        coups = new ArrayList<>();
+//        // On ouvre le fichier en écriture pour le créer s'il n'existe pas
+//        try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
+//            printWriter.print("");
+//        } catch (IOException e) {
+//            System.err.println("Error writing move to file: " + e.getMessage());
+//        }
+//
+//        // indexHistorique prend la valeur du nombre de lignes du fichier
+//        try (Scanner scanner = new Scanner(new File(fileName))) {
+//            while (scanner.hasNextLine()) {
+//                coups.add(scanner.nextLine());
+//            }
+//        } catch (IOException e) {
+//            System.err.println("Error reading moves from file: " + e.getMessage());
+//        }
+//
+//    }
+
     public FichierCoup() {
-        File directory = new File("src/main/resources/parties/");
+        File directory = new File("src/main/resources/problemes/");
         File[] files = directory.listFiles();
         int fileCount = files != null ? files.length : 0;
-        fileName = "src/main/resources/parties/Partie" + (fileCount + 1) + ".txt";
+        fileName = "src/main/resources/problemes/Problème" + (fileCount + 1) + ".txt";
         coups = new ArrayList<>();
         // On ouvre le fichier en écriture pour le créer s'il n'existe pas
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName))) {
@@ -135,6 +159,7 @@ public class FichierCoup {
                     int yApres = Character.getNumericValue(line.charAt(3));
                     board.movePiece(xAvant, yAvant, xApres, yApres, false);
                 }
+                board.setTour(2);
                 board.updateBoard();
             }
         } catch (Exception e) {
@@ -144,6 +169,7 @@ public class FichierCoup {
 
     public void coupSuivant(ChessBoard board, String fileName) {
         ++indexHistorique;
+        int xApres = 0, yApres = 0;
         // on fait le coup de chaque ligne jusquà indexHistorique
         try (Scanner input = new Scanner(new File(fileName))) {
             if(input == null) {
@@ -153,14 +179,21 @@ public class FichierCoup {
                     String line = input.nextLine();
                     int xAvant = Character.getNumericValue(line.charAt(0));
                     int yAvant = Character.getNumericValue(line.charAt(1));
-                    int xApres = Character.getNumericValue(line.charAt(2));
-                    int yApres = Character.getNumericValue(line.charAt(3));
+                    xApres = Character.getNumericValue(line.charAt(2));
+                    yApres = Character.getNumericValue(line.charAt(3));
                     board.movePiece(xAvant, yAvant, xApres, yApres, false);
                 }
                 board.updateBoard();
+                board.setTour(2);
             }
         } catch (Exception e) {
             indexHistorique--;
+            // On redonne le tour à la bonne personne
+            if (board.getPiece(xApres, yApres).getCouleur() == 0) {
+                board.setTour(1);
+            } else {
+                board.setTour(0);
+            }
         }
     }
 
@@ -171,4 +204,6 @@ public class FichierCoup {
     public int getIndexHistorique() {
         return indexHistorique;
     }
+
+
 }

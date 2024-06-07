@@ -26,6 +26,10 @@ public class MainController {
     @FXML
     private Button btnTournoi;
     @FXML
+    private VBox menuPartieHBox;
+    @FXML
+    private VBox listeProblemes;
+    @FXML
     private VBox espace;
     @FXML
     private Button btnJouer2;
@@ -76,7 +80,10 @@ public class MainController {
     Button Joueurs;
     @FXML
     private VBox listeFichiersParties;
-
+    @FXML
+    private Button btnAffichageParties;
+    @FXML
+    private Button btnAffichageProblemes;
     @FXML
     VBox menuJoueur2;
     @FXML
@@ -108,6 +115,8 @@ public class MainController {
 
     private Timeline timeline;
     private int seconds;
+    @FXML
+    private VBox listeFichiersProblemes;
     String nomJ1;
     String nomJ2;
     String prenomJ1;
@@ -121,6 +130,7 @@ public class MainController {
         menuJoueur2.setVisible(false);
         menuTournoi.setVisible(false);
         choixJeuBox.setVisible(false);
+        listeFichiersProblemes.setVisible(false);
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             if (activePlayer == 1) {
@@ -162,10 +172,44 @@ public class MainController {
 
         btnPrec.setOnAction(event -> handlePrec());
         btnSuiv.setOnAction(event -> handleSuiv());
+        btnAffichageParties.setOnAction(event -> handleChargerPartie());
+        btnAffichageProblemes.setOnAction(event -> handleChargerProblemes());
 
         btnJouer.setOnAction(event -> handleJouerButtonAction());
 
 
+    }
+
+    public void handleChargerProblemes() {
+        menuPartieHBox.setVisible(false);
+        listeProblemes.setVisible(true);
+        String nomBtn;
+        listeFichiersProblemes.getChildren().clear();
+        File directory = new File("src/main/resources/problemes/");
+        File[] files = directory.listFiles();
+        if (files.length > 0) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    Button fileButton = new Button(file.getName().substring(0, file.getName().length() - 4));
+                    fileButton.setPrefWidth(200);
+                    fileButton.setOnAction(event -> {
+                        partieChargee = fileButton.getText() + ".txt";
+                        timer1 = new Timer(30);
+                        timer2 = new Timer(30);
+                        if(chessBoard == null) {
+                            chessBoard = new ChessBoard(2, this);
+                            chessBoardContainer.getChildren().add(chessBoard.getBoard());
+                        } else {
+                            chessBoard.resetBoard();
+                        }
+                        chessBoard.jouerPartie(file.getName());
+                    });
+                    listeFichiersProblemes.getChildren().add(fileButton);
+                }
+            }
+            // Forcer la mise à jour de l'interface utilisateur
+            listeFichiersProblemes.layout();
+        }
     }
 
     // Méthode pour réinitialiser les styles des boutons
@@ -401,8 +445,9 @@ public class MainController {
     }
 
     public void handleChargerPartie() {
+        menuPartieHBox.setVisible(true);
+        listeProblemes.setVisible(false);
         String nomBtn;
-        listeFichiersParties.getChildren().clear();
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
         if (files.length > 0) {

@@ -280,3 +280,15 @@
     -fx-font-weight: bold;
 }
 
+#labelProbleme {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 25px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-weight: bold;
+}
+
+#labelProbleme:hover {
+    -fx-background-color: #43A047;
+}
