@@ -8,11 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/valoo/chess/fonctionnalites/FichierCoup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/valoo/chess/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parties/Partie3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stockage/Historique.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +188,7 @@
       <workItem from="1717689728093" duration="145000" />
       <workItem from="1717689904133" duration="15262000" />
       <workItem from="1717745175082" duration="3773000" />
-      <workItem from="1717749212114" duration="3517000" />
+      <workItem from="1717749212114" duration="4113000" />
     </task>
     <task id="LOCAL-00001" summary="Fin de la partie quand le roi meurt">
       <created>1717572284978</created>
@@ -303,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1717749950040</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="avancées sur l'interface des parties">
+      <created>1717752892582</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1717752892582</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +328,7 @@
     <MESSAGE value="Avancées sur le système de lecture de fichier" />
     <MESSAGE value="debut de creation d'un système de problèmes" />
     <MESSAGE value="avancées mineures" />
-    <option name="LAST_COMMIT_MESSAGE" value="avancées mineures" />
+    <MESSAGE value="avancées sur l'interface des parties" />
+    <option name="LAST_COMMIT_MESSAGE" value="avancées sur l'interface des parties" />
   </component>
 </project>

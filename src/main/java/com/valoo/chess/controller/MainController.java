@@ -192,7 +192,7 @@ public class MainController {
                         }
                         chessBoard.jouerPartie("problemes/" + file.getName());
                     });
-                    System.out.println("bouton ajouté : " + fileButton.getText());
+                    // System.out.println("bouton ajouté : " + fileButton.getText());
                     listeFichiersProblemes.getChildren().add(fileButton);
                 }
             }
@@ -358,7 +358,7 @@ public class MainController {
         String prenom = prenomField.getText();
         Joueur joueur = new Joueur(nom, prenom);
 
-        System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
+        // System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
     }
 
     public void freezeTimers() {
@@ -392,7 +392,7 @@ public class MainController {
         String nom = nomField.getText();
         String prenom = prenomField.getText();
         Joueur joueur = new Joueur(nom, prenom);
-        System.out.println("grzzz");
+        // System.out.println("grzzz");
     }
 
     @FXML
@@ -453,7 +453,7 @@ public class MainController {
                         } else {
                             chessBoard.resetBoard();
                         }
-                        chessBoard.jouerPartie(file.getName());
+                        chessBoard.jouerPartie("parties/" + file.getName());
                     });
                     listeFichiers.getChildren().add(fileButton);
                 }
