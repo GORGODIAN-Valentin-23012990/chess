@@ -1,7 +1,7 @@
 package com.valoo.chess.fonctionnalites;
 
-import com.valoo.chess.ChessBoard;
 import com.valoo.chess.fonctionnalites.FichierCoup;
+import com.valoo.chess.ChessBoard;
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,39 +9,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class FichierCoupTest {
 
     @Test
-    void shouldCreateNewFileOnConstruction() {
+    void shouldCreateNewProblemFileOnConstruction() {
         FichierCoup fichierCoup = new FichierCoup();
-        assertNotNull(fichierCoup.getFileName());
+        assertTrue(fichierCoup.getFileName().startsWith("src/main/resources/problemes/Problème"));
     }
 
-    @Test
-    void shouldWriteMoveToFile() {
-        FichierCoup fichierCoup = new FichierCoup();
-        fichierCoup.ecrireCoup(1, 1, 2, 2);
-        // Verify that the move was written to the file
-    }
 
     @Test
-    void shouldPlayGameFromFile() {
+    void shouldNotUndoMoveWhenNoMovesMade() {
         ChessBoard mockBoard = mock(ChessBoard.class);
         FichierCoup fichierCoup = new FichierCoup();
-        fichierCoup.jouerPartie(mockBoard, "testGame.txt");
-        // Verify that the moves were played on the board
+        int initialIndex = fichierCoup.getIndexHistorique();
+        fichierCoup.annulerCoup(mockBoard, fichierCoup.getFileName());
+        assertEquals(initialIndex, fichierCoup.getIndexHistorique());
     }
 
-    @Test
-    void shouldUndoMove() {
-        ChessBoard mockBoard = mock(ChessBoard.class);
-        FichierCoup fichierCoup = new FichierCoup();
-        fichierCoup.annulerCoup(mockBoard);
-        // Verify that the last move was undone
-    }
-
-    @Test
-    void shouldPlayNextMove() {
-        ChessBoard mockBoard = mock(ChessBoard.class);
-        FichierCoup fichierCoup = new FichierCoup();
-        fichierCoup.coupSuivant(mockBoard);
-        // Verify that the next move was played
-    }
 }
