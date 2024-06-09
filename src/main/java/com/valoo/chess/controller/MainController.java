@@ -1,8 +1,11 @@
 package com.valoo.chess.controller;
 
 import com.valoo.chess.ChessBoard;
+import com.valoo.chess.Match;
+import com.valoo.chess.Tournoi;
 import com.valoo.chess.fonctionnalites.Joueur;
 import com.valoo.chess.fonctionnalites.Timer;
+import com.valoo.chess.pieces.Tour;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
@@ -16,12 +19,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainController {
+    private Match currentMatch;
 
     @FXML
     private Button btnTournoi;
@@ -42,9 +48,9 @@ public class MainController {
     @FXML
     private Button btnClearParties;
     @FXML
-    Label J1Label;
+    public Label J1Label;
     @FXML
-    Label J2Label;
+    public Label J2Label;
     @FXML
     private ComboBox<String> myComboBox;
     @FXML
@@ -113,7 +119,30 @@ public class MainController {
     String prenomJ1;
     String prenomJ2;
 
+    private boolean isTournoiStart = false;
 
+    @FXML
+    private TextField nomJoueur1;
+    @FXML
+    private TextField nomJoueur2;
+    @FXML
+    private TextField nomJoueur3;
+    @FXML
+    private TextField nomJoueur4;
+    @FXML
+    private TextField nomJoueur5;
+    @FXML
+    private TextField nomJoueur6;
+    @FXML
+    private TextField nomJoueur7;
+    @FXML
+    private TextField nomJoueur8;
+    @FXML
+    private TextField nomJoueur9;
+    @FXML
+    private TextField nomJoueur10;
+
+    private List<Match> matches;
 
     public void initialize() {
         menuJoueur.setVisible(false);
@@ -169,6 +198,13 @@ public class MainController {
         btnJouer.setOnAction(event -> handleJouerButtonAction());
 
 
+    }
+
+    public void updatePlayerNames() {
+        Joueur joueur1 = currentMatch.getJoueur1();
+        Joueur joueur2 = currentMatch.getJoueur2();
+        J1Label.setText(joueur1.getNom() + " " + joueur1.getPrenom());
+        J2Label.setText(joueur2.getNom() + " " + joueur2.getPrenom());
     }
 
     public void handleChargerProblemes() {
@@ -247,7 +283,7 @@ public class MainController {
         menuPartie.setVisible(false);
         vbox.setVisible(true);
     }
-    private void gameCode(int bot) {
+    public void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
 
@@ -354,11 +390,64 @@ public class MainController {
     }
 
     public void handleValiderTournoi() {
-        String nom = nomField.getText();
-        String prenom = prenomField.getText();
-        Joueur joueur = new Joueur(nom, prenom);
+        menuTournoi.setVisible(false);
+        menuPrincipal.setVisible(true);
+        // récupérer les noms des 10 joueurs
+        ArrayList<String> noms = new ArrayList<>();
+        noms.add(nomJoueur1.getText());
+        noms.add(nomJoueur2.getText());
+        noms.add(nomJoueur3.getText());
+        noms.add(nomJoueur4.getText());
+        noms.add(nomJoueur5.getText());
+        noms.add(nomJoueur6.getText());
+        noms.add(nomJoueur7.getText());
+        noms.add(nomJoueur8.getText());
+        noms.add(nomJoueur9.getText());
+        noms.add(nomJoueur10.getText());
 
-        // System.out.println("Joueur: " + joueur.getNom() + " " + joueur.getPrenom());
+        ArrayList<Joueur> joueurs = new ArrayList<>();
+        for (String nom : noms) {
+            String[] nomPrenom = nom.split(" ");
+            String prenom = nomPrenom.length > 1 ? nomPrenom[1] : "Default";
+            joueurs.add(new Joueur(nomPrenom[0], prenom));
+        }
+
+        matches = new ArrayList<>();
+
+        for (int i = 0; i < joueurs.size(); i += 2) {
+            Match match = new Match(joueurs.get(i), joueurs.get(i + 1), this);
+            matches.add(match);
+        }
+
+        Tournoi tournoi = new Tournoi(joueurs, this);
+        tournoi.startTournament();
+        setTournamentStarted(true);
+    }
+
+    //getMatch method that return the match playing
+    public Match getMatch() {
+        return new Match(getJoueur1(), getJoueur2(), this);
+    }
+
+    public void setCurrentMatch(Match match) {
+        this.currentMatch = match;
+        Joueur joueur1 = match.getJoueur1();
+        Joueur joueur2 = match.getJoueur2();
+        nomJ1 = joueur1.getNom();
+        prenomJ1 = joueur1.getPrenom();
+        nomJ2 = joueur2.getNom();
+        prenomJ2 = joueur2.getPrenom();
+        J1Label.setText(nomJ1 + " " + prenomJ1);
+        J2Label.setText(nomJ2 + " " + prenomJ2);
+    }
+
+    // isTournamentStarted() method
+    public boolean isTournamentStarted() {
+        return isTournoiStart;
+    }
+
+    public void setTournamentStarted(boolean tournamentStarted) {
+        isTournoiStart = tournamentStarted;
     }
 
     public void freezeTimers() {
@@ -422,15 +511,36 @@ public class MainController {
     }
 
     public void showMessageEnding(int color) {
-        endgameMessage.getStyleClass().add("afterMatch");
-        // set the iconBottomRight image to the winner's icon
-        iconBottomRight.setImage(color == 0 ? chessBoard.getIcon1() : chessBoard.getIcon2());
-        if (color == 0) {
-            endgameMessage.setText("Le joueur 1 a gagné !");
+        if (isTournamentStarted()) {
+            showEndingTournoi("Le joueur " + (color == 0 ? "1" : "2") + " a gagné !");
+            currentMatch.setMatchOver(true);
+            currentMatch.setWinner(color == 0 ? getJoueur1() : getJoueur2());
         } else {
-            endgameMessage.setText("Le joueur 2 a gagné !");
+            endgameMessage.getStyleClass().add("afterMatch");
+            // set the iconBottomRight image to the winner's icon
+            iconBottomRight.setImage(color == 0 ? chessBoard.getIcon1() : chessBoard.getIcon2());
+            if (color == 0) {
+                endgameMessage.setText("Le joueur 1 a gagné !");
+            } else {
+                endgameMessage.setText("Le joueur 2 a gagné !");
+            }
+            freezeTimers();
         }
+    }
+
+    public void showEndingTournoi(String message) {
+        endgameMessage.getStyleClass().add("afterMatch");
+        endgameMessage.setText(message);
         freezeTimers();
+        // Ajoutez ici le code pour supprimer le damier actuel et créer un nouveau damier pour le prochain match
+        chessBoardContainer.getChildren().remove(chessBoard.getBoard());
+        chessBoard = new ChessBoard(2, this); // Remplacez 2 par le nombre de joueurs pour le prochain match
+        chessBoardContainer.getChildren().add(chessBoard.getBoard());
+
+        // Si c'est le dernier match du tournoi, affichez le gagnant en console
+        if (matches.size() == 0) {
+            System.out.println("Le gagnant du tournoi est : " + message);
+        }
     }
 
     public void handleChargerPartie() {
@@ -464,6 +574,10 @@ public class MainController {
             handleClearParties();
         }
 
+    }
+
+    public boolean isGameOver() {
+        return chessBoard.isGameOver;
     }
 
 

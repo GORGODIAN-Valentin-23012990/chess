@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChessBoard {
+    public boolean isGameOver = false;
     private VBox board;
     private Piece[][] matPiece;
     private Piece selectedPiece;
@@ -248,6 +249,8 @@ public class ChessBoard {
     public void finDePartie(int color) {
         mainController.showMessageEnding(color);
         mainController.freezeTimers();
+        // detect if tournanement is started and setMatchOver for the match
+        isGameOver = true;
         tour = 2;
 
     }

@@ -37,7 +37,7 @@ public class   Chess extends Application {
         primaryStage.setWidth(1200);
         primaryStage.setHeight(900);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 
