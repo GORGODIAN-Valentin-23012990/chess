@@ -13,7 +13,11 @@ public class Bot {
 
 
 
-    // Cette fonction prend en paramètre un chessboard et une couleur, puis il choisit une pièce aléatoire et la déplace aléatoirement
+    /**
+     * La fonction play permet de déplacer une pièce aléatoire sur le plateau
+     * @param board  : ChessBoard
+     * @param couleur : int
+     */
     public void play(ChessBoard board, int couleur) {
         while (true) {
             int x = (int) (Math.random() * 8);

@@ -15,6 +15,9 @@ public class FichierCoup {
     private List<String> coups;
     private int indexHistorique;
 
+    /**
+     * Cette fonction permet de créer un fichier de coup pour une nouvelle partie
+     */
     public FichierCoup() {
         File directory = new File("src/main/resources/parties/");
         File[] files = directory.listFiles();
@@ -41,6 +44,10 @@ public class FichierCoup {
     }
 
 
+    /**
+     * Cette fonction permet de créer un fichier de coup pour une partie existante
+     * @param fileName : String
+     */
     public FichierCoup(String fileName) {
         this.fileName = "src/main/resources/parties/" + fileName;
         coups = new ArrayList<>();
@@ -68,6 +75,13 @@ public class FichierCoup {
         return fileName;
     }
 
+    /**
+     * Cette fonction permet d'écrire un coup dans le fichier
+     * @param xAvant : int
+     * @param yAvant : int
+     * @param xApres : int
+     * @param yApres : int
+     */
     public void ecrireCoup(int xAvant, int yAvant, int xApres, int yApres) {
         String coup = String.format("%d%d%d%d", xAvant, yAvant, xApres, yApres);
         coups.add(coup);
@@ -78,7 +92,10 @@ public class FichierCoup {
         }
     }
 
-    // Cette fonction est similaire à ecrireCoup sauf qu'elle prend en paramètre unn String et l'ajoute directement au fichier
+    /**
+     * Cette fonction est similaire à ecrireCoup sauf qu'elle prend en paramètre unn String et l'ajoute directement au fichier
+     * @param coup : String
+     */
     public void ecrireCoup(String coup) {
         coups.add(coup);
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(fileName, true))) {
@@ -88,6 +105,11 @@ public class FichierCoup {
         }
     }
 
+    /**
+     * Cette fonction permet de jouer une partie à partir d'un fichier
+     * @param board : ChessBoard
+     * @param fileName : String
+     */
     public void jouerPartie(ChessBoard board, String fileName) {
         indexHistorique = 0;
         int xApres = 0, yApres = 0;
@@ -118,6 +140,11 @@ public class FichierCoup {
         }
     }
 
+    /**
+     * Cette fonction permet d'annuler un coup
+     * @param board : ChessBoard
+     * @param fileName : String
+     */
     public void annulerCoup(ChessBoard board, String fileName) {
 
         --indexHistorique;
@@ -142,6 +169,11 @@ public class FichierCoup {
         }
     }
 
+    /**
+     * Cette fonction permet de rejouer un coup
+     * @param board : ChessBoard
+     * @param fileName : String
+     */
     public void coupSuivant(ChessBoard board, String fileName) {
         ++indexHistorique;
         int xApres = 0, yApres = 0;

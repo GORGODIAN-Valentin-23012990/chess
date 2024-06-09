@@ -144,6 +144,10 @@ public class MainController {
 
     private List<Match> matches;
 
+
+    /**
+     * Initialisation de la fenêtre
+     */
     public void initialize() {
         menuJoueur.setVisible(false);
         menuPartie.setVisible(false);
@@ -207,6 +211,10 @@ public class MainController {
         J2Label.setText(joueur2.getNom() + " " + joueur2.getPrenom());
     }
 
+
+    /**
+     * Charger les fichiers de problèmes
+     */
     public void handleChargerProblemes() {
         listeFichiersProblemes.getChildren().clear();
         File directory = new File("src/main/resources/problemes/");
@@ -237,8 +245,11 @@ public class MainController {
         }
     }
 
-    // Méthode pour réinitialiser les styles des boutons
-    private void resetButtonStyles(Button activeButton, Button... buttons) {
+    /**
+     * Réinitialiser les styles des boutons
+     * @param activeButton Le bouton actif
+     * @param buttons     Les autres boutons
+     */    private void resetButtonStyles(Button activeButton, Button... buttons) {
         for (Button button : buttons) {
             if (button != activeButton) {
                 button.setStyle("-fx-background-color: black; -fx-text-fill: white;");
@@ -246,10 +257,17 @@ public class MainController {
         }
     }
 
+    /**
+     * Action du bouton tournoi
+     */
     public void actionBtnTournoi() {
          menuPrincipal.setVisible(false);
          menuTournoi.setVisible(true);
     }
+
+    /**
+     * Action du bouton valider
+     */
     public void actionBtnValider(){
         prenomJ1 = prenomField.getText();
         nomJ1 = nomField.getText();
@@ -258,6 +276,11 @@ public class MainController {
         menuJoueur2.setVisible(true);
         Joueur joueur = new Joueur(nomJ1, prenomJ1);
     }
+
+
+    /**
+     * Action du bouton valider 2
+     */
     public void actionBtnValider2() {
         prenomJ2 = prenomField2.getText();
         nomJ2 = nomField2.getText();
@@ -267,22 +290,43 @@ public class MainController {
         Joueur joueur = new Joueur(nomJ2, prenomJ2);
     }
 
+
+    /**
+     * Lier le nom du joueur 1
+     * @param nom Nom du joueur
+     * @param prenom Prénom du joueur
+     */
     public void bindJ1(String nom, String prenom) {
         String nomJ1 = nom+" "+prenom;
         J1Label.setText(nomJ1);
     }
 
+    /**
+     * Lier le nom du joueur 2
+     * @param nom Nom du joueur
+     * @param prenom Prénom du joueur
+     */
     public void bindJ2(String nom, String prenom) {
         String nomj2 = nom+" "+prenom;
 
         J2Label.setText(nomj2);
     }
+
+    /**
+     * Afficher le VBox
+     * @param vbox VBox à afficher
+     */
     private void showVBox(VBox vbox) {
         menuJoueur.setVisible(false);
         menuPrincipal.setVisible(false);
         menuPartie.setVisible(false);
         vbox.setVisible(true);
     }
+
+    /**
+     * Lancer une partie
+     * @param bot Bot
+     */
     public void gameCode(int bot) {
         String selectedTime = myComboBox.getSelectionModel().getSelectedItem();
         seconds = 0;
@@ -389,6 +433,10 @@ public class MainController {
         switchActivePlayer();
     }
 
+
+    /**
+     * Valider le tournoi
+     */
     public void handleValiderTournoi() {
         menuTournoi.setVisible(false);
         menuPrincipal.setVisible(true);
@@ -429,6 +477,11 @@ public class MainController {
         return new Match(getJoueur1(), getJoueur2(), this);
     }
 
+
+    /**
+     * Cette méthode permet de définir le match actuel
+     * @param match Match
+     */
     public void setCurrentMatch(Match match) {
         this.currentMatch = match;
         Joueur joueur1 = match.getJoueur1();
@@ -441,19 +494,32 @@ public class MainController {
         J2Label.setText(nomJ2 + " " + prenomJ2);
     }
 
+    /**
+     * @return boolean
+     */
     // isTournamentStarted() method
     public boolean isTournamentStarted() {
         return isTournoiStart;
     }
 
+    /**
+     * @param tournamentStarted boolean
+     */
     public void setTournamentStarted(boolean tournamentStarted) {
         isTournoiStart = tournamentStarted;
     }
 
+    /**
+     * gele le timer
+     */
     public void freezeTimers() {
         timeline.stop();
     }
 
+
+    /**
+     * Cette méthode permet de gérer le bouton jouer
+     */
     @FXML
     private void handleJouerButtonAction() {
         if(choixJeuBox.isVisible()) {
@@ -465,6 +531,10 @@ public class MainController {
         }
     }
 
+
+    /**
+     * Cette méthode permet de gérer le bouton jouer 2
+     */
     @FXML
     private void handleJouer2ButtonAction() {
         gameCode(2);
@@ -476,6 +546,10 @@ public class MainController {
         iconBottomRight.setImage(null);
     }
 
+
+    /**
+     * Cette méthode permet d'ajouter un joueur
+     */
     @FXML
     public void handleAjoutJoueur() {
         String nom = nomField.getText();
@@ -484,6 +558,10 @@ public class MainController {
         // System.out.println("grzzz");
     }
 
+
+    /**
+     * Cette méthode permet de gérer le bouton jouer contre le bot
+     */
     @FXML
     public void handleBotButtonAction() {
         gameCode(1);
@@ -494,22 +572,36 @@ public class MainController {
         // set the iconBottomRight image to the winner's icon
         iconBottomRight.setImage(null);
     }
+
+
+    /**
+     * Cette méthode permet de récuperer le joueur 1
+     */
     public Joueur getJoueur1() {
         String nom = nomJ1;
         String prenom = prenomJ1;
         return new Joueur(nomJ1, prenomJ1);
     }
+
+    /**
+     * Cette méthode permet de récuperer le joueur 2
+     */
     public Joueur getJoueur2() {
         String nom = nomJ2;
         String prenom = prenomJ2;
         return new Joueur(nomJ2, prenomJ2);
     }
+
     public void switchActivePlayer() {
         activePlayer = activePlayer == 1 ? 2 : 1;
         timer1.reset(seconds);
         timer2.reset(seconds);
     }
 
+    /**
+     * Cette méthode permet de gérer le message de fin
+     * @param color int
+     */
     public void showMessageEnding(int color) {
         if (isTournamentStarted()) {
             showEndingTournoi("Le joueur " + (color == 0 ? "1" : "2") + " a gagné !");
@@ -528,6 +620,10 @@ public class MainController {
         }
     }
 
+    /**
+     * Cette méthode permet de gérer le message de fin du tournoi
+     * @param message String
+     */
     public void showEndingTournoi(String message) {
         endgameMessage.getStyleClass().add("afterMatch");
         endgameMessage.setText(message);
@@ -543,6 +639,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Cette méthode permet de gérer le chargement de la partie
+     */
     public void handleChargerPartie() {
         listeFichiers.getChildren().clear();
         String nomBtn;
@@ -581,7 +680,9 @@ public class MainController {
     }
 
 
-
+    /**
+     * Cette méthode permet d'afficher le coup precedent
+     */
     @FXML
     public void handlePrec(){
         if(partieChargee == null) {
@@ -592,6 +693,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Cette méthode permet d'afficher le coup suivant
+     */
     @FXML
     public void handleSuiv() {
         if (partieChargee == null) {
@@ -601,6 +705,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Cette méthode permet d'effacer les parties
+     */
     @FXML
     public void handleClearParties() {
         File directory = new File("src/main/resources/parties/");

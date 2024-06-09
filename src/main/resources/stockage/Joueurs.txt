@@ -133,3 +133,5 @@ emmanuel,Default,0,0
 romain,Default,0,0
 ramzi,Default,0,0
 jordan,Default,0,0
+Loeb,Dorian,0,0
+Baldoni,Jules ,0,0

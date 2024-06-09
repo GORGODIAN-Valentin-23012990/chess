@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe représentant le plateau de jeu d'échec
+ */
 public class ChessBoard {
     public boolean isGameOver = false;
     private VBox board;
@@ -28,6 +31,10 @@ public class ChessBoard {
     private MainController mainController;
     private FichierCoup fichierCoup;
 
+    /**
+     * Cette fonction permet d'ajouter la liste des joueurs
+     * @param joueurs liste des joueurs
+     */
     public void JoueurTournoi(List<Joueur> joueurs){
         this.joueurs = joueurs;
         joueurs.add(new Joueur(this.mainController.getJoueur1().getNom(), this.mainController.getJoueur1().getPrenom()));
@@ -56,6 +63,12 @@ public class ChessBoard {
         placePieces();
     }
 
+    /**
+     * Cette fonction permet de créer un plateau de jeu d'échec
+     * @param couleurBot couleur du bot
+     * @param mainController controleur principal
+     * @param fileName nom du fichier
+     */
     public ChessBoard(int couleurBot, MainController mainController, String fileName) {
         fichierCoup = new FichierCoup(fileName);
         this.mainController = mainController;
@@ -72,7 +85,9 @@ public class ChessBoard {
         jouerPartie(fileName);
     }
 
-    // La méthode resetBoard permet de réinitialiser le plateau de jeu
+    /**
+     * Cette fonction permet de réinitialiser le plateau de jeu
+     */
     public void resetBoard(){
         placePieces();
         updateBoard();
@@ -236,6 +251,10 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * Cette fonction permet de mettre en surbrillance les mouvements valides
+     * @param piece pièce
+     */
     private void highlightValidMoves(Piece piece) {
         int[][] validMoves = piece.validMoves(this);
         for (int[] move : validMoves) {
@@ -246,6 +265,10 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * Cette fonction permet de mettre fin à la partie
+     * @param color couleur du joueur
+     */
     public void finDePartie(int color) {
         mainController.showMessageEnding(color);
         mainController.freezeTimers();
@@ -256,6 +279,15 @@ public class ChessBoard {
     }
 
 
+    /**
+     * Cette fonction permet de déplacer une pièce
+     * @param currentX position x actuelle
+     * @param currentY position y actuelle
+     * @param targetX position x cible
+     * @param targetY position y cible
+     * @param haveToWrite boolean
+     * @return
+     */
     public boolean movePiece(int currentX, int currentY, int targetX, int targetY, boolean haveToWrite) {
         Piece piece = getPiece(currentX, currentY);
         if (piece != null) {
@@ -311,6 +343,9 @@ public class ChessBoard {
         return false;
     }
 
+    /**
+     * Colorie le plateau
+     */
     private void colorBoard() {
         for (int i = 0; i < 8; i++) {
             HBox row = (HBox) board.getChildren().get(i);
@@ -325,27 +360,47 @@ public class ChessBoard {
         }
     }
 
-    // Fonction qui prend en paramètre le nom d'un fichier, et qui joue tous les coups du fichier
+    /**
+     * Cette fonction permet de jouer tous les coups du fichier
+     * @param fileName nom du fichier
+     */
     public void jouerPartie(String fileName) {
         fichierCoup.jouerPartie(this, fileName);
     }
 
+    /**
+     * Cette fonction permet d'annuler un coup
+     * @param filename nom du fichier
+     */
     public void annulerCoup(String filename) {
         fichierCoup.annulerCoup(this, filename);
     }
 
+    /**
+     * Cette fonction permet de rejouer un coup
+     * @param filename nom du fichier
+     */
     public void coupSuivant(String filename) {
         fichierCoup.coupSuivant(this, filename);
     }
 
+    /**
+     * @return plateau de jeu
+     */
     public VBox getBoard() {
         return board;
     }
 
+    /**
+     * @return icon sélectionnée
+     */
     public Image getIcon1() {
         return new Image(getClass().getResourceAsStream("/icone.jpg"));
     }
 
+    /**
+     * @return icon sélectionnée
+     */
     public Image getIcon2() {
         return new Image(getClass().getResourceAsStream("/icone2.png"));
     }

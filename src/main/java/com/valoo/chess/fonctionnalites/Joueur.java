@@ -21,6 +21,11 @@ public class Joueur {
         System.out.println(getJoueur(nom, prenom));
 
     }
+
+    /**
+     * Cette fonction permet de récupérer le nombre de parties jouées
+     * @param partieGagnee nombre de parties gagnées
+     */
     public void setPartieGagnee(int partieGagnee) {
         this.partieGagnee = partieGagnee;
     }
@@ -31,6 +36,9 @@ public class Joueur {
         return "["+nom +","+ prenom + " , " + partieGagnee + "," + partieJouee + " ]";
     }
 
+    /**
+     * Cette fonction permet d'incrémenter le nombre de parties jouées
+     */
     public void gagne() {
         partieGagnee++;
         partieJouee++;
@@ -43,7 +51,12 @@ public class Joueur {
         return prenom;
     }
 
-    // Cette fonction prend en paramètre le nom et le prénom d'un joueur, l'ajoute au fichier Joueurs.txt si il n'y est pas encore puis renvoie ses statistiques
+    /**
+     * Cette fonction permet d'ajouter un joueur au fichier Joueurs.txt si il n'y est pas encore puis renvoie ses statistiques
+     * @param nom nom du joueur
+     * @param prenom prenom du joueur
+     * @return les statistiques du joueur
+     */
     public String getJoueur(String nom, String prenom) {
         try (Scanner scanner = new Scanner(new File("src/main/resources/stockage/Joueurs.txt"))) {
             while (scanner.hasNextLine()) {

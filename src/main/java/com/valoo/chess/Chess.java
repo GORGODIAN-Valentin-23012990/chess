@@ -15,6 +15,10 @@ public class   Chess extends Application {
 
     private ChessBoard chessBoard;
 
+    /**
+     * Cette fonction permet de lancer l'application
+     * @param primaryStage fenêtre principale
+     */
     public void start(Stage primaryStage) {
 
         BorderPane root = new BorderPane();

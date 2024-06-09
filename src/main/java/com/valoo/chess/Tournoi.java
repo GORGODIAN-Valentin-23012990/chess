@@ -14,6 +14,11 @@ public class Tournoi {
     private List<Match> matches = new ArrayList<>();
     private MainController mainController;
 
+    /**
+     * Cette méthode permet de créer un tournoi
+     * @param players       liste des joueurs
+     * @param mainController contrôleur principal
+     */
     public Tournoi(List<Joueur> players, MainController mainController) {
         this.mainController = mainController;
         for (int i = 0; i < players.size(); i += 2) {
@@ -21,6 +26,9 @@ public class Tournoi {
         }
     }
 
+    /**
+     * Cette méthode permet de mélanger les joueurs
+     */
     public void printTournoiTree() {
         System.out.println("Tournoi tree:");
         for (int i = 0; i < matches.size(); i++) {
@@ -28,6 +36,9 @@ public class Tournoi {
         }
     }
 
+    /**
+     * Cette méthode permet de commencer le tournoi
+     */
     public void startTournament() {
         Service<Void> service = new Service<>() {
             @Override

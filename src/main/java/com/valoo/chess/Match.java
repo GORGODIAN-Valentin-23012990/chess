@@ -10,18 +10,30 @@ public class Match {
     private boolean isMatchOver = false;
     private MainController mainController;
 
+    /**
+     * Constructeur de la classe Match
+     * @param player1
+     * @param player2
+     * @param mainController
+     */
     public Match(Joueur player1, Joueur player2, MainController mainController) {
         this.player1 = player1;
         this.player2 = player2;
         this.mainController = mainController;
     }
 
+    /**
+     * Cette méthode permet de démarrer un match
+     */
     public void startMatch() {
         mainController.gameCode(2);
         mainController.J1Label.setText(player1.getNom());
         mainController.J2Label.setText(player2.getNom());
     }
 
+    /**
+     * @param player1 joueur 1
+     */
     public void setJoueur1(Joueur player1) {
         this.player1 = player1;
     }
@@ -42,11 +54,16 @@ public class Match {
         this.winner = winner;
     }
 
+    /**
+     * @return true si le match est terminé
+     */
     public boolean isMatchOver() {
         return mainController.isGameOver();
     }
 
-    // Call this method when the match is over
+    /**
+     * @param matchOver true si le match est terminé
+     */
     public void setMatchOver(boolean matchOver) {
         isMatchOver = matchOver;
     }
